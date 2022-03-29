@@ -1,0 +1,26 @@
+.home{
+  padding: 2% 5%;
+  padding-top: 0%;
+}
+
+.headingTop {
+  font-size: 6rem;
+  font-weight: 600;
+}
+
+.headingBottom {
+  font-weight: 500;
+  font-size: 1.5rem;
+}
+
+.row {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+}
+
+.noticesHeading {
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: red;
+}

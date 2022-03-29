@@ -1,0 +1,49 @@
+.aboutCtn{
+    display:grid;   
+}
+
+.about{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 80vh;
+}
+
+.aboutTxt{
+    font-size: 7vw;
+    font-weight: 700;
+}
+
+.aboutTxt1{
+    margin-bottom: -20px;
+}
+
+.aboutTxt2{
+    margin-top: -20px;
+}
+
+.aboutTxtCtn{
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+}
+
+.aboutCtn1{
+    align-self: center;
+    display: grid;
+    row-gap: 3vh;
+    justify-self: center;
+}
+
+.aboutCtn2{
+    display: grid;
+    justify-items: center;
+    align-items: center;
+}
+
+.break{
+    width: 100%;
+    height: 10px;
+}
+
+.aboutBtn{
+    justify-self: start;
+}

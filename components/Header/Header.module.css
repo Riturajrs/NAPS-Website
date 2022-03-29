@@ -1,0 +1,79 @@
+.headerContainer {
+  padding: 2% 5%;
+  padding-bottom: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2ch;
+}
+.row1 {
+  display: flex;
+  width: 100%;
+  text-align: left;
+}
+.row2 {
+  display: flex;
+  padding-bottom: 2%;
+  width: 100%;
+  border-bottom: 5px solid rgb(207, 207, 207);
+}
+
+.navContainer {
+  display: flex;
+  flex: 1;
+  gap: 3ch;
+}
+
+.connectContainer {
+  display: flex;
+  align-items: flex-end;
+  gap: 1ch;
+  justify-content: center;
+}
+
+.text {
+  text-align: end;
+  flex: 1;
+  font-size: 2.0rem;
+  font-weight: 800;
+  display: flex;
+  /* align-items: center; */
+  justify-content: center;
+  flex-direction: column;
+}
+
+.smallText{
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.logoContainer {
+  display: flex;
+  text-align: left;
+  max-height: 10vh;
+  width: fit-content;
+  flex: 0.2;
+}
+
+.navItem {
+  display: flex;
+  border-radius: 20%;
+  font-size: large;
+  font-weight: 500;
+}
+
+.navItem:hover {
+  animation: backgroundTransition 2s ease-in-out infinite;
+  background-color: yellow;
+}
+
+@keyframes backgroundTransition {
+  from {
+    background-color: yellow;
+  }
+  50% {
+    background-color: rgb(211, 211, 38);
+  }
+  to {
+    background-color: yellow;
+  }
+}

@@ -1,0 +1,69 @@
+.footer {
+  display: flex;
+  text-align: center;
+  padding: 2% 5%;
+  padding-top: 0;
+}
+
+.container {
+  padding-top: 2%;
+  border-top: 5px solid rgb(207, 207, 207);
+  flex: 1;
+  gap: 5ch;
+  display: flex;
+  flex-direction: column;
+}
+
+.row2 {
+  display: flex;
+  flex: 1;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.copyright{
+  flex: 1;
+}
+
+.connectContainer {
+  display: flex;
+  align-items: flex-end;
+  gap: 1ch;
+  justify-content: center;
+}
+
+.navContainer {
+  display: flex;
+  gap: 3ch;
+  flex: 1;
+}
+
+.row1 {
+  width: 100%;
+  display: flex;
+}
+
+.navItem {
+  display: flex;
+  border-radius: 20%;
+  font-size: large;
+  font-weight: 500;
+}
+
+.navItem:hover {
+  animation: backgroundTransition 2s ease-in-out infinite;
+  background-color: yellow;
+}
+
+@keyframes backgroundTransition {
+  from {
+    background-color: yellow;
+  }
+  50% {
+    background-color: rgb(211, 211, 38);
+  }
+  to {
+    background-color: yellow;
+  }
+}
+
