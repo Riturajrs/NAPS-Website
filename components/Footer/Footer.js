@@ -36,7 +36,7 @@ export default function Footer(){
         </div>
       <div className={styles.row2}>
       <div className={styles.copyright}>
-      ©NAPS Bit Mesra
+      © News and Publication Society
       </div>
       </div>
       </div>

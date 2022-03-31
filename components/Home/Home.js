@@ -1,5 +1,6 @@
 import styles from "./Home.module.css"
 import Link from "next/link"
+import Carousel from "../Carousel/Carousel"
 
 export default function Home(){
   const notices = [
@@ -33,7 +34,7 @@ export default function Home(){
           )}
         </div>
         <div className={styles.col2}>
-          Test Text
+            <Carousel/>
         </div>
       </div>
     </div>
