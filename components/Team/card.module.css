@@ -1,0 +1,15 @@
+.name {
+  font-weight: 500;
+  font-size: 1.8rem;
+}
+.memberCard {
+  padding: 5%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.connectBar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

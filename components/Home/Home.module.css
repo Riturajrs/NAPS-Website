@@ -25,7 +25,7 @@
   font-size: 1.4rem;
   font-weight: 500;
   color: red;
-  border-bottom: 2px solid black;
+  border-bottom: 5px solid black;
   text-align: center;
 }
 
@@ -70,6 +70,27 @@
   font-size: 1vw;
   font-weight: 300;
 }
+
 .col1 {
   padding-right: 4ch;
+}
+
+.search {
+  margin-top: 5%;
+  margin-bottom: 5%;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+  padding: 1%;
+}
+.search>input {
+  width: 100%;
+  padding: 0 2%;
+  font-size: 1.2rem;
+}
+
+.cardGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  row-gap: 5vh;
+  column-gap: 4%;
 }
