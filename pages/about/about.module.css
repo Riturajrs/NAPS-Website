@@ -6,7 +6,7 @@
 .about{
     display: grid;
     grid-template-columns: 1fr 1fr;
-    height: 80vh;
+    min-height: 80vh;
 }
 
 .aboutTxt{
@@ -47,4 +47,44 @@
 
 .aboutBtn{
     justify-self: start;
+}
+
+.activities {
+    margin-top: 5%;
+}
+.activitiesHeading {
+    font-size: 3.5rem;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 4%;
+}
+.cardBar{
+    width: 20px;
+    background: rgb(75, 75, 165);
+    height: inherit;
+    margin-left: 5%;
+}
+.card {
+    display: flex;
+    flex-direction: row;
+    gap: 5%;
+    justify-content: center;
+}
+.cardHeading {
+    font-size: 1.4rem;
+    font-weight: 600;
+    padding-bottom: 1%;
+}
+.cardText {
+    font-weight: 400;
+}
+.cardContent{
+    display: flex;
+    flex-direction: column;
+    border: 2px solid rgb(75, 75, 165);
+    padding: 2% 5%;
+    min-height: 30vh;
+    margin-bottom: 4%;
+    justify-content: center;
+    transition: all 1s;
 }
