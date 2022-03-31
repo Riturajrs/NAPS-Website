@@ -51,19 +51,9 @@
 }
 
 .navItem:hover {
-  animation: backgroundTransition 2s ease-in-out infinite;
   background-color: yellow;
+  transition: all 0.8s;
 }
 
-@keyframes backgroundTransition {
-  from {
-    background-color: yellow;
-  }
-  50% {
-    background-color: rgb(211, 211, 38);
-  }
-  to {
-    background-color: yellow;
-  }
-}
+
 
