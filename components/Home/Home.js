@@ -1,6 +1,7 @@
 import styles from "./Home.module.css"
 import Link from "next/link"
-import Carousel from "../Carousel/Carousel"
+import Image from "next/image";
+import NapsLogo from "../../media/napslogo.png";
 
 export default function Home(){
   const notices = [
@@ -17,7 +18,7 @@ export default function Home(){
       <div className={styles.headingBottom}>
         Birla Institute of Technology
       </div>
-      <div className={styles.row}>
+      <div className={styles.row1}>
         <div className={styles.col1}>
           <div className={styles.noticesHeading}>
           <Link href="/notices" className={styles.notices}>Notices</Link>
@@ -34,9 +35,23 @@ export default function Home(){
           )}
         </div>
         <div className={styles.col2}>
-            <Carousel/>
+          <div className={styles.card}>
+            <Image src={NapsLogo} width={"200px"} height="200px" alt="random img"/>
+            <div className={styles.description}> 
+                <div className={styles.topic}>TOPIC</div>
+                <div className={styles.author}>By-ajanfjkadf</div>
+                <div className={styles.date}>Date-dd/mm/yyyy</div>
+                <div className={styles.text}>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
+                incididunt ut labore et dolore magna aliqua. Purus in massa tempor nec feugiat nisl 
+                pretium fusce id. Dolor sed viverra ipsum nunc aliquet bibendum enim.
+                </div>
+            </div>
+          </div>
+
         </div>
       </div>
+      <hr />
     </div>
   )
 }

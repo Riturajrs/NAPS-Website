@@ -13,7 +13,7 @@
   font-size: 1.5rem;
 }
 
-.row {
+.row1 {
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 3fr;
@@ -38,6 +38,37 @@
 .noticeSummary {
   font-weight: 300;
 }
+
+.col2{
+  margin-left: 2%;
+}
+
+.card{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  height: 100%;
+  column-gap: 2%;
+}
+
+.topic{
+  font-size: 3vw;
+  font-weight: 700;
+}
+
+.author{
+  font-size: 1.5vw;
+  font-weight: 500;
+}
+
+.date{
+  font-size: 1vw;
+  font-weight: 300;
+}
+
+.text{
+  font-size: 1vw;
+  font-weight: 300;
 
 .col1 {
   padding-right: 4ch;
