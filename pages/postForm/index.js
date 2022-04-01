@@ -64,9 +64,22 @@ export default function postForm(){
     setSelectedTags(newTags);
   }
 
+  function handleSubmit(e){
+    e.preventDefault();
+    const blogDetails = {
+      postDate: postDate,
+      title: title,
+      caption: caption,
+      thumbnail: thumbnail,
+      tags: [...selectedTags],
+      author: author
+    };
+    console.log(blogDetails);
+  }
+
     return(
         <div className={styles.formContainer}>
-            <form class="w-full max-w-lg">
+            <form onSubmit={handleSubmit} class="w-full max-w-lg">
   <div class="flex flex-wrap -mx-3 mb-6">
     <div class="w-full px-3">
       <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-post-date">
@@ -165,6 +178,10 @@ export default function postForm(){
     </select>
   </div>
 </div>
+
+<button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+  Submit
+</button>
 
 </form>
         </div>

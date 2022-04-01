@@ -40,9 +40,21 @@ export default function postForm(){
     setDesignation(newValue);
   }
 
+  function handleSubmit(e){
+    e.preventDefault();
+    const details = {
+      fullName: fullName,
+      rollNum: rollNum,
+      image: image,
+      role: role,
+      designation: designation
+    };
+    console.log(details);
+  }
+
     return(
         <div className={styles.formContainer}>
-            <form class="w-full max-w-lg">
+            <form onSubmit={handleSubmit} class="w-full max-w-lg">
   <div class="flex flex-wrap -mx-3 mb-6">
     <div class="w-full px-3">
       <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-full-name">
@@ -122,6 +134,9 @@ export default function postForm(){
     </select>
   </div>
 </div>
+<button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+  Submit
+</button>
 
 </form>
         </div>
