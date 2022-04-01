@@ -29,9 +29,9 @@ export default function Footer(){
           </div>
         </div>
         <div className={styles.connectContainer}>
-          <Image src={InstaLogo} alt="Instagram" className={styles.connectItem} />
-          <Image src={LinkedinLogo} alt="LinkedIn" className={styles.connectItem} />
-          <Image src={FacebookLogo} alt="Facebook" className={styles.connectItem} />
+          <Image src={InstaLogo} alt="Instagram" className={styles.connectItem} layout="intrinsic" />
+          <Image src={LinkedinLogo} alt="LinkedIn" className={styles.connectItem} layout="intrinsic" />
+          <Image src={FacebookLogo} alt="Facebook" className={styles.connectItem} layout="intrinsic" />
         </div>
         </div>
       <div className={styles.row2}>

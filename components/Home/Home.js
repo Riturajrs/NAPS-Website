@@ -37,9 +37,9 @@ export default function Home(){
         </div>
         <div className={styles.col2}>
           <div className={styles.card}>
-            <Image src={NapsLogo} width={"200px"} height="200px" alt="random img"/>
+            <Image src={NapsLogo} layout="intrinsic" alt="random img"/>
             <div className={styles.description}> 
-                <div className={styles.topic}>TOPIC</div>
+                <div className={styles.topic}>Sample Heading</div>
                 <div className={styles.author}>By-ajanfjkadf</div>
                 <div className={styles.date}>Date-dd/mm/yyyy</div>
                 <div className={styles.text}>

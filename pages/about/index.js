@@ -34,7 +34,7 @@ export default function AboutUs(){
                 </button>
                 </div>
                 <div className={aboutStyles.aboutCtn2}>
-                    <Image src = {logo} alt={"Logo"} width="500px" height="250px" />
+                    <Image src = {logo} alt={"Logo"} layout="intrinsic" />
                 </div>
             </div>
             <div className={aboutStyles.txt}>

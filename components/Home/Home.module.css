@@ -52,22 +52,22 @@
 }
 
 .topic{
-  font-size: 3vw;
+  font-size: 3rem;
   font-weight: 700;
 }
 
 .author{
-  font-size: 1.5vw;
+  font-size: 1.5rem;
   font-weight: 500;
 }
 
 .date{
-  font-size: 1vw;
+  font-size: 1rem;
   font-weight: 300;
 }
 
 .text{
-  font-size: 1vw;
+  font-size: 1rem;
   font-weight: 300;
 }
 

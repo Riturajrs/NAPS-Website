@@ -4,7 +4,7 @@ import testImage from "../../media/sample.jpg"
 export default function Card({heading, content, author, date, image}) {
   return(
     <div className={styles.card}>
-      <Image src={testImage} alt="news-image"/>
+      <Image placeholder="blur" src={testImage} alt="news-image" layout="intrinsic"/>
       <h1 className={styles.heading}>
         {heading}
       </h1>

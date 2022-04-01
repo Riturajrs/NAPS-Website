@@ -8,7 +8,7 @@ import FacebookLogo from "../../media/facebook.svg"
 export default function MemberCard({image, name, post, linkedin, insta, facebook, year}){
 return(
   <div className={styles.memberCard}>
-    <Image src={image} alt="member-photo" height="160px" width="120px"/>
+    <Image placeholder="blur" src={image} alt="member-photo" layout="intrinsic"/>
     <div className={styles.name}>
     {name}
     </div>

@@ -1,5 +1,4 @@
 import styles from "./teams.module.css"
-import Image from "next/image"
 import sample from "../../media/sample.jpg"
 import MemberCard from "./TeamMemberCard";
 
