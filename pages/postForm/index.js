@@ -1,6 +1,69 @@
 import styles from "./postForm.module.css";
+import {useState} from "react";
 
 export default function postForm(){
+
+  const tags = ["Science","Politics","History","Business","National","International","Tech"];
+  const authors = ["Ishan","Lohit","Ankur"];
+
+  const [postDate,setPostDate] = useState("");
+  const [title,setTitle] = useState("");
+  const [caption,setCaption] = useState("");
+  const [thumbnail,setThumbnail] = useState("");
+  const [tag,setTag] = useState("");
+  const [author,setAuthor] = useState("");
+  const [selectedTags,setSelectedTags] = useState([]);
+
+  // binding for post date field
+  function handlePostDateChange(e){
+    const newValue = e.target.value;
+    console.log(newValue);
+    setPostDate(newValue);
+  }
+  
+  // binding for title 
+  function handleTitleChange(e){
+    const newValue = e.target.value;
+    console.log(newValue);
+    setTitle(newValue);
+  }
+  
+  // binding for caption
+  function handleCaptionChange(e){
+    const newValue = e.target.value;
+    console.log(newValue);
+    setCaption(newValue);
+  }
+
+  // binding for thumbnail
+  function handleImage(e){
+    const img = e.target.files[0];
+    const temp = URL.createObjectURL(img)
+    console.log(temp)
+    setThumbnail(temp);
+  }
+
+  function handleTag(e){
+    const newValue = e.target.value;
+    console.log(newValue);
+    if(!selectedTags.includes(newValue) && newValue!==""){
+      setSelectedTags(prevValue=>[...prevValue,newValue])
+    }
+  }
+
+  function handleAuthor(e){
+    const newValue = e.target.value;
+    console.log(newValue);
+    setAuthor(newValue);
+  }
+
+  function handleRemoveTag(e){
+    // console.log(e.target.outerText)
+    const newTags = selectedTags.filter(tag=>tag!==e.target.outerText);
+    console.log(newTags);
+    setSelectedTags(newTags);
+  }
+
     return(
         <div className={styles.formContainer}>
             <form class="w-full max-w-lg">
@@ -9,7 +72,7 @@ export default function postForm(){
       <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-post-date">
         POST DATE
       </label>
-      <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="date" id="grid-post-date" placeholder="dd/mm/yyyy" />
+      <input onChange={handlePostDateChange} class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="date" id="grid-post-date" placeholder="dd/mm/yyyy" value={postDate} />
       {/* <p class="text-gray-600 text-xs italic">Make it as long and as crazy as you'd like</p> */}
     </div>
   </div>
@@ -19,7 +82,7 @@ export default function postForm(){
       <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-title">
         TITLE
       </label>
-      <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-title" type="text" placeholder="Enter Title" />
+      <input value={title} onChange={handleTitleChange} class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-title" type="text" placeholder="Enter Title" />
       {/* <p class="text-gray-600 text-xs italic">Make it as long and as crazy as you'd like</p> */}
     </div>
   </div>
@@ -29,7 +92,7 @@ export default function postForm(){
       <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-caption">
         CAPTION
       </label>
-      <textarea class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-caption" placeholder="Enter Caption" />
+      <textarea value={caption} onChange={handleCaptionChange} class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-caption" placeholder="Enter Caption" />
       {/* <p class="text-gray-600 text-xs italic">Make it as long and as crazy as you'd like</p> */}
     </div>
   </div>
@@ -39,14 +102,14 @@ export default function postForm(){
       <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-thumbnail">
         THUMBNAIL
       </label>
-      <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-thumbnail" type="file" placeholder="Upload files here" />
+      <input onChange={handleImage} class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-thumbnail" type="file" placeholder="Upload files here" />
       {/* <p class="text-gray-600 text-xs italic">Make it as long and as crazy as you'd like</p> */}
     </div>
   </div>
 
   <div class="flex justify-center">
   <div class="mb-3 xl:w-96">
-    <select class="form-select appearance-none
+    <select onChange={handleTag} defaultValue={0} class="form-select appearance-none
       block
       w-full
       px-3
@@ -61,17 +124,25 @@ export default function postForm(){
       ease-in-out
       m-0
       focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Default select example">
-        <option selected>Tags</option>
-        <option value="1">Science</option>
-        <option value="2">Politics</option>
-        <option value="3">Fiction</option>
+        <option value={tag}>Select A Tag</option>
+        {tags.map(Tag=><option value={Tag} key={Tag}>
+          {Tag}
+          </option>
+        )
+        }
     </select>
+    <div className={styles.selectedTags}>
+      {selectedTags.map(Tag=><div key={Tag} className={styles.tag} onClick={handleRemoveTag}>
+        {Tag}
+        </div>
+      )}
+    </div>
   </div>
 </div>
 
 <div class="flex justify-center">
   <div class="mb-3 xl:w-96">
-    <select class="form-select appearance-none
+    <select onChange={handleAuthor} class="form-select appearance-none
       block
       w-full
       px-3
@@ -86,10 +157,11 @@ export default function postForm(){
       ease-in-out
       m-0
       focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label="Default select example">
-        <option selected>Author</option>
-        <option value="1">A</option>
+        <option value={author}>Author</option>
+        {authors.map(author=><option value={author}>{author}</option>)}
+        {/* <option value="1">A</option>
         <option value="2">B</option>
-        <option value="3">C</option>
+        <option value="3">C</option> */}
     </select>
   </div>
 </div>
