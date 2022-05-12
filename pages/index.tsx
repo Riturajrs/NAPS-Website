@@ -79,7 +79,7 @@ export default function Home({data}: {data:apiData[]}){
 }
 
 export async function getStaticProps(){
-  const res = await fetch("https://naps-test-api.herokuapp.com/api/v1/blog",   {
+  const res = await fetch(`${process.env.APIBASE}/blog`,   {
   method: "GET",
   headers: {
     "Content-Type": "application/json"
