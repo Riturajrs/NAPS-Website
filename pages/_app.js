@@ -3,10 +3,11 @@ import Footer from "../components/Footer/Footer"
 import '../styles/globals.css'
 
 function MyApp({ Component, pageProps }) {
+
   return <>
-  <Header></Header>
-  <Component {...pageProps} />
-  <Footer></Footer>
+    <Header></Header>
+    <Component {...pageProps} />
+    <Footer></Footer>
   </>
 }
 

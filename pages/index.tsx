@@ -8,14 +8,13 @@ type apiData = {
   _id: string,
   title: string,
   author: string,
-  createdAt: string,
+  authorName: string,
   tags: string[],
-  likes: number,
-  thumbnail: string,
-  content: string,
   category: string,
+  createdAt: string,
+  thumbnail: string,
   summary: string,
-  __v: number}
+  }
 
 export default function Home({data}: {data:apiData[]}){
   const notices:{ title: string, summary: string, author: string }[] = [
@@ -70,8 +69,8 @@ export default function Home({data}: {data:apiData[]}){
       <input type="text" placeholder="search"/>
     </div>
     <div className={styles.cardGrid}>
-    {data.map(notice=>
-      <Card title={notice.title} summary={notice.summary} author={notice.author} date={notice.createdAt} key={notice._id}></Card>
+    {data.map(blog=>
+      <Card id={blog._id} title={blog.title} summary={blog.summary} author={blog.authorName} date={blog.createdAt} key={blog._id}></Card>
     )}
     </div>
     </div>
@@ -79,7 +78,7 @@ export default function Home({data}: {data:apiData[]}){
 }
 
 export async function getStaticProps(){
-  const res = await fetch(`${process.env.APIBASE}/blog`,   {
+  const res = await fetch(`${process.env.APIBASE}/blog/new`,   {
   method: "GET",
   headers: {
     "Content-Type": "application/json"
