@@ -1,18 +1,20 @@
 import { useState } from "react";
 import styles from "./login.module.css";
 
-export default function login(){
+const login = ()=>{
 
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     const [rollNum,setRollNum] = useState("");
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     const [pwd,setPwd] = useState(""); 
 
     async function loginReq (loginDetails){
         try{
         const response = await fetch(
-            "https://naps-testing-app.herokuapp.com/api/v1/users/login",
+            "https://naps-test-api.herokuapp.com/api/v1/users/login",
             {
                 method: "POST",
-                headers: {"Content-Type": "application/json"},
+                headers: {"Content-Type":"application/json"},
                 body: JSON.stringify(loginDetails)
             }
         );
@@ -25,8 +27,6 @@ console.log("err");
     }
     
     function handleSubmit(e){
-
-
         e.preventDefault();
         const loginDetails = {
             rollNum: rollNum,
@@ -48,20 +48,18 @@ console.log("err");
         setPwd(newValue);
     }
 
-
-
     return(
-<div className={styles.formContainer}>
+    <div className={styles.formContainer}>
     <div className="w-full max-w-xs">
     <form onSubmit={handleSubmit} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
         <div className="mb-4">
-        <label className="block text-gray-700 text-sm font-bold mb-2" for="rollNum">
+        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="rollNum">
             RollNum
         </label>
         <input value={rollNum} onChange={handleRollNum} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="BTECH/*****/**" />
         </div>
         <div className="mb-6">
-        <label className="block text-gray-700 text-sm font-bold mb-2" for="password">
+        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
             Password
         </label>
         <input value={pwd} onChange={handlePwd} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="******************" />
@@ -81,3 +79,4 @@ console.log("err");
     )
 
 }
+export default login
