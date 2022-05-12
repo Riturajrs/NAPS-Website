@@ -50,7 +50,7 @@ export default function AboutUs(){
                 <div ref={ref1} className={aboutStyles.card}>
                     <div className={aboutStyles.cardBar}>
                     </div>
-                    <div className={aboutStyles.cardContent} style={inView1?{scale: "1.1"}: {scale: "1"}}>
+                    <div className={aboutStyles.cardContent} style={inView1?{transform: "scale(1.1)"}: {transform: "scale(1)"}}>
                     <div className={aboutStyles.cardHeading}>
                         Nisi officia sit eiusmod ad velit laboris ex ea pariatur irure exercitation Lorem.
                     </div>
@@ -63,7 +63,7 @@ export default function AboutUs(){
                 <div ref={ref2} className={aboutStyles.card} >
                     <div className={aboutStyles.cardBar}>
                     </div>
-                    <div className={aboutStyles.cardContent} style={inView2?{scale: "1.1"}: {scale: "1"}}>
+                    <div className={aboutStyles.cardContent} style={inView2?{transform: "scale(1.1)"}: {transform: "scale(1)"}}>
                     <div className={aboutStyles.cardHeading}>
                         Nisi officia sit eiusmod ad velit laboris ex ea pariatur irure exercitation Lorem.
                     </div>
@@ -77,7 +77,7 @@ export default function AboutUs(){
                 <div ref={ref3} className={aboutStyles.card}>
                     <div className={aboutStyles.cardBar}>
                     </div>
-                    <div className={aboutStyles.cardContent} style={inView3?{scale: "1.1"}: {scale: "1"}}>
+                    <div className={aboutStyles.cardContent} style={inView3?{transform: "scale(1.1)"}: {transform: "scale(1)"}}>
                     <div className={aboutStyles.cardHeading}>
                         Nisi officia sit eiusmod ad velit laboris ex ea pariatur irure exercitation Lorem.
                     </div>
@@ -90,7 +90,7 @@ export default function AboutUs(){
                 <div ref={ref4} className={aboutStyles.card}>
                     <div className={aboutStyles.cardBar}>
                     </div>
-                    <div className={aboutStyles.cardContent} style={inView4?{scale: "1.1"}: {scale: "1"}}>
+                    <div className={aboutStyles.cardContent} style={inView4?{transform: "scale(1.1)"}: {transform: "scale(1)"}}>
                     <div className={aboutStyles.cardHeading}>
                         Nisi officia sit eiusmod ad velit laboris ex ea pariatur irure exercitation Lorem.
                     </div>
@@ -103,7 +103,7 @@ export default function AboutUs(){
                 <div ref={ref5} className={aboutStyles.card}>
                     <div className={aboutStyles.cardBar}>
                     </div>
-                    <div className={aboutStyles.cardContent} style={inView5?{scale: "1.1"}: {scale: "1"}}>
+                    <div className={aboutStyles.cardContent} style={inView5?{transform: "scale(1.1)"}: {transform: "scale(1)"}}>
                     <div className={aboutStyles.cardHeading}>
                         Nisi officia sit eiusmod ad velit laboris ex ea pariatur irure exercitation Lorem.
                     </div>
@@ -116,7 +116,7 @@ export default function AboutUs(){
                 <div ref={ref6} className={aboutStyles.card}>
                     <div className={aboutStyles.cardBar}>
                     </div>
-                    <div className={aboutStyles.cardContent} style={inView6?{scale: "1.1"}: {scale: "1"}}>
+                    <div className={aboutStyles.cardContent} style={inView6?{transform: "scale(1.1)"}: {transform: "scale(1)"}}>
                     <div className={aboutStyles.cardHeading}>
                         Nisi officia sit eiusmod ad velit laboris ex ea pariatur irure exercitation Lorem.
                     </div>
@@ -129,7 +129,7 @@ export default function AboutUs(){
                 <div ref={ref7} className={aboutStyles.card}>
                     <div className={aboutStyles.cardBar}>
                     </div>
-                    <div className={aboutStyles.cardContent} style={inView7?{scale: "1.1"}: {scale: "1"}}>
+                    <div className={aboutStyles.cardContent} style={inView7?{transform: "scale(1.1)"}: {transform: "scale(1)"}}>
                     <div className={aboutStyles.cardHeading}>
                         Nisi officia sit eiusmod ad velit laboris ex ea pariatur irure exercitation Lorem.
                     </div>
@@ -142,7 +142,7 @@ export default function AboutUs(){
                 <div ref={ref8} className={aboutStyles.card}>
                     <div className={aboutStyles.cardBar}>
                     </div>
-                    <div className={aboutStyles.cardContent} style={inView8?{scale: "1.1"}: {scale: "1"}}>
+                    <div className={aboutStyles.cardContent} style={inView8?{transform: "scale(1.1)"}: {transform: "scale(1)"}}>
                     <div className={aboutStyles.cardHeading}>
                         Nisi officia sit eiusmod ad velit laboris ex ea pariatur irure exercitation Lorem.
                     </div>
