@@ -71,7 +71,7 @@ export default function Home({data}: {data:apiData[]}){
     </div>
     <div className={styles.cardGrid}>
     {data.map(notice=>
-      <Card title={notice.title} summary={notice.summary} author={notice.author} date={notice.createdAt}></Card>
+      <Card title={notice.title} summary={notice.summary} author={notice.author} date={notice.createdAt} key={notice._id}></Card>
     )}
     </div>
     </div>
