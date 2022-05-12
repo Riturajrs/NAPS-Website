@@ -79,50 +79,50 @@ export default function postForm(){
 
     return(
         <div className={styles.formContainer}>
-            <form onSubmit={handleSubmit} class="w-full max-w-lg">
-  <div class="flex flex-wrap -mx-3 mb-6">
-    <div class="w-full px-3">
-      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-post-date">
+            <form onSubmit={handleSubmit} className="w-full max-w-lg">
+  <div className="flex flex-wrap -mx-3 mb-6">
+    <div className="w-full px-3">
+      <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-post-date">
         POST DATE
       </label>
-      <input onChange={handlePostDateChange} class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="date" id="grid-post-date" placeholder="dd/mm/yyyy" value={postDate} />
-      {/* <p class="text-gray-600 text-xs italic">Make it as long and as crazy as you'd like</p> */}
+      <input onChange={handlePostDateChange} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="date" id="grid-post-date" placeholder="dd/mm/yyyy" value={postDate} />
+      {/* <p className="text-gray-600 text-xs italic">Make it as long and as crazy as you'd like</p> */}
     </div>
   </div>
   
-  <div class="flex flex-wrap -mx-3 mb-6">
-    <div class="w-full px-3">
-      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-title">
+  <div className="flex flex-wrap -mx-3 mb-6">
+    <div className="w-full px-3">
+      <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-title">
         TITLE
       </label>
-      <input value={title} onChange={handleTitleChange} class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-title" type="text" placeholder="Enter Title" />
-      {/* <p class="text-gray-600 text-xs italic">Make it as long and as crazy as you'd like</p> */}
+      <input value={title} onChange={handleTitleChange} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-title" type="text" placeholder="Enter Title" />
+      {/* <p className="text-gray-600 text-xs italic">Make it as long and as crazy as you'd like</p> */}
     </div>
   </div>
 
-  <div class="flex flex-wrap -mx-3 mb-6">
-    <div class="w-full px-3">
-      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-caption">
+  <div className="flex flex-wrap -mx-3 mb-6">
+    <div className="w-full px-3">
+      <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-caption">
         CAPTION
       </label>
-      <textarea value={caption} onChange={handleCaptionChange} class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-caption" placeholder="Enter Caption" />
-      {/* <p class="text-gray-600 text-xs italic">Make it as long and as crazy as you'd like</p> */}
+      <textarea value={caption} onChange={handleCaptionChange} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-caption" placeholder="Enter Caption" />
+      {/* <p className="text-gray-600 text-xs italic">Make it as long and as crazy as you'd like</p> */}
     </div>
   </div>
 
-  <div class="flex flex-wrap -mx-3 mb-6">
-    <div class="w-full px-3">
-      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-thumbnail">
+  <div className="flex flex-wrap -mx-3 mb-6">
+    <div className="w-full px-3">
+      <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-thumbnail">
         THUMBNAIL
       </label>
-      <input onChange={handleImage} class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-thumbnail" type="file" placeholder="Upload files here" />
-      {/* <p class="text-gray-600 text-xs italic">Make it as long and as crazy as you'd like</p> */}
+      <input onChange={handleImage} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-thumbnail" type="file" placeholder="Upload files here" />
+      {/* <p className="text-gray-600 text-xs italic">Make it as long and as crazy as you'd like</p> */}
     </div>
   </div>
 
-  <div class="flex justify-center">
-  <div class="mb-3 xl:w-96">
-    <select onChange={handleTag} defaultValue={0} class="form-select appearance-none
+  <div className="flex justify-center">
+  <div className="mb-3 xl:w-96">
+    <select onChange={handleTag} defaultValue={0} className="form-select appearance-none
       block
       w-full
       px-3
@@ -144,8 +144,8 @@ export default function postForm(){
         )
         }
     </select>
-    <div className={styles.selectedTags}>
-      {selectedTags.map(Tag=><div key={Tag} className={styles.tag} onClick={handleRemoveTag}>
+    <div classNameName={styles.selectedTags}>
+      {selectedTags.map(Tag=><div key={Tag} classNameName={styles.tag} onClick={handleRemoveTag}>
         {Tag}
         </div>
       )}
@@ -153,9 +153,9 @@ export default function postForm(){
   </div>
 </div>
 
-<div class="flex justify-center">
-  <div class="mb-3 xl:w-96">
-    <select onChange={handleAuthor} class="form-select appearance-none
+<div className="flex justify-center">
+  <div className="mb-3 xl:w-96">
+    <select onChange={handleAuthor} className="form-select appearance-none
       block
       w-full
       px-3
@@ -179,7 +179,7 @@ export default function postForm(){
   </div>
 </div>
 
-<button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+<button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
   Submit
 </button>
 

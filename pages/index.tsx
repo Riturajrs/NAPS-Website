@@ -78,8 +78,12 @@ export default function Home({data}: {data:apiData[]}){
   )
 }
 
-export async function getServerSideProps(){
-  const res = await fetch("https://naps-test-api.herokuapp.com/api/v1/blog")
+export async function getStaticProps(){
+  const res = await fetch("https://naps-test-api.herokuapp.com/api/v1/blog",   
+  {method: "GET",
+  headers: {
+    "Content-Type": "application/json"
+  }})
   var data = await res.json();
   return {
     props: {data}

@@ -4,8 +4,17 @@ import styles from "./card.module.css"
 import InstaLogo from "../../media/instagram.svg"
 import LinkedinLogo from "../../media/linkedin.svg"
 import FacebookLogo from "../../media/facebook.svg"
+type memberinfo = {
+  image: string,
+  name: string,
+  post: string,
+  linkedin: URL,
+  insta: URL,
+  facebook: URL,
+  year: string
+}
 
-export default function MemberCard({image, name, post, linkedin, insta, facebook, year}){
+export default function MemberCard({image, name, facebook, insta, linkedin, post, year}:memberinfo){
 return(
   <div className={styles.memberCard}>
     <Image placeholder="blur" src={image} alt="member-photo" layout="intrinsic"/>
@@ -26,7 +35,7 @@ return(
       <Image src={LinkedinLogo} alt="LinkedIn" className={styles.connectItem} />
       </Link>
       <Link href={facebook} passHref>
-      <Image href={facebook} src={FacebookLogo} alt="Facebook" className={styles.connectItem} />
+      <Image src={FacebookLogo} alt="Facebook" className={styles.connectItem} />
       </Link>
     </div>
   </div>
