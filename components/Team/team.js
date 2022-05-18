@@ -16,7 +16,6 @@ export default function Team() {
 			<MemberCard facebook="https://facebook.com" image={sample} insta="https://instagram.com" linkedin="https://linkedin.com" name="Member Name" post="Designation" year="2020"></MemberCard>
 			<MemberCard facebook="https://facebook.com" image={sample} insta="https://instagram.com" linkedin="https://linkedin.com" name="Member Name" post="Designation" year="2020"></MemberCard>
 			</div>
-
 		</div>
 	);
 }
