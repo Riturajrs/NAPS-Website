@@ -3,6 +3,7 @@ import Link from "next/link"
 import Image from "next/image";
 import NapsLogo from "../media/napslogo.png";
 import Card from "../components/Card/Card";
+import Head from "next/head"
 import {useEffect} from "react"
 type apiData = {
   _id: string,
@@ -27,6 +28,9 @@ export default function Home({data}: {data:apiData[]}){
   },[])
   return (
     <div className={styles.home}>
+      <Head>
+        <title>Home | Naps</title>
+      </Head>
       <div className={styles.headingTop}>
         News and Publication Society
       </div>

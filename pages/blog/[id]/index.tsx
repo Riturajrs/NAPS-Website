@@ -1,5 +1,5 @@
+import Head from "next/head";
 import Link from "next/link";
-import { useRouter } from "next/router"
 import styles from "./blog.module.css"
 type apiResponse = {
   _id: string,
@@ -19,6 +19,9 @@ type apiResponse = {
 export default function Blog({blogData}:{blogData: apiResponse}){
   if(blogData.message){
     return <div className={styles.blogContainer}>
+      <Head>
+        <title>Blog Not Found | NAPS</title>
+      </Head>
       <code>
         {blogData.message}
       </code>
@@ -31,6 +34,9 @@ export default function Blog({blogData}:{blogData: apiResponse}){
   const showableDate = dd + '/' + mm + '/' + yyyy;
   return(
     <div className={styles.blogContainer}>
+      <Head>
+        <title>{blogData.title} | NAPS</title>
+      </Head>
       <div className={styles.title}>{blogData.title}</div>
       <div className={styles.author}>
         <Link href={`/author/${blogData.author}`}>
