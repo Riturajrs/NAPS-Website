@@ -70,11 +70,11 @@ export default function Home({data}: {data:apiData[]}){
         </div>
       </div>
     <div className={styles.search}>
-      <input type="text" placeholder="search"/>
+      New Posts
     </div>
     <div className={styles.cardGrid}>
     {data.map(blog=>
-      <Card id={blog._id} title={blog.title} summary={blog.summary} author={blog.authorName} date={blog.createdAt} key={blog._id}></Card>
+      <Card id={blog._id} title={blog.title} summary={blog.summary} author={blog.authorName} date={blog.createdAt} key={blog._id} image={blog.thumbnail}></Card>
     )}
     </div>
     </div>

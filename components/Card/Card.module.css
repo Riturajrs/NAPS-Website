@@ -18,3 +18,25 @@
 .meta {
   font-weight: 300;
 }
+
+.imageContainer{
+  height: 40vh;
+  position: relative;
+}
+
+.imageContainer img{
+  object-fit: cover;
+  cursor: pointer;
+}
+.heading{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+}
+.meta{
+  display: flex;
+  gap: 1ch;
+  align-items: center;
+  justify-content: center;
+}

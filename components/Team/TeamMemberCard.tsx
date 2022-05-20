@@ -1,16 +1,16 @@
-import Image from "next/image"
+import Image, { StaticImageData } from "next/image"
 import Link from "next/link"
 import styles from "./card.module.css"
 import InstaLogo from "../../media/instagram.svg"
 import LinkedinLogo from "../../media/linkedin.svg"
 import FacebookLogo from "../../media/facebook.svg"
 type memberinfo = {
-  image: string,
+  image: string|StaticImageData,
   name: string,
   post: string,
-  linkedin: URL,
-  insta: URL,
-  facebook: URL,
+  linkedin?: string,
+  insta?: string,
+  facebook?: string,
   year: string
 }
 
@@ -28,15 +28,21 @@ return(
       {year}
     </div>
     <div className={styles.connectBar}>
+      {insta&&(
       <Link href={insta} passHref>
       <Image src={InstaLogo} alt="Instagram" className={styles.connectItem} />
       </Link>
+      )}
+      {linkedin&&(
       <Link href={linkedin} passHref>
       <Image src={LinkedinLogo} alt="LinkedIn" className={styles.connectItem} />
       </Link>
+      )}
+      {facebook&&(
       <Link href={facebook} passHref>
       <Image src={FacebookLogo} alt="Facebook" className={styles.connectItem} />
       </Link>
+      )}
     </div>
   </div>
 )

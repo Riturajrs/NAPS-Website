@@ -45,6 +45,9 @@ export default function Header() {
 					<div className={styles.navItem}>
 						<Link href="/Team">Team</Link>
 					</div>
+					<div className={styles.navItem}>
+						<Link href="/Search">Search</Link>
+					</div>
 				</div>
 				<div className={styles.connectContainer}>
         {/* TODO: add links */}
