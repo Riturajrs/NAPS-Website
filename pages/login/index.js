@@ -18,7 +18,7 @@ const Login = () => {
       const data = await response.json();
       const cookie = data.token;
       console.log(data);
-      setCookie("user", JSON.stringify(cookie).slice(1, -2), {
+      setCookie("user", JSON.stringify(cookie).slice(1, -1), {
         path: "/",
         maxAge: 3600, // Expires after 1hr
         sameSite: true,
