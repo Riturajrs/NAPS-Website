@@ -1,0 +1,11 @@
+.main_body {
+  text-align: center;
+  align-items: center;
+}
+
+.heading {
+  font-size: 2.5rem;
+  font-weight: 800;
+  text-align: center;
+  padding: 5%;
+}
