@@ -1,19 +1,22 @@
 import { useState } from "react";
 import styles from "./SignUp.module.css";
+import { useCookies } from "react-cookie";
 
 const SignUp = ()=>{
-    const[fullName,setFUllName] = useState("");
-    const[rollNum,setRollNum] = useState("");
-    const[email,setEmail] = useState("");
-    const[pwd,setPwd] = useState("");
-    const[cnfrmPwd,setCnfrmPwd] = useState("");
+  const[fullName,setFUllName] = useState("");
+  const[rollNum,setRollNum] = useState("");
+  const[email,setEmail] = useState("");
+  const[pwd,setPwd] = useState("");
+  const[cnfrmPwd,setCnfrmPwd] = useState("");
+  const[cookie,setCookie] = useCookies("user");
 
     // fetch req to API
     async function SingUpReq(newUserDetails) {
       try {
-        const response = await fetch(`${process.env.APIBASE}/users/signUp`, {
+        const response = await fetch(`http://localhost:4000/api/v1/users/signUp`, {
+          credentials: "include",
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          headers: { "Content-Type": "application/json","Cookie": `${cookie.user}` },
           body: JSON.stringify(newUserDetails),
         });
         const data = await response.json();
