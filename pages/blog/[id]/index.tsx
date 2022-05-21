@@ -2,6 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./blog.module.css"
+import {GetStaticPaths, GetStaticProps} from 'next'
 type apiResponse = {
   _id: string,
   title: string,
@@ -18,7 +19,6 @@ type apiResponse = {
   message?:string;
 }
 export default function Blog({blogData}:{blogData: apiResponse}){
-  // Error on the backend
   if(blogData.message){
     return <div className={styles.errorContainer}>
       <Head>
@@ -81,12 +81,25 @@ export default function Blog({blogData}:{blogData: apiResponse}){
   )
 
 }
-export async function getServerSideProps(context){
+export const getStaticProps:GetStaticProps = async(context)=>{
   const id = context.params.id
   const url = `${process.env.APIBASE}/blog/id/${id}`
   const res = await fetch(url)
   const data: apiResponse = await res.json()
   return {
-    props: {blogData: data}
+    props: {blogData: data},
+    revalidate: 120
+  }
+}
+export const getStaticPaths:GetStaticPaths = async ()=>{
+  const res = await fetch(`${process.env.APIBASE}/blog`);
+  const data = await res.json();
+  var paths = [];
+  data.forEach(item => {
+    paths.push({params: {id: item._id}})
+  });
+  return {
+    paths: paths,
+    fallback: "blocking"
   }
 }
