@@ -5,6 +5,7 @@ import NapsLogo from "../media/napslogo.png";
 import Card from "../components/Card/Card";
 import Head from "next/head"
 import {useEffect} from "react"
+import { GetStaticProps } from "next";
 type apiData = {
   _id: string,
   title: string,
@@ -81,7 +82,7 @@ export default function Home({data}: {data:apiData[]}){
   )
 }
 
-export async function getStaticProps(){
+export const getStaticProps:GetStaticProps = async()=>{
   const res = await fetch(`${process.env.APIBASE}/blog/new`,   {
   method: "GET",
   headers: {
@@ -89,6 +90,7 @@ export async function getStaticProps(){
   }})
   var data = await res.json();
   return {
-    props: {data}
+    props: {data},
+    revalidate: 120
   }
 }
