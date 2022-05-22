@@ -10,7 +10,7 @@ const Login = () => {
   const [pwd, setPwd] = useState("");
   async function loginReq(loginDetails) {
     try {
-      const response = await fetch(`http://127.0.0.1:4000/api/v1/users/login`, {
+      const response = await fetch(`http://localhost:4000/api/v1/users/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(loginDetails),
