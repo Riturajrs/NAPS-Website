@@ -17,18 +17,18 @@ type apiData = {
 }
 export default function Search({blogData}:{blogData: apiData[]}){
   const [filteredData, setFilteredData] = useState(blogData);
-  const [search, setSearch] = useState(()=>"");
+  const [search, setSearch] = useState("");
   const handleSearch = (e)=>{
     setSearch(e.target.value);
     const tempFilter = blogData.filter((blog)=>{
-      return (blog.category.includes(search) || blog.summary.includes(search) || blog.title.includes(search) || blog.tags.includes(search));
+      return (blog.category.toLowerCase().includes(e.target.value) || blog.summary.toLowerCase().includes(e.target.value) || blog.title.toLowerCase().includes(e.target.value) || blog.tags.includes(e.target.value));
     })
     setFilteredData(tempFilter)
   }
   console.log(search)
   return <div className={styles.search}>
     <input className = {styles.input} placeholder = "Search" onInput={handleSearch} value={search}></input>
-    <div className="grid">
+    <div className={styles.grid}>
       {filteredData.map(blog=><Card author={blog.author} date={blog.createdAt} id={blog._id} summary={blog.summary} title={blog.title} image={blog.thumbnail} key={blog._id} />)}
     </div>
   </div>

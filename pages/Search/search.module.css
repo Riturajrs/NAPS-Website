@@ -16,3 +16,7 @@
 .input::placeholder{
   color:black;
 }
+.grid{
+  display: flex;
+  flex-direction: column;
+}
