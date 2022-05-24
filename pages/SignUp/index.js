@@ -13,10 +13,11 @@ const SignUp = ()=>{
     // fetch req to API
     async function SingUpReq(newUserDetails) {
       try {
+        console.log(cookie.user)
         const response = await fetch(`http://13.233.159.246:4000/api/v1/users/signUp`, {
           credentials: "include",
           method: "POST",
-          headers: { "Content-Type": "application/json","Cookie": `${cookie.user}` },
+          headers: { "Content-Type": "application/json","authorization": `Bearer: ${cookie.user}` },
           body: JSON.stringify(newUserDetails),
         });
         const data = await response.json();
