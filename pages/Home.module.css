@@ -96,3 +96,16 @@
   row-gap: 5vh;
   column-gap: 4%;
 }
+
+@media (max-width: 990px){
+  .cardGrid{
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 720px) {
+  .cardGrid{
+    display: flex;
+    flex-direction: column;
+  }
+}

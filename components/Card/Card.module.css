@@ -16,10 +16,6 @@
   font-weight: 500;
 }
 
-.meta {
-  font-weight: 300;
-}
-
 .imageContainer{
   height: 40vh;
   position: relative;
@@ -28,6 +24,8 @@
 .imageContainer img{
   object-fit: cover;
   cursor: pointer;
+  transition: all linear 0.4s;
+  border-radius: 0 2rem 0 2rem;
 }
 .heading{
   display: flex;
@@ -35,9 +33,14 @@
   justify-content: center;
   font-weight: 600;
 }
+.imageContainer img:hover, .imageContainer img:focus{
+  transform: scale(0.9);
+  object-fit: scale-down;
+}
 .meta{
   display: flex;
   gap: 1ch;
   align-items: center;
   justify-content: center;
+  font-weight: 300;
 }

@@ -14,7 +14,6 @@ export default function Header() {
 					<Image
 						src={NapsLogo}
 						alt="Naps Logo"
-						objectFit="contain"
 						layout="intrinsic"
 					/>
 				</div>
@@ -33,9 +32,9 @@ export default function Header() {
 					<div className={styles.navItem}>
 						<Link href="/">Home</Link>
 					</div>
-					<div className={styles.navItem}>
+					{/* <div className={styles.navItem}>
 						<Link href="/Editorial">Editorial</Link>
-					</div>
+					</div> */}
 					<div className={styles.navItem}>
 						<Link href="/about">About</Link>
 					</div>

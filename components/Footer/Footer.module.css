@@ -57,5 +57,10 @@
   transition: all 0.8s;
 }
 
+@media (max-width: 990px){
+  .navContainer{
+    font-size: 0.8rem;
+  }
+}
 
 

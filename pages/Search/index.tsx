@@ -16,19 +16,24 @@ type apiData = {
   __v: number
 }
 export default function Search({blogData}:{blogData: apiData[]}){
+  const tags = ["", "tag1", "tag2", "tag3", "tag4"]
   const [filteredData, setFilteredData] = useState(blogData);
   const [search, setSearch] = useState("");
   const handleSearch = (e)=>{
     setSearch(e.target.value);
+    const term = e.target.value.toLowerCase()
     const tempFilter = blogData.filter((blog)=>{
-      return (blog.category.toLowerCase().includes(e.target.value) || blog.summary.toLowerCase().includes(e.target.value) || blog.title.toLowerCase().includes(e.target.value) || blog.tags.includes(e.target.value));
+      const tagMatch = (blog.tags.map(tag=>tag.toLowerCase().includes(term))).includes(true)
+      const categoryMatch = blog.category.toLowerCase().includes(term) 
+      const summMatch = blog.summary.toLowerCase().includes(term)
+      const titleMatch = blog.title.toLowerCase().includes(term)
+      return (tagMatch || categoryMatch || summMatch || titleMatch);
     })
     setFilteredData(tempFilter)
   }
-  console.log(search)
   return <div className={styles.search}>
     <input className = {styles.input} placeholder = "Search" onInput={handleSearch} value={search}></input>
-    <div className={styles.grid}>
+    <div className={styles.cardGrid}>
       {filteredData.map(blog=><Card author={blog.author} date={blog.createdAt} id={blog._id} summary={blog.summary} title={blog.title} image={blog.thumbnail} key={blog._id} />)}
     </div>
   </div>
