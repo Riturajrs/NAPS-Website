@@ -1,6 +1,6 @@
 import { Tabs } from "flowbite-react";
 import styles from "./Admin.module.css";
-
+import PostForm from "../../components/PostForm/PostForm"
 const Admin = ()=>{
     return <div className={styles.formContainer}>      
         <Tabs.Group
@@ -8,8 +8,7 @@ const Admin = ()=>{
         style="underline"
         >
             <Tabs.Item title="NEW POST">
-                POST FORM
-                {/* DROP COMPONENT FOR POST FORM HERE */}
+                <PostForm/>
             </Tabs.Item>
             <Tabs.Item
                 active={true}
