@@ -1,5 +1,6 @@
 declare namespace NodeJS {
   export interface ProcessEnv {
-    APIBASE: string;
+    APIBASE: string,
+    SERVERBASE: string
   }
 }
