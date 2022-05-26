@@ -1,6 +1,7 @@
 import { Tabs } from "flowbite-react";
 import styles from "./Admin.module.css";
 import PostForm from "../../components/PostForm/PostForm"
+import AuthorDetails from "../../components/AuthorDetailsForm/AuthorDetails";
 const Admin = ()=>{
     return <div className={styles.formContainer}>      
         <Tabs.Group
@@ -18,8 +19,9 @@ const Admin = ()=>{
                 {/* DROP COMPONENT FOR BLOG UPDATE HERE */}
             </Tabs.Item>
             <Tabs.Item title="YOUR PROFILE">
-                AUTHOR PROFILE UPDATE
-                {/* DROP COMPONENT FOR ATUHOR PROFILE HERE */}
+                {/* AUTHOR PROFILE UPDATE
+                DROP COMPONENT FOR ATUHOR PROFILE HERE */}
+                <AuthorDetails />
             </Tabs.Item>
             <Tabs.Item title="EDITORIAL">
                 EDITORIAL FORM
