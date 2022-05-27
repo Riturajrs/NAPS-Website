@@ -2,14 +2,14 @@ import { Tabs } from "flowbite-react";
 import styles from "./Admin.module.css";
 import PostForm from "../../components/PostForm/PostForm"
 import AuthorDetails from "../../components/AuthorDetailsForm/AuthorDetails";
-const Admin = ()=>{
+const Admin = ({data})=>{
     return <div className={styles.formContainer}>      
         <Tabs.Group
         aria-label="Tabs with underline"
         style="underline"
         >
             <Tabs.Item title="NEW POST">
-                <PostForm/>
+                <PostForm data={data}/>
             </Tabs.Item>
             <Tabs.Item
                 active={true}
@@ -31,4 +31,16 @@ const Admin = ()=>{
     </div>
 }
 
+export const getStaticProps = async()=>{
+    const res = await fetch(`${process.env.APIBASE}/author`,   {
+    method: "GET",
+    headers: {
+        "Content-Type": "application/json"
+    }})
+    var data = await res.json();
+    return {
+        props: {data},
+        revalidate: 120
+    }
+}
 export default Admin;

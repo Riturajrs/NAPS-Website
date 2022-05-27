@@ -1,3 +1,10 @@
 .PostForm{
 
 }
+.imageContainer{
+  position: relative;
+  height: 30vh;
+}
+.imageContainer img{
+  object-fit: contain;
+}

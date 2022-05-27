@@ -1,15 +1,10 @@
 import styles from "./PostForm.module.css"
 import { useState } from "react"
-type blogData = {
-  title: string,
-  author: string,
-  tags: string[],
-  thumbnail: string,
-  content: string,
-  category: string,
-  summary: string,
-}
-export default function PostForm(){
+import Image from "next/image";
+import { GetStaticProps } from "next/types"
+
+
+export default function PostForm({data}){
   // ----------------------------------------------- state variables
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
@@ -18,6 +13,13 @@ export default function PostForm(){
   const [content, setContent] = useState("");
   const [category, setCategory] = useState("");
   const [summary, setSummary] = useState("");
+  // ----------------------------------------------- Change functions
+  const changeTitle = (e)=>{
+    setTitle(e.target.value);
+  }
+  const changeAuthor = (e)=>{
+    setAuthor(e.target.value);
+  }
 
   // ----------------------------------------------- upload image 
   async function uploadImage(e){
@@ -25,17 +27,34 @@ export default function PostForm(){
     const fd =  new FormData();
     fd.append('images',file)
     // upload to api
-    const res = await fetch("http://localhost:4000/api/v1/image-upload",{
+    const res = await fetch(`http://13.233.159.246:4000/api/v1/image-upload`,{
       method: "POST",
       body: fd
     })
     const data = await res.json();
-   
+    setThumbnail(data.data.URL)
   }
-
   return (
     <div className={styles.PostForm}>
-    <input type="file" name="file" onChange={uploadImage}></input>
+    <form>
+    <input type="text" name="title" onChange={changeTitle} placeholder="Title" value={title}/>
+    <div className={styles.imageContainer}>
+      <Image src={thumbnail==""?"/default.png":thumbnail} layout="fill" alt="Thumbnail"/>
+    </div>
+    <label htmlFor="images">Thumbnail: </label>
+    <input type="file" name="images" onChange={uploadImage}></input>
+    <br/>
+    <select value={author} onChange={changeAuthor}>
+      <option></option>
+      {data&&data.map((curauthor)=>{
+        return (
+        <option key={curauthor._id} value={curauthor._id}>
+          {curauthor.name}
+          </option>
+          )
+      })}
+    </select>
+    </form>
     </div>
   )
 }
