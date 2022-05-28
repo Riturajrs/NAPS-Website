@@ -12,6 +12,33 @@ const SignUp = ()=>{
 
     // fetch req to API
     async function SingUpReq(newUserDetails) {
+
+      // first new author is created
+      try{
+        const auhtorDetails = {
+          name: newUserDetails.name,
+          photo: "https://mdbootstrap.com/img/new/standard/city/041.jpg",
+          desc: "NAPS Author"
+        }
+        const res = await fetch(`http://13.233.159.246:4000/api/v1/author`,{
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json", "authorization": `Bearer: ${cookie.user}`
+          },
+          body: JSON.stringify(auhtorDetails),
+        })
+
+        const data = await res.json();
+        const authorId = data._id;
+
+        console.log(authorId);
+
+        newUserDetails = {...newUserDetails,authorId: authorId};
+
+      } catch(err){
+        console.log(err);
+      }
+
       try {
         console.log(cookie.user)
         const response = await fetch(`http://13.233.159.246:4000/api/v1/users/signUp`, {
