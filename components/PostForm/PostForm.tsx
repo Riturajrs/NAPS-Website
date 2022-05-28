@@ -1,9 +1,10 @@
 import styles from "./PostForm.module.css"
-import { FormEventHandler, useState } from "react"
+import { useState } from "react"
 import Image from "next/image";
-import { GetStaticProps } from "next/types"
+import { Editor } from "@tinymce/tinymce-react";
 
 const categories = ["Editorial", "Media Report"]
+const tagsoptions = ["sdjhks", "sksjdfh dsdfd","jkdhkjahfjkd", "jkdhfd", "jshdkjfsd dsdf", "hgdkjhdj"]
 export default function PostForm({data}){
   // ----------------------------------------------- state variables
   const [title, setTitle] = useState("");
@@ -23,7 +24,12 @@ export default function PostForm({data}){
   const changeCategory = (e)=>{
     setCategory(e.target.value);
   }
-
+  const changeTags = (e)=>{
+    setTags(prevTags=> [...prevTags,(!(prevTags.includes(e.target.value))&&e.target.value)])
+  }
+  const handleUnTag = (e)=>{
+    setTags(prevtags=>prevtags.filter(tag=>(tag!=e.target.innerText)));
+  }
   //  Upload image 
   async function uploadImage(e){
     const file = e.target.files[0];
@@ -34,8 +40,8 @@ export default function PostForm({data}){
       method: "POST",
       body: fd
     })
-    const data = await res.json();
-    setThumbnail(data.data.URL)
+    const Data = await res.json();
+    setThumbnail(Data.data.URL)
   }
   //  Submit Handler
   const handleSubmit = (e)=>{
@@ -81,9 +87,28 @@ export default function PostForm({data}){
     }
     console.log(dataToSubmit)
   }
+  async function handleContentImageUpload(blobInfo, success, failure, progress) {
+    try{
+      const fd =  new FormData();
+      fd.append('images',blobInfo.blob())
+      // upload to api
+      const res = await fetch(`http://13.233.159.246:4000/api/v1/image-upload`,{
+        method: "POST",
+        body: fd
+      })
+      console.log(res.body)
+      const Data = await res.json();
+      success(Data.data.URL)
+    }catch(err){
+      console.log(err);
+      failure(err);
+    }
+
+
+  }
   return (
     <div className={styles.PostForm}>
-    <form className={styles.form} onSubmit={handleSubmit}>
+    <div className={styles.form} onSubmit={handleSubmit}>
     <label htmlFor="title">Title</label>
     <input type="text" name="title" onChange={changeTitle} placeholder="Title" value={title}/>
     <div className={styles.imageContainer}>
@@ -98,7 +123,7 @@ export default function PostForm({data}){
       {data&&data.map((curauthor)=>{
         return (
         <option key={curauthor._id} value={curauthor._id}>
-          {curauthor.name}
+          {curauthor.name} ({curauthor.rollNum})
           </option>
           )
       })}
@@ -108,8 +133,43 @@ export default function PostForm({data}){
       <option></option>
       {categories.map(cat=><option key={cat}>{cat}</option>)}
     </select>
+    <div className={styles.tagContainer}>
+    {tags.map(tag=><div className={styles.tag} onClick={handleUnTag} key={tag}>{tag}</div>)}
+    </div>
+    <label>Tags</label>
+    <select onChange={changeTags}>
+      <option></option>
+      {tagsoptions.filter((tag)=>!tags.includes(tag)).map(cat=><option key={cat}>{cat}</option>)}
+    </select>
+      <Editor
+      apiKey={process.env.NEXT_PUBLIC_TINYMCEKEY}
+      id="content"
+      init={{
+        height: 500,
+        force_br_newlines: true,
+        force_p_newlines: true,
+        menubar: false,
+        plugins: [
+          "advlist autolink lists link image charmap print preview anchor",
+          "searchreplace code visualblocks code",
+          "insertdatetime media table paste code help wordcount",
+        ],
+        toolbar:
+              "undo redo | formatselect | " +
+              "bold italic backcolor image| alignleft aligncenter " +
+              "alignright alignjustify | bullist numlist outdent indent | " +
+              "removeformat | help",
+        content_style:
+          "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
+        image_advtab: true,
+        automatic_uploads: true,
+        file_picker_types: "image",
+        images_upload_handler: handleContentImageUpload,
+        images_upload_base_path: "/",
+      }}
+      />
 
-    </form>
+    </div>
     </div>
   )
 }

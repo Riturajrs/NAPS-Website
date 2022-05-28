@@ -21,3 +21,20 @@
 .form label{
   color: rgb(75,75,75);
 }
+.tagContainer{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  text-overflow: ellipsis;
+  text-align: center;
+}
+.tag{
+  margin: 1ch 2ch;
+}
+.tag::after{
+  content: "X";
+  margin-left: 3ch;
+  padding-left: 1ch;
+  padding-right: 1ch;
+  border-radius: 1ch;
+  border: 1px solid rgb(60, 139, 249);
+}
