@@ -3,3 +3,12 @@
     margin-top: 5%;
     margin-bottom: 5%;
 }
+
+.imgContainer{
+    height: 300px;
+    position: relative;
+}
+
+.imgContainer img{
+    object-fit: contain;
+}

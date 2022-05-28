@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styles from "./AuthorDetails.module.css";
+import Image from 'next/image';
 
 const AuthorDetails = ()=>{
 
@@ -57,12 +58,8 @@ const AuthorDetails = ()=>{
                     </div>
                 </div>
 
-                <div class="flex flex-wrap justify-center">
-                    <img
-                    src={image}
-                    class="p-1 bg-white border rounded max-w-sm"
-                    alt="..."
-                    />
+                <div className={"flex flex-wrap justify-center" + " " + styles.imgContainer}>
+                    <Image src={image} className="p-1 bg-white border rounded max-w-sm" alt="..." layout="fill" />
                 </div>
 
                 <div className="flex flex-wrap -mx-3 mb-6">
