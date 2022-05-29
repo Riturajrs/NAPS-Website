@@ -2,6 +2,8 @@ import { Tabs } from "flowbite-react";
 import styles from "./Admin.module.css";
 import PostForm from "../../components/PostForm/PostForm"
 import AuthorDetails from "../../components/AuthorDetailsForm/AuthorDetails";
+import Form from "../../components/Epistle/Form";
+
 const Admin = ({data})=>{
     return <div className={styles.formContainer}>      
         <Tabs.Group
@@ -26,6 +28,10 @@ const Admin = ({data})=>{
             <Tabs.Item title="EDITORIAL">
                 EDITORIAL FORM
                 {/* DROP COMPONENT FOR EDITORIAL POSTING FORM HERE  */}
+            </Tabs.Item>
+            <Tabs.Item title="EPISTLE">
+                EPISTLE FORM
+                <Form />
             </Tabs.Item>
         </Tabs.Group>
     </div>

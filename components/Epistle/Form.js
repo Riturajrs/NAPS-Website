@@ -18,7 +18,7 @@ export default function Form () {
         <br/>
         <textarea className={styles.input} rows="5" cols="100" type='body' id='body' name='body' required />
         <br/>
-        <label className={styles.label} htmlFor='links'>Add links if applicable: </label>
+        <label className={styles.label} htmlFor='links'>Add documents if applicable: </label>
         <br/>
         <label className={styles.label} htmlFor='links'>PDF: </label>
         <br/>
