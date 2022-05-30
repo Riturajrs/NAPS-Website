@@ -1,14 +1,28 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./SignUp.module.css";
 import { useCookies } from "react-cookie";
+import { useRouter } from "next/router";
 
 const SignUp = ()=>{
+  // state vars
   const[fullName,setFUllName] = useState("");
   const[rollNum,setRollNum] = useState("");
   const[email,setEmail] = useState("");
   const[pwd,setPwd] = useState("");
   const[cnfrmPwd,setCnfrmPwd] = useState("");
+
+  // to access stored cookie
   const[cookie,setCookie] = useCookies("user");
+
+  // router instance for redirects
+  const router = useRouter(); 
+
+  // redirect to login page if not logged in
+  useEffect(()=>{
+    if(!cookie.user){
+      router.push("/login");
+    }
+  })
 
     // fetch req to API
     async function SingUpReq(newUserDetails) {
@@ -51,7 +65,7 @@ const SignUp = ()=>{
       } catch(err){
         console.log(err);
       }
-      
+
     }
 
     function handleSubmit(e){
