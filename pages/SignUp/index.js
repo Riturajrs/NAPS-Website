@@ -13,14 +13,14 @@ const SignUp = ()=>{
     // fetch req to API
     async function SingUpReq(newUserDetails) {
 
-      // first new author is created
       try{
+        // first new author is created
         const auhtorDetails = {
           name: newUserDetails.name,
           photo: "https://mdbootstrap.com/img/new/standard/city/041.jpg",
           desc: "NAPS Author"
         }
-        const res = await fetch(`http://13.233.159.246:4000/api/v1/author`,{
+        let response = await fetch(`http://13.233.159.246:4000/api/v1/author`,{
           method: "POST",
           headers: {
             "Content-Type": "application/json", "authorization": `Bearer: ${cookie.user}`
@@ -28,31 +28,30 @@ const SignUp = ()=>{
           body: JSON.stringify(auhtorDetails),
         })
 
-        const data = await res.json();
+        let data = await res.json();
+        // extract author id
         const authorId = data._id;
 
         console.log(authorId);
-
+        // add author id to new user details
         newUserDetails = {...newUserDetails,authorId: authorId};
 
-      } catch(err){
-        console.log(err);
-      }
-
-      try {
         console.log(cookie.user)
-        const response = await fetch(`http://13.233.159.246:4000/api/v1/users/signUp`, {
+        
+        // create new user 
+        response = await fetch(`http://13.233.159.246:4000/api/v1/users/signUp`, {
           credentials: "include",
           method: "POST",
           headers: { "Content-Type": "application/json","authorization": `Bearer: ${cookie.user}` },
           body: JSON.stringify(newUserDetails),
         });
-        const data = await response.json();
+        data = await response.json();
         console.log(data);
-        
-      } catch (err) {
+
+      } catch(err){
         console.log(err);
       }
+      
     }
 
     function handleSubmit(e){
