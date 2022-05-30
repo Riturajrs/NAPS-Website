@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
 import styles from "./login.module.css";
 
@@ -8,6 +9,18 @@ const Login = () => {
   const [cookie, setCookie] = useCookies(["user"]);
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [pwd, setPwd] = useState("");
+
+  const router = useRouter();
+
+  useEffect(()=>{
+    // check if user already logged in
+    // redirect to /admin
+    if(cookie.user){
+      router.push("/Admin");
+    }
+  },[cookie.user]);
+
+
   async function loginReq(loginDetails) {
     try {
       const response = await fetch(`http://13.233.159.246:4000/api/v1/users/login`, {
