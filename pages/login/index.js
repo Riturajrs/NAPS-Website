@@ -23,7 +23,7 @@ const Login = () => {
 
   async function loginReq(loginDetails) {
     try {
-      const response = await fetch(`http://13.233.159.246:4000/api/v1/users/login`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_APIBASE}/users/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(loginDetails),
