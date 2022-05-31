@@ -20,7 +20,7 @@ const SignUp = ()=>{
           photo: "https://mdbootstrap.com/img/new/standard/city/041.jpg",
           desc: "NAPS Author"
         }
-        const res = await fetch(`http://13.233.159.246:4000/api/v1/author`,{
+        const res = await fetch(`${process.env.NEXT_PUBLIC_APIBASE}/author`,{
           method: "POST",
           headers: {
             "Content-Type": "application/json", "authorization": `Bearer: ${cookie.user}`
@@ -41,7 +41,7 @@ const SignUp = ()=>{
 
       try {
         console.log(cookie.user)
-        const response = await fetch(`http://13.233.159.246:4000/api/v1/users/signUp`, {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_APIBASE}/users/signUp`, {
           credentials: "include",
           method: "POST",
           headers: { "Content-Type": "application/json","authorization": `Bearer: ${cookie.user}` },

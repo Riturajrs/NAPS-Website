@@ -20,3 +20,9 @@ a {
 * {
   box-sizing: border-box;
 }
+ol{
+  list-style: decimal;
+}
+ul{
+  list-style: disc;
+}

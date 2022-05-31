@@ -1,5 +1,5 @@
 import styles from "./PostForm.module.css"
-import { useState } from "react"
+import { useState, useRef } from "react"
 import Image from "next/image";
 import { Editor } from "@tinymce/tinymce-react";
 
@@ -11,7 +11,7 @@ export default function PostForm({data}){
   const [author, setAuthor] = useState("");
   const [tags, setTags] = useState([]);
   const [thumbnail, setThumbnail] = useState("");
-  const [content, setContent] = useState("");
+  const contentref = useRef(null);
   const [category, setCategory] = useState("");
   const [summary, setSummary] = useState("");
   //  Change functions
@@ -20,6 +20,7 @@ export default function PostForm({data}){
   }
   const changeAuthor = (e)=>{
     setAuthor(e.target.value);
+    console.log(e.target.value)
   }
   const changeCategory = (e)=>{
     setCategory(e.target.value);
@@ -30,13 +31,16 @@ export default function PostForm({data}){
   const handleUnTag = (e)=>{
     setTags(prevtags=>prevtags.filter(tag=>(tag!=e.target.innerText)));
   }
+  const changeSummary = (e)=>{
+    setSummary(e.target.value);
+  }
   //  Upload image 
   async function uploadImage(e){
     const file = e.target.files[0];
     const fd =  new FormData();
     fd.append('images',file)
     // upload to api
-    const res = await fetch(`http://13.233.159.246:4000/api/v1/image-upload`,{
+    const res = await fetch(`${process.env.NEXT_PUBLIC_APIBASE}/image-upload`,{
       method: "POST",
       body: fd
     })
@@ -44,7 +48,7 @@ export default function PostForm({data}){
     setThumbnail(Data.data.URL)
   }
   //  Submit Handler
-  const handleSubmit = (e)=>{
+  const handleSubmit = async(e)=>{
     e.preventDefault();
     // Invalid Data Handling -
     if(title==""){
@@ -63,11 +67,11 @@ export default function PostForm({data}){
       alert("Category not submitted")
       return;
     }
-    if(tags==[]){
+    if(tags.length<1){
       alert("Check The Tags")
       return;
     }
-    if(content==""){
+    if(!contentref.current ||(contentref.current?.getContent()=="")){
       alert("Check The Content")
       return;
     }
@@ -81,18 +85,27 @@ export default function PostForm({data}){
       author: author,
       tags: tags,
       thumbnail: thumbnail,
-      content: content,
+      content: contentref.current.getContent(),
       category: category,
       summary: summary
     }
-    console.log(dataToSubmit)
+    const reqheaders = new Headers()
+    reqheaders.append('Content-Type', "application/json")
+    const res = await fetch(`${process.env.NEXT_PUBLIC_APIBASE}/blog`,{
+      method: "POST",
+      body: JSON.stringify(dataToSubmit),
+      headers: reqheaders,
+      mode: 'cors'
+    })
+    const data = await res.json();
+    console.log(data)
   }
   async function handleContentImageUpload(blobInfo, success, failure, progress) {
     try{
       const fd =  new FormData();
       fd.append('images',blobInfo.blob())
       // upload to api
-      const res = await fetch(`http://13.233.159.246:4000/api/v1/image-upload`,{
+      const res = await fetch(`${process.env.NEXT_PUBLIC_APIBASE}/image-upload`,{
         method: "POST",
         body: fd
       })
@@ -108,7 +121,7 @@ export default function PostForm({data}){
   }
   return (
     <div className={styles.PostForm}>
-    <div className={styles.form} onSubmit={handleSubmit}>
+    <div className={styles.form}>
     <label htmlFor="title">Title</label>
     <input type="text" name="title" onChange={changeTitle} placeholder="Title" value={title}/>
     <div className={styles.imageContainer}>
@@ -141,9 +154,11 @@ export default function PostForm({data}){
       <option></option>
       {tagsoptions.filter((tag)=>!tags.includes(tag)).map(cat=><option key={cat}>{cat}</option>)}
     </select>
+    <label>Content</label>
       <Editor
       apiKey={process.env.NEXT_PUBLIC_TINYMCEKEY}
       id="content"
+      onInit={(evt,editor) => contentref.current = editor}
       init={{
         height: 500,
         force_br_newlines: true,
@@ -160,7 +175,7 @@ export default function PostForm({data}){
               "alignright alignjustify | bullist numlist outdent indent | " +
               "removeformat | help",
         content_style:
-          "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
+          "body { font-family:Poppins,Helvetica,Arial,sans-serif; font-size:14px }",
         image_advtab: true,
         automatic_uploads: true,
         file_picker_types: "image",
@@ -168,7 +183,9 @@ export default function PostForm({data}){
         images_upload_base_path: "/",
       }}
       />
-
+    <label>Summary</label>
+      <textarea value={summary} onChange={changeSummary}/>
+      <button onClick={handleSubmit}>Submit</button>
     </div>
     </div>
   )
