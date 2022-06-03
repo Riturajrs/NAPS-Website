@@ -1,11 +1,50 @@
-.main_body {
-  text-align: center;
-  align-items: center;
+.aboutCtn {
+  display: grid;
+  padding: 2% 5%;
 }
 
-.heading {
-  font-size: 2.5rem;
-  font-weight: 800;
+.break {
+  width: 100%;
+  height: 10px;
+}
+
+.activities {
+  margin-top: 5%;
+}
+.activitiesHeading {
+  font-size: 3.5rem;
+  font-weight: 600;
   text-align: center;
-  padding: 5%;
+  margin-bottom: 4%;
+}
+
+.cardBar {
+  width: 20px;
+  background: rgb(75, 75, 165);
+  height: inherit;
+  margin-left: 0%;
+}
+.card {
+  display: flex;
+  flex-direction: row;
+  gap: 5%;
+  justify-content: center;
+}
+.cardHeading {
+  font-size: 1.4rem;
+  font-weight: 600;
+  padding-bottom: 1%;
+}
+.cardText {
+  font-weight: 400;
+}
+.cardContent {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid rgb(75, 75, 165);
+  padding: 2% 5%;
+  min-height: 30vh;
+  margin-bottom: 4%;
+  justify-content: center;
+  transition: transform 1s;
 }
