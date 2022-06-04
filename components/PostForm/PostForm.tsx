@@ -1,15 +1,15 @@
-import styles from "./PostForm.module.css"
-import { useState } from "react"
+import styles from "./PostForm.module.css";
+import { useState } from "react";
 type blogData = {
-  title: string,
-  author: string,
-  tags: string[],
-  thumbnail: string,
-  content: string,
-  category: string,
-  summary: string,
-}
-export default function PostForm(){
+  title: string;
+  author: string;
+  tags: string[];
+  thumbnail: string;
+  content: string;
+  category: string;
+  summary: string;
+};
+export default function PostForm() {
   // ----------------------------------------------- state variables
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
@@ -19,23 +19,26 @@ export default function PostForm(){
   const [category, setCategory] = useState("");
   const [summary, setSummary] = useState("");
 
-  // ----------------------------------------------- upload image 
-  async function uploadImage(e){
+  // ----------------------------------------------- upload image
+  async function uploadImage(e) {
     const file = e.target.files[0];
-    const fd =  new FormData();
-    fd.append('images',file)
+    console.log(file);
+
+    const fd = new FormData();
+    fd.append("images", file);
     // upload to api
-    const res = await fetch("http://localhost:4000/api/v1/image-upload",{
+    const res = await fetch("http://localhost:4000/api/v1/image-upload", {
       method: "POST",
-      body: fd
-    })
+      body: fd,
+    });
+
     const data = await res.json();
-   
+    console.log(data);
   }
 
   return (
     <div className={styles.PostForm}>
-    <input type="file" name="file" onChange={uploadImage}></input>
+      <input type="file" name="file" onChange={uploadImage}></input>
     </div>
-  )
+  );
 }

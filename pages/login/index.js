@@ -10,11 +10,14 @@ const Login = () => {
   const [pwd, setPwd] = useState("");
   async function loginReq(loginDetails) {
     try {
-      const response = await fetch(`http://13.233.159.246:4000/api/v1/users/login`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(loginDetails),
-      });
+      const response = await fetch(
+        `http://13.233.159.246:4000/api/v1/users/login`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(loginDetails),
+        }
+      );
       const data = await response.json();
       const cookie = data.token;
       console.log(data);
