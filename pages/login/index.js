@@ -2,13 +2,15 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
 import styles from "./login.module.css";
+import MODAL from "../../components/Modal/Modal";
 
 const Login = () => {
+  // state vars
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [rollNum, setRollNum] = useState("");
   const [cookie, setCookie] = useCookies(["user"]);
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   const [pwd, setPwd] = useState("");
+  const [showModal,setShowModal] = useState(false);
 
   const router = useRouter();
 
@@ -28,14 +30,18 @@ const Login = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(loginDetails),
       });
-      const data = await response.json();
-      const cookie = data.token;
-      console.log(data);
-      setCookie("user", JSON.stringify(cookie).slice(1, -1), {
-        path: "/",
-        maxAge: 3600, // Expires after 1hr
-        sameSite: true,
-      });
+      // console.log(response);
+      if(response.status === 400) setShowModal(true);
+      else{
+        const data = await response.json();
+        const cookie = data.token;
+        console.log(data);
+        setCookie("user", JSON.stringify(cookie).slice(1, -1), {
+          path: "/",
+          maxAge: 3600, // Expires after 1hr
+          sameSite: true,
+        });
+      }
     } catch (err) {
       console.log(err);
     }
@@ -64,6 +70,11 @@ const Login = () => {
   }
 
   return (
+  <>
+
+    {/* if incorrect login details, modal will appear */}
+    {showModal && <MODAL heading={"Login Failed"} message={"Incorrect Username or Password"} changeState={setShowModal} />}
+    
     <div className={styles.formContainer}>
       <div className="w-full max-w-xs">
         <form
@@ -84,6 +95,7 @@ const Login = () => {
               id="username"
               type="text"
               placeholder="BTECH/*****/**"
+              required={true}
             />
           </div>
           <div className="mb-6">
@@ -100,6 +112,7 @@ const Login = () => {
               id="password"
               type="password"
               placeholder="******************"
+              required={true}
             />
             {/* <p className="text-red-500 text-xs italic">Please choose a password.</p> */}
           </div>
@@ -117,6 +130,7 @@ const Login = () => {
         </form>
       </div>
     </div>
+  </>
   );
 };
 export default Login;
