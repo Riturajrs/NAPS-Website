@@ -8,19 +8,22 @@ const Login = () => {
   // state vars
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [rollNum, setRollNum] = useState("");
-  const [cookie, setCookie] = useCookies(["user"]);
   const [pwd, setPwd] = useState("");
   const [showModal,setShowModal] = useState(false);
-
+  
+  // cookies object to access all cookies
+  const [cookies, setCookie] = useCookies(["user"]);
+  
+  // router instance for redirects 
   const router = useRouter();
 
   useEffect(()=>{
     // check if user already logged in
     // redirect to /admin
-    if(cookie.user){
+    if(cookies.user){
       router.push("/Admin");
     }
-  },[cookie.user]);
+  },[cookies.user]);
 
 
   async function loginReq(loginDetails) {
@@ -36,9 +39,21 @@ const Login = () => {
         const data = await response.json();
         const cookie = data.token;
         console.log(data);
+        console.log(data.data.user);
+        
+        // set jwt token as cookie 
+        // to create session
         setCookie("user", JSON.stringify(cookie).slice(1, -1), {
           path: "/",
           maxAge: 3600, // Expires after 1hr
+          sameSite: true,
+        });
+
+        // set author id as cookie
+        // to fetch author details
+        setCookie("authorId", data.data.user.authorId, {
+          path: "/",
+          maxAge: 3600,
           sameSite: true,
         });
       }

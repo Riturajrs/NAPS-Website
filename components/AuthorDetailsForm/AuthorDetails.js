@@ -3,6 +3,7 @@ import styles from "./AuthorDetails.module.css";
 import Image from 'next/image';
 // import { data } from "autoprefixer";
 import { useRouter } from "next/router";
+import { useCookies } from "react-cookie";
 // import authorImg from "/../public/default.png";
 
 const AuthorDetails = ()=>{
@@ -12,6 +13,9 @@ const AuthorDetails = ()=>{
     const [description,setDescription] = useState("");
     const [image,setImage] = useState(`/../public/default.png`);
     const [reload,setReload] = useState(false);
+
+    // cookies object to access all cookies
+    const [cookies,setCookie] = useCookies("user");
 
     // router instance to reload page
     const router = useRouter();
@@ -38,7 +42,7 @@ const AuthorDetails = ()=>{
             }
         }
 
-        prevDetails("62174ef80dd79cadf4cccec8");
+        prevDetails(cookies.authorId);
         
         if(reload){
             router.reload();
