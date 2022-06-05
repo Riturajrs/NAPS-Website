@@ -50,7 +50,7 @@ export default function Header() {
 				</div>
 				<div className={styles.connectContainer}>
         {/* TODO: add links */}
-					<Link href="" passHref>
+					<Link href="https://instagram.com" passHref>
 						<Image
 							src={InstaLogo}
 							alt="Instagram"
@@ -58,7 +58,7 @@ export default function Header() {
 							layout="intrinsic"
 						/>
 					</Link>
-          <Link href="" passHref>
+          <Link href="https://linkedin.com" passHref>
 					<Image
 						src={LinkedinLogo}
 						alt="LinkedIn"
@@ -66,7 +66,7 @@ export default function Header() {
 						layout="intrinsic"
 					/>
           </Link>
-          <Link href="" passHref>
+          <Link href="https://facebook.com" passHref>
 					<Image
 						src={FacebookLogo}
 						alt="Facebook"

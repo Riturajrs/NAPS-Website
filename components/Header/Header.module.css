@@ -81,3 +81,6 @@
     font-size: 0.6rem;
   }
 }
+.connectItem{
+  cursor: pointer;
+}
