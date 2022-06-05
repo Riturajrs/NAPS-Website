@@ -109,7 +109,10 @@ export default function PostForm({data}){
       // upload to api
       const res = await fetch(`${process.env.NEXT_PUBLIC_APIBASE}/image-upload`,{
         method: "POST",
-        body: fd
+        body: fd,
+        headers: {
+          Authorization: 'Bearer'
+        }
       })
       console.log(res.body)
       const Data = await res.json();
