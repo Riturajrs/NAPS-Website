@@ -12,6 +12,8 @@ const SignUp = ()=>{
   const[pwd,setPwd] = useState("");
   const[cnfrmPwd,setCnfrmPwd] = useState("");
   const[showModal,setShowModal] = useState(false);
+  const[heading,setHeading] = useState("");
+  const[message,setMessage] = useState("");
 
   // to access stored cookie
   const[cookie,setCookie] = useCookies("user");
@@ -45,6 +47,13 @@ const SignUp = ()=>{
           body: JSON.stringify(auhtorDetails),
         })
         console.log(response);
+        // if error occured while creating author
+        if(response.status==401 || response.status==400){
+            setHeading("Failed");
+            setMessage(response.statusText);
+            setShowModal(true);
+        }
+
         let data = await response.json();
         // extract author id
         const authorId = data._id;
@@ -63,10 +72,22 @@ const SignUp = ()=>{
           body: JSON.stringify(newUserDetails),
         });
 
-        // if user and author both created successfully
-        if(response.status===201) setShowModal(true);
         data = await response.json();
         console.log(data);
+
+        // if error ocuured in creating new user
+        if(response.status==401 || response.status==400){
+          setHeading("Failed");
+          setMessage(data.message);
+          setShowModal(true);
+        }
+
+        // if user and author both created successfully
+        if(response.status===201){
+          setHeading("Success");
+          setMessage("User created successfully");
+          setShowModal(true);
+        }
 
       } catch(err){
         console.log(err);
@@ -126,7 +147,7 @@ const SignUp = ()=>{
     return (
       <>
         {/* if show modal is true, modal will appear*/}
-        {showModal && <MODAL heading={"Success"} message={"User created successfully"}  changeState={setShowModal} />}
+        {showModal && <MODAL heading={heading} message={message} changeState={setShowModal} />}
 
         <div className={styles.formContainer}>
           <div className="w-full max-w-xs">
