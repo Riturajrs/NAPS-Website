@@ -55,7 +55,7 @@ export default function Blog({blogData}:{blogData: apiResponse}){
     <div className={styles.blogContainer}>
       <div className={styles.title}>{blogData.title}</div>
       <div className={styles.author}>
-        <Link href={`/author/${blogData.author}`}>
+        <Link href={`/Author/${blogData.author}`}>
         {blogData.authorName}
         </Link>
       {` at ${showableDate}`}
