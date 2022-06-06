@@ -20,20 +20,21 @@
 }
 .cardGrid{
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(3,1fr);
   row-gap: 5vh;
   column-gap: 4%;
 }
 
-@media (max-width: 720px) {
+@media (max-width: 1200px){
+  .cardGrid{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 820px) {
   .cardGrid{
     display: flex;
     flex-direction: column;
-  }
-}
-@media (max-width: 1080px){
-  .cardGrid{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
   }
 }

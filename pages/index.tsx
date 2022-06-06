@@ -19,14 +19,22 @@ type apiData = {
   }
 
 export default function Home({data}: {data:apiData[]}){
+
+  const newBlogs = data.slice(1)
+  const topBlog = data[0];
   const notices:{ title: string, summary: string, author: string }[] = [
     {title: "Notice 1", summary: "sdlkfjslkfj sdfslk sdfhjsdhfjw fwkfjwe fwkf wjkeekfjwlf ewklwefjkf", author: "author1"},
     {title: "Notice 2", summary: "sdlkfjslkfj sdfslk sdfhjsdhfjw fwkfjwe fwkf wjkeekfjwlf ewklwefjkf", author: "author2"},
     {title: "Notice 3", summary: "sdlkfjslkfj sdfslk sdfhjsdhfjw fwkfjwe fwkf wjkeekfjwlf ewklwefjkf", author: "author3"},
     {title: "Notice 4", summary: "sdlkfjslkfj sdfslk sdfhjsdhfjw fwkfjwe fwkf wjkeekfjwlf ewklwefjkf", author: "author4"},
   ]
-  useEffect(()=>{
-  },[])
+  const showableDate = (date)=>{
+    const dateToFormat = new Date(date)
+    var dd = String(dateToFormat.getDate()).padStart(2, '0');
+    var mm = String(dateToFormat.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = dateToFormat.getFullYear();
+    return(dd + '/' + mm + '/' + yyyy);
+  }
   return (
     <div className={styles.home}>
       <Head>
@@ -41,7 +49,7 @@ export default function Home({data}: {data:apiData[]}){
       <div className={styles.row1}>
         <div className={styles.col1}>
           <div className={styles.noticesHeading}>
-          <Link href="/notices">Notices</Link>
+          Notices
           </div>
           {notices.map((notice, index)=>
           <div className={styles.noticeContainer} key={index}>
@@ -56,15 +64,15 @@ export default function Home({data}: {data:apiData[]}){
         </div>
         <div className={styles.col2}>
           <div className={styles.card}>
-            <Image placeholder="blur" src={NapsLogo} layout="intrinsic" alt="random img"/>
+            <div className={styles.topBlogImage}>
+            <Image src={topBlog.thumbnail} layout="fill" alt="random img"/>
+            </div>
             <div className={styles.description}> 
-                <div className={styles.topic}>Sample Heading</div>
-                <div className={styles.author}>By-ajanfjkadf</div>
-                <div className={styles.date}>Date-dd/mm/yyyy</div>
+                <div className={styles.topic}><Link href={`/blog/${topBlog._id}`}>{topBlog.title}</Link></div>
+                <div className={styles.author}><Link href={`/author/${topBlog.author}`}>{`By- ${topBlog.authorName}`}</Link></div>
+                <div className={styles.date}>Date-{showableDate(topBlog.createdAt)}</div>
                 <div className={styles.text}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
-                incididunt ut labore et dolore magna aliqua. Purus in massa tempor nec feugiat nisl 
-                pretium fusce id. Dolor sed viverra ipsum nunc aliquet bibendum enim.
+                {topBlog.summary}
                 </div>
             </div>
           </div>
@@ -74,7 +82,7 @@ export default function Home({data}: {data:apiData[]}){
       New Posts
     </div>
     <div className={styles.cardGrid}>
-    {data.map(blog=>
+    {newBlogs.map(blog=>
       <Card id={blog._id} title={blog.title} summary={blog.summary} author={blog.authorName} date={blog.createdAt} key={blog._id} image={blog.thumbnail}></Card>
     )}
     </div>
