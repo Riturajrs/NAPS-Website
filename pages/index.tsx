@@ -49,7 +49,7 @@ export default function Home({data}: {data:apiData[]}){
       <div className={styles.row1}>
         <div className={styles.col1}>
           <div className={styles.noticesHeading}>
-          <Link href="/notices">Notices</Link>
+          Notices
           </div>
           {notices.map((notice, index)=>
           <div className={styles.noticeContainer} key={index}>
