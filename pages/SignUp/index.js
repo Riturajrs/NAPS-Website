@@ -53,53 +53,54 @@ const SignUp = ()=>{
           },
           body: JSON.stringify(auhtorDetails),
         })
-        console.log(response);
+        let data = await response.json();
         // if error occured while creating author
         if(response.status==401 || response.status==400){
             setHeading("Failed");
-            setMessage(response.statusText);
+            setMessage(data.message);
             setShowModal(true);
-        }
-
-        let data = await response.json();
-        // extract author id
-        const authorId = data._id;
-
-        console.log(authorId);
-        // add author id to new user details
-        newUserDetails = {...newUserDetails,authorId: authorId};
-
-        console.log(cookie.user)
-        
-        // create new user 
-        response = await fetch(`http://13.233.159.246:4000/api/v1/users/signUp`, {
-          credentials: "include",
-          method: "POST",
-          headers: { "Content-Type": "application/json","authorization": `Bearer: ${cookie.user}` },
-          body: JSON.stringify(newUserDetails),
-        });
-
-        data = await response.json();
-        console.log(data);
-
-        // if error ocuured in creating new user
-        if(response.status==401 || response.status==400){
-          setHeading("Failed");
-          setMessage(data.message);
-          setShowModal(true);
-        }
-
-        // if user and author both created successfully
-        if(response.status===201){
-          setHeading("Success");
-          setMessage("User created successfully");
-          setShowModal(true);
+        } 
+        else {  
+          // extract author id
+          const authorId = data._id;
+  
+          console.log(authorId);
+          // add author id to new user details
+          newUserDetails = {...newUserDetails,authorId: authorId};
+  
+          console.log(cookie.user)
+          
+          // create new user 
+          response = await fetch(`http://13.233.159.246:4000/api/v1/users/signUp`, {
+            credentials: "include",
+            method: "POST",
+            headers: { "Content-Type": "application/json","authorization": `Bearer: ${cookie.user}` },
+            body: JSON.stringify(newUserDetails),
+          });
+  
+          data = await response.json();
+          console.log(data);
+  
+          // if error ocuured in creating new user
+          if(response.status==401 || response.status==400){
+            setHeading("Failed");
+            setMessage(data.message);
+            setShowModal(true);
+          }
+  
+          // if user and author both created successfully
+          if(response.status===201){
+            setHeading("Success");
+            setMessage("User created successfully");
+            setShowModal(true);
+          }
         }
 
       } catch(err){
         console.log(err);
       }
       setIsLoading(false);
+
     }
 
     function handleSubmit(e){
