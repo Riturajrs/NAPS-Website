@@ -6,7 +6,7 @@ import { Editor } from "@tinymce/tinymce-react";
 const categories = ["Editorial", "Media Report"]
 const tagsoptions = ["sdjhks", "sksjdfh dsdfd","jkdhkjahfjkd", "jkdhfd", "jshdkjfsd dsdf", "hgdkjhdj"]
 export default function PostForm({data}){
-  // ----------------------------------------------- state variables
+  // state variables
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
   const [tags, setTags] = useState([]);
@@ -123,12 +123,12 @@ export default function PostForm({data}){
     <div className={styles.PostForm}>
     <div className={styles.form}>
     <label htmlFor="title">Title</label>
-    <input type="text" name="title" onChange={changeTitle} placeholder="Title" value={title}/>
+    <input required type="text" name="title" onChange={changeTitle} placeholder="Title" value={title}/>
     <div className={styles.imageContainer}>
       <Image src={thumbnail==""?"/default.png":thumbnail} layout="fill" alt="Thumbnail"/>
     </div>
     <label htmlFor="images">Thumbnail: </label>
-    <input type="file" name="images" onChange={uploadImage}></input>
+    <input required type="file" name="images" onChange={uploadImage}></input>
     <br/>
     <label>Author</label>
     <select value={author} onChange={changeAuthor}>
@@ -142,7 +142,7 @@ export default function PostForm({data}){
       })}
     </select>
     <label>Category</label>
-    <select value={category} onChange={changeCategory}>
+    <select required value={category} onChange={changeCategory}>
       <option></option>
       {categories.map(cat=><option key={cat}>{cat}</option>)}
     </select>
@@ -150,7 +150,7 @@ export default function PostForm({data}){
     {tags.map(tag=><div className={styles.tag} onClick={handleUnTag} key={tag}>{tag}</div>)}
     </div>
     <label>Tags</label>
-    <select onChange={changeTags}>
+    <select required onChange={changeTags}>
       <option></option>
       {tagsoptions.filter((tag)=>!tags.includes(tag)).map(cat=><option key={cat}>{cat}</option>)}
     </select>
@@ -184,7 +184,7 @@ export default function PostForm({data}){
       }}
       />
     <label>Summary</label>
-      <textarea value={summary} onChange={changeSummary}/>
+      <textarea required value={summary} onChange={changeSummary}/>
       <button onClick={handleSubmit}>Submit</button>
     </div>
     </div>

@@ -3,6 +3,8 @@ import styles from "./AuthorDetails.module.css";
 import Image from 'next/image';
 // import { data } from "autoprefixer";
 import { useRouter } from "next/router";
+import { useCookies } from "react-cookie";
+import Loader from "../Loader/Loader";
 // import authorImg from "/../public/default.png";
 
 const AuthorDetails = ()=>{
@@ -12,6 +14,10 @@ const AuthorDetails = ()=>{
     const [description,setDescription] = useState("");
     const [image,setImage] = useState(`/../public/default.png`);
     const [reload,setReload] = useState(false);
+    const [isLoading,setIsLoading] = useState(false);
+
+    // cookies object to access all cookies
+    const [cookies,setCookie] = useCookies("user");
 
     // router instance to reload page
     const router = useRouter();
@@ -38,7 +44,7 @@ const AuthorDetails = ()=>{
             }
         }
 
-        prevDetails("62174ef80dd79cadf4cccec8");
+        prevDetails(cookies.authorId);
         
         if(reload){
             router.reload();
@@ -61,6 +67,11 @@ const AuthorDetails = ()=>{
         const file = e.target.files[0];
         const fd =  new FormData();
         fd.append('images',file)
+        
+        // loader will appear while is image url is being generated
+        // and image is uplaoded
+        setIsLoading(true);
+        
         // upload to api
         const res = await fetch(`http://13.233.159.246:4000/api/v1/image-upload`,{
             method: "POST",
@@ -68,6 +79,8 @@ const AuthorDetails = ()=>{
         })
         const Data = await res.json();
         console.log(Data.data.URL);
+        setIsLoading(false);
+
         setImage(Data.data.URL);
     }
 
@@ -137,9 +150,12 @@ const AuthorDetails = ()=>{
                     </div>
                 </div>
 
-                <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                    Submit
-                </button>
+                <div className={styles.formFooter}>
+                    <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                        Submit
+                    </button>
+                    {isLoading && <Loader />}
+                </div>
 
             </form>
         </div>
