@@ -36,6 +36,7 @@
 .imageContainer img:hover, .imageContainer img:focus{
   transform: scale(0.9);
   object-fit: scale-down;
+  border-radius: 0;
 }
 .meta{
   display: flex;
