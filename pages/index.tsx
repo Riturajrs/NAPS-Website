@@ -69,7 +69,7 @@ export default function Home({data}: {data:apiData[]}){
             </div>
             <div className={styles.description}> 
                 <div className={styles.topic}><Link href={`/blog/${topBlog._id}`}>{topBlog.title}</Link></div>
-                <div className={styles.author}><Link href={`/author/${topBlog.author}`}>{`By- ${topBlog.authorName}`}</Link></div>
+                <div className={styles.author}><Link href={`/Author/${topBlog.author}`}>{`By- ${topBlog.authorName}`}</Link></div>
                 <div className={styles.date}>Date-{showableDate(topBlog.createdAt)}</div>
                 <div className={styles.text}>
                 {topBlog.summary}
