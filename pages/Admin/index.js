@@ -9,12 +9,15 @@ import { useEffect } from "react";
 
 const Admin = ({data})=>{
 
-    const [cookie,setCookie] = useCookies("user");
+    // cookies object to access all cookies
+    const [cookies,setCookie] = useCookies("user");
 
+    // router instance for redirects
     const router = useRouter();
 
     useEffect(()=>{
-        if(!cookie.user){
+        // if user not logged in redirect to login page
+        if(!cookies.user){
             router.push("http://localhost:3000/login");
         }
     },[]);

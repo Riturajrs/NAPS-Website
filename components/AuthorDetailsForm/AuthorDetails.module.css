@@ -12,3 +12,8 @@
 .imgContainer img{
     object-fit: contain;
 }
+
+.formFooter{
+    display: flex;
+    justify-content: space-between;
+}

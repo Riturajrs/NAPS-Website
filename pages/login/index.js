@@ -3,27 +3,34 @@ import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
 import styles from "./login.module.css";
 import MODAL from "../../components/Modal/Modal";
+import Loader from "../../components/Loader/Loader";
 
 const Login = () => {
   // state vars
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [rollNum, setRollNum] = useState("");
-  const [cookie, setCookie] = useCookies(["user"]);
   const [pwd, setPwd] = useState("");
   const [showModal,setShowModal] = useState(false);
-
+  const [isLoading,setIsLoading] = useState(false);
+  
+  // cookies object to access all cookies
+  const [cookies, setCookie] = useCookies(["user"]);
+  
+  // router instance for redirects 
   const router = useRouter();
 
   useEffect(()=>{
     // check if user already logged in
     // redirect to /admin
-    if(cookie.user){
+    if(cookies.user){
       router.push("/Admin");
     }
-  },[cookie.user]);
+  },[cookies.user]);
 
 
   async function loginReq(loginDetails) {
+    // loader will appear until fetch request is complete
+    setIsLoading(true);
     try {
       const response = await fetch(`${process.env.NEXT_PUBLIC_APIBASE}/users/login`, {
         method: "POST",
@@ -36,15 +43,28 @@ const Login = () => {
         const data = await response.json();
         const cookie = data.token;
         console.log(data);
+        console.log(data.data.user);
+        
+        // set jwt token as cookie 
+        // to create session
         setCookie("user", JSON.stringify(cookie).slice(1, -1), {
           path: "/",
           maxAge: 3600, // Expires after 1hr
+          sameSite: true,
+        });
+
+        // set author id as cookie
+        // to fetch author details
+        setCookie("authorId", data.data.user.authorId, {
+          path: "/",
+          maxAge: 3600,
           sameSite: true,
         });
       }
     } catch (err) {
       console.log(err);
     }
+    setIsLoading(false);
   }
 
   function handleSubmit(e) {
@@ -123,6 +143,8 @@ const Login = () => {
             >
               Sign In
             </button>
+            {isLoading && <Loader />}
+            
             {/* <a className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="#">
             Forgot Password?
         </a> */}
