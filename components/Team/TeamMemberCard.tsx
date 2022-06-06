@@ -17,7 +17,9 @@ type memberinfo = {
 export default function MemberCard({image, name, facebook, insta, linkedin, post, year}:memberinfo){
 return(
   <div className={styles.memberCard}>
-    <Image placeholder="blur" src={image} alt="member-photo" layout="intrinsic"/>
+    <div className={styles.memberImage}>
+    <Image placeholder="blur" src={image} alt="member-photo" layout="fill"/>
+    </div>
     <div className={styles.name}>
     {name}
     </div>

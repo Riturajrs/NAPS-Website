@@ -13,3 +13,24 @@
   align-items: center;
   justify-content: center;
 }
+.memberImage{
+  height: 30vw;
+  position: relative;
+  width: 30vw;
+}
+.memberImage img{
+  object-fit: contain;
+}
+
+@media (max-width: 1000px){
+  .memberImage{
+    height: 40vw;
+    width: 40vw;
+  }
+}
+@media (max-width: 720px){
+  .memberImage{
+    height: 60vw;
+    width: 60vw;
+  }
+}

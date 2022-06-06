@@ -22,7 +22,13 @@
   gap: 2ch;
   margin-top: 2%;
 }
-
+.topBlogImage{
+  position: relative;
+  height: 100%;
+}
+.topBlogImage img{
+  object-fit: contain;
+}
 .noticesHeading {
   font-size: 1.4rem;
   font-weight: 500;
