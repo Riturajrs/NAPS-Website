@@ -2,6 +2,7 @@ import styles from './Form.module.css'
 import { useCookies } from 'react-cookie'
 import {useRouter} from "next/router"
 import { useState } from 'react'
+import Loader from '../Loader/Loader'
 
 export default function Form () {
   const router = useRouter()
@@ -9,6 +10,7 @@ export default function Form () {
   const [content, setContent] = useState('')
   const [heading, setHeading] = useState('')
   const [links, setLinks] = useState([])
+  const [isLoading,setIsLoading] = useState(false);
 
   const Headingchange = e => {
     setHeading(e.target.value)
@@ -24,7 +26,7 @@ export default function Form () {
     console.log(content)
     try {
       const response = await fetch(
-        `http://localhost:4000/api/v1/epistle/newNotice`,
+        `http://13.233.159.246:4000/api/v1/epistle/newNotice`,
         {
           method: 'POST',
           body: JSON.stringify({
@@ -53,13 +55,16 @@ export default function Form () {
   }
 
   const deleteFilehandler = async fileDeleted => {
+    // loader will appear till file not deleted
+    setIsLoading(true);
     const res = await fetch(
-      `http://localhost:4000/api/v1/epistle/deleteFile/${fileDeleted.fileName}`,
+      `http://13.233.159.246:4000/api/v1/epistle/deleteFile/${fileDeleted.fileName}`,
       {
         method: 'DELETE',
         headers: { Authorization: 'Bearer ' + cookie.user }
       }
     )
+    setIsLoading(false);
     setLinks(all_links => all_links.filter(link => link !== fileDeleted))
   }
 
@@ -67,13 +72,19 @@ export default function Form () {
     const file = e.target.files[0]
     const fd = new FormData()
     fd.append('pdf', file)
-    const res = await fetch(`http://localhost:4000/api/v1/epistle/uploadFile`, {
+
+    // loader will appear till file is uploaded
+    setIsLoading(true);
+
+    const res = await fetch(`http://13.233.159.246:4000/api/v1/epistle/uploadFile`, {
       method: 'POST',
       headers: { Authorization: 'Bearer ' + cookie.user },
       body: fd
     })
     const Data = await res.json()
     Data.data.name = file.name
+    setIsLoading(false);
+
     setLinks(prevLinks => [...prevLinks, Data.data])
   }
   return (
@@ -151,6 +162,7 @@ export default function Form () {
             </div>
           ))}
         <br />
+        {isLoading && <div className={styles.loaderContainer}><Loader /></div>}
         <button className={styles.submit} onClick={submitHandler}>
           Submit
         </button>

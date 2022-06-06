@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
 import styles from "./login.module.css";
 import MODAL from "../../components/Modal/Modal";
+import Loader from "../../components/Loader/Loader";
 
 const Login = () => {
   // state vars
@@ -10,6 +11,7 @@ const Login = () => {
   const [rollNum, setRollNum] = useState("");
   const [pwd, setPwd] = useState("");
   const [showModal,setShowModal] = useState(false);
+  const [isLoading,setIsLoading] = useState(false);
   
   // cookies object to access all cookies
   const [cookies, setCookie] = useCookies(["user"]);
@@ -27,6 +29,8 @@ const Login = () => {
 
 
   async function loginReq(loginDetails) {
+    // loader will appear until fetch request is complete
+    setIsLoading(true);
     try {
       const response = await fetch(`${process.env.NEXT_PUBLIC_APIBASE}/users/login`, {
         method: "POST",
@@ -60,6 +64,7 @@ const Login = () => {
     } catch (err) {
       console.log(err);
     }
+    setIsLoading(false);
   }
 
   function handleSubmit(e) {
@@ -138,6 +143,8 @@ const Login = () => {
             >
               Sign In
             </button>
+            {isLoading && <Loader />}
+            
             {/* <a className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="#">
             Forgot Password?
         </a> */}

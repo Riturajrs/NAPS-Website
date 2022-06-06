@@ -3,6 +3,7 @@ import styles from "./SignUp.module.css";
 import { useCookies } from "react-cookie";
 import { useRouter } from "next/router";
 import MODAL from "../../components/Modal/Modal";
+import Loader from "../../components/Loader/Loader";
 
 const SignUp = ()=>{
   // state vars
@@ -12,8 +13,11 @@ const SignUp = ()=>{
   const[pwd,setPwd] = useState("");
   const[cnfrmPwd,setCnfrmPwd] = useState("");
   const[showModal,setShowModal] = useState(false);
+  // modal heading
   const[heading,setHeading] = useState("");
+  // modal message
   const[message,setMessage] = useState("");
+  const[isLoading,setIsLoading] = useState(false);
 
   // to access stored cookie
   const[cookie,setCookie] = useCookies("user");
@@ -30,6 +34,9 @@ const SignUp = ()=>{
 
     // fetch req to API
     async function SingUpReq(newUserDetails) {
+      
+      // loader will appear till new author and new user are created
+      setIsLoading(true);
 
       try{
         // first new author is created
@@ -92,7 +99,7 @@ const SignUp = ()=>{
       } catch(err){
         console.log(err);
       }
-
+      setIsLoading(false);
     }
 
     function handleSubmit(e){
@@ -249,6 +256,7 @@ const SignUp = ()=>{
                 >
                   Create New User
                 </button>
+                {isLoading && <Loader />}
                 {/* <a className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="#">
                 Forgot Password?
             </a> */}
