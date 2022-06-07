@@ -2,11 +2,15 @@ import styles from "./PostForm.module.css"
 import { useState, useRef } from "react"
 import Image from "next/image";
 import { Editor } from "@tinymce/tinymce-react";
+import Loader from "../Loader/Loader";
+import {useRouter} from 'next/router'
 
 const categories = ["Editorial", "Media Report"]
 const tagsoptions = ["sdjhks", "sksjdfh dsdfd","jkdhkjahfjkd", "jkdhfd", "jshdkjfsd dsdf", "hgdkjhdj"]
 export default function PostForm({data}){
   // state variables
+  const [isLoading, setLoading] = useState(false)
+  const router = useRouter()
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
   const [tags, setTags] = useState([]);
@@ -20,7 +24,7 @@ export default function PostForm({data}){
   }
   const changeAuthor = (e)=>{
     setAuthor(e.target.value);
-    console.log(e.target.value)
+    // console.log(e.target.value)
   }
   const changeCategory = (e)=>{
     setCategory(e.target.value);
@@ -36,6 +40,7 @@ export default function PostForm({data}){
   }
   //  Upload image 
   async function uploadImage(e){
+    setThumbnail("Loading")
     const file = e.target.files[0];
     const fd =  new FormData();
     fd.append('images',file)
@@ -50,6 +55,7 @@ export default function PostForm({data}){
   //  Submit Handler
   const handleSubmit = async(e)=>{
     e.preventDefault();
+    setLoading(true)
     // Invalid Data Handling -
     if(title==""){
       alert("Check The Title")
@@ -98,7 +104,11 @@ export default function PostForm({data}){
       mode: 'cors'
     })
     const data = await res.json();
-    console.log(data)
+    if(data._id){
+      router.push(`/blog/${data._id}`)
+    }
+    setLoading(false)
+    // console.log(data)
   }
   async function handleContentImageUpload(blobInfo, success, failure, progress) {
     try{
@@ -109,11 +119,11 @@ export default function PostForm({data}){
         method: "POST",
         body: fd
       })
-      console.log(res.body)
+      // console.log(res.body)
       const Data = await res.json();
       success(Data.data.URL)
     }catch(err){
-      console.log(err);
+      // console.log(err);
       failure(err);
     }
 
@@ -125,7 +135,10 @@ export default function PostForm({data}){
     <label htmlFor="title">Title</label>
     <input required type="text" name="title" onChange={changeTitle} placeholder="Title" value={title}/>
     <div className={styles.imageContainer}>
-      <Image src={thumbnail==""?"/default.png":thumbnail} layout="fill" alt="Thumbnail"/>
+      <Image src={(thumbnail==""||thumbnail=="Loading")?"/default.png":thumbnail} layout="fill" alt="Thumbnail"/>
+    </div>
+    <div className={styles.loadingContainer}>
+      {thumbnail=="Loading"&&(<><Loader/> Please Wait</>)}
     </div>
     <label htmlFor="images">Thumbnail: </label>
     <input required type="file" name="images" onChange={uploadImage}></input>
@@ -185,7 +198,10 @@ export default function PostForm({data}){
       />
     <label>Summary</label>
       <textarea required value={summary} onChange={changeSummary}/>
-      <button onClick={handleSubmit}>Submit</button>
+      <div className={styles.loaderContainer}>
+      <button className={styles.submitButton} onClick={handleSubmit}>Submit</button>
+        {isLoading&&(<><Loader/> Please Wait</>)}
+      </div>
     </div>
     </div>
   )

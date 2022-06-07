@@ -33,14 +33,14 @@ const AuthorDetails = ()=>{
                     headers: { "Content-Type": "application/json" },
                 });
                 const data = await response.json();
-                console.log(data);
+                // console.log(data);
 
                 // set previous details as default value in form
                 setName(data.name);
                 setDescription(data.desc);
                 setImage(data.photo);
             } catch(err){
-                console.log(err);
+                // console.log(err);
             }
         }
 
@@ -78,7 +78,7 @@ const AuthorDetails = ()=>{
             body: fd
         })
         const Data = await res.json();
-        console.log(Data.data.URL);
+        // console.log(Data.data.URL);
         setIsLoading(false);
 
         setImage(Data.data.URL);
@@ -92,7 +92,7 @@ const AuthorDetails = ()=>{
             desc: description,
             photo: image
         }
-        console.log(authorDetails);
+        // console.log(authorDetails);
         
         // update author details
         updateDetails(authorDetails);
@@ -109,10 +109,10 @@ const AuthorDetails = ()=>{
                 body: JSON.stringify(authorDetails),
             });
             const data = await response.json();
-            console.log(data);
+            // console.log(data);
             // setReload(true);
         } catch(err){
-            console.log(err);
+            // console.log(err);
         }
     }
 
@@ -121,7 +121,7 @@ const AuthorDetails = ()=>{
             <form onSubmit={handleSubmit} className="w-full max-w-lg">
                 <div className="flex flex-wrap -mx-3 mb-6">
                     <div className="w-full px-3">
-                    <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-post-date">
+                    <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-post-date">
                         NAME
                     </label>
                     <input value={name} onChange={handleName} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="text" id="grid-post-date" placeholder="Full Name" />
@@ -130,7 +130,7 @@ const AuthorDetails = ()=>{
 
                 <div className="flex flex-wrap -mx-3 mb-6">
                     <div className="w-full px-3">
-                    <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-caption">
+                    <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-caption">
                         DESCRIPTION
                     </label>
                     <textarea value={description} onChange={handleDescription} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-caption" placeholder="Description" />
@@ -143,7 +143,7 @@ const AuthorDetails = ()=>{
 
                 <div className="flex flex-wrap -mx-3 mb-6">
                     <div className="w-full px-3">
-                    <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-thumbnail">
+                    <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-thumbnail">
                         IMAGE
                     </label>
                     <input onChange={handleImage} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-thumbnail" type="file" placeholder="Upload Image here" />

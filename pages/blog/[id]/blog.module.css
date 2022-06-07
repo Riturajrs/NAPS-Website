@@ -21,16 +21,16 @@
   gap: 1ch;
 }
 .tag{
-  background-color: rgb(83, 150, 226);
-  padding: 0.8% 1.2%;
+  background-color: rgb(132, 132, 132);
+  padding: 0.8ch 1.2ch;
   border-radius: 2ch;
   color: white;
 }
 .category{
-  background-color: rgb(83, 150, 226);
+  background-color: rgb(51, 51, 51);
   width: fit-content;
   font-weight: 600;
-  padding: 0.8% 1.2%;
+  padding: 0.8ch 1.2ch;
   border-radius: 2ch;
   color: white;
 }

@@ -13,7 +13,7 @@
 }
 .form{
   display: flex;
-  width: clamp(250px,80%,600px);
+  min-width: 80%;
   flex-direction: column;
   gap: 2rem;
   text-align: center;
@@ -37,4 +37,23 @@
   padding-right: 1ch;
   border-radius: 1ch;
   border: 1px solid rgb(60, 139, 249);
+}
+.loaderContainer{
+  transition: all 200ms ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 2ch;
+}
+.submitButton{
+  outline:rgb(60, 139, 249) solid 2px;
+  padding: 1ch 2ch;
+  width: fit-content;
+}
+
+@media (max-width: 800px){
+  .form{
+    width: 100%;
+  }
 }

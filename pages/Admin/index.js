@@ -1,13 +1,14 @@
 import { Tabs } from "flowbite-react";
 import styles from "./Admin.module.css";
 import PostForm from "../../components/PostForm/PostForm"
+import UpdateBlog from "../../components/UpdateBlog/UpdateBlog"
 import AuthorDetails from "../../components/AuthorDetailsForm/AuthorDetails";
 import Form from "../../components/Epistle/Form";
 import { useCookies } from "react-cookie";
 import {useRouter} from "next/router";
 import { useEffect } from "react";
 
-const Admin = ({data})=>{
+const Admin = ({authorData, blogData})=>{
 
     // cookies object to access all cookies
     const [cookies,setCookie] = useCookies("user");
@@ -29,15 +30,14 @@ const Admin = ({data})=>{
         style="underline"
         >
             <Tabs.Item title="NEW POST">
-                <PostForm data={data}/>
+                <PostForm data={authorData}/>
             </Tabs.Item>
 
             <Tabs.Item
                 active={true}
                 title="UPDATE"
             >
-                BLOG UPDATE
-                {/* DROP COMPONENT FOR BLOG UPDATE HERE */}
+                <UpdateBlog data={blogData}/>
             </Tabs.Item>
 
             <Tabs.Item title="YOUR PROFILE">
@@ -56,14 +56,16 @@ const Admin = ({data})=>{
 }
 
 export const getStaticProps = async()=>{
-    const res = await fetch(`${process.env.APIBASE}/author`,   {
+    const authorRes = await fetch(`${process.env.APIBASE}/author`,   {
     method: "GET",
     headers: {
         "Content-Type": "application/json"
     }})
-    var data = await res.json();
+    var authorData = await authorRes.json();
+    const blogRes = await fetch(`${process.env.APIBASE}/blog`)
+    var blogData = await blogRes.json();
     return {
-        props: {data},
+        props: {authorData, blogData},
         revalidate: 120
     }
 }

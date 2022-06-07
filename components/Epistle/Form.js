@@ -23,7 +23,7 @@ export default function Form () {
   const submitHandler = async e => {
     e.preventDefault()
     const filenames = links.map(link => link.fileName)
-    console.log(content)
+    // console.log(content)
     try {
       const response = await fetch(
         `http://13.233.159.246:4000/api/v1/epistle/newNotice`,
@@ -45,7 +45,7 @@ export default function Form () {
         throw new Error;
       }
       router.push('/Epistle')
-      console.log(responseData)
+      // console.log(responseData)
     } catch (err) {
       setContent('')
       setHeading('')
