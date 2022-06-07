@@ -30,7 +30,7 @@ const SignUp = ()=>{
     if(!cookie.user){
       router.push("/login");
     }
-  })
+  },[cookie.user,router])
 
     // fetch req to API
     async function SingUpReq(newUserDetails) {

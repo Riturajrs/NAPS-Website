@@ -25,7 +25,7 @@ const Login = () => {
     if(cookies.user){
       router.push("/Admin");
     }
-  },[cookies.user]);
+  },[cookies.user,router]);
 
 
   async function loginReq(loginDetails) {
