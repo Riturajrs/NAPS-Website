@@ -4,12 +4,15 @@ import Image from "next/image";
 import { Editor } from "@tinymce/tinymce-react";
 import Loader from "../Loader/Loader";
 import {useRouter} from 'next/router'
+import MODAL from "../../components/Modal/Modal";
 
 const categories = ["Editorial", "Media Report"]
 const tagsoptions = ["sdjhks", "sksjdfh dsdfd","jkdhkjahfjkd", "jkdhfd", "jshdkjfsd dsdf", "hgdkjhdj"]
 export default function PostForm({data}){
   // state variables
   const [isLoading, setLoading] = useState(false)
+  const [isModal, setModal] = useState("false")
+  const [modalMessage, setModalMessage] = useState("");
   const router = useRouter()
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
@@ -53,36 +56,45 @@ export default function PostForm({data}){
     setThumbnail(Data.data.URL)
   }
   //  Submit Handler
+    const showModal = (message,heading="Error")=>{
+      setLoading(false)
+      setModal(heading);
+      setModalMessage(message);
+    }
   const handleSubmit = async(e)=>{
     e.preventDefault();
     setLoading(true)
     // Invalid Data Handling -
     if(title==""){
-      alert("Check The Title")
+      showModal("Check The Title")
       return;
     }
     if(thumbnail==""){
-      alert("Thumbnail not uploaded")
+      showModal("Thumbnail not uploaded")
+      return;
+    }
+    if(thumbnail=="Loading"){
+      showModal("Thumbnail is being uploaded","Please Wait")
       return;
     }
     if(author==""){
-      alert("Check The Author")
+      showModal("Check The Author")
       return;
     }
     if(category==""){
-      alert("Category not submitted")
+      showModal("Category not submitted")
       return;
     }
     if(tags.length<1){
-      alert("Check The Tags")
+      showModal("Check The Tags")
       return;
     }
     if(!contentref.current ||(contentref.current?.getContent()=="")){
-      alert("Check The Content")
+      showModal("Check The Content")
       return;
     }
     if(summary==""){
-      alert("Summary not submitted")
+      showModal("Summary not submitted")
       return;
     }
     // handling
@@ -127,10 +139,10 @@ export default function PostForm({data}){
       failure(err);
     }
 
-
   }
   return (
     <div className={styles.PostForm}>
+    {isModal!="false"&&(<MODAL heading={isModal} message={modalMessage} changeState={()=>{setModal("false")}} />)}
     <div className={styles.form}>
     <label htmlFor="title">Title</label>
     <input required type="text" name="title" onChange={changeTitle} placeholder="Title" value={title}/>
