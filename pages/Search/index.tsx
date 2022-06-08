@@ -13,7 +13,8 @@ type apiData = {
   content: string,
   category: string,
   summary: string,
-  __v: number
+  __v: number,
+  authorName: string
 }
 export default function Search({blogData}:{blogData: apiData[]}){
   const tags = ["", "tag1", "tag2", "tag3", "tag4"]
@@ -34,7 +35,7 @@ export default function Search({blogData}:{blogData: apiData[]}){
   return <div className={styles.search}>
     <input className = {styles.input} placeholder = "Search" onInput={handleSearch} value={search}></input>
     <div className={styles.cardGrid}>
-      {filteredData.map(blog=><Card author={blog.author} date={blog.createdAt} id={blog._id} summary={blog.summary} title={blog.title} image={blog.thumbnail} key={blog._id} />)}
+      {filteredData.map(blog=><Card author={blog.authorName} date={blog.createdAt} id={blog._id} summary={blog.summary} title={blog.title} image={blog.thumbnail} key={blog._id} />)}
     </div>
   </div>
 }

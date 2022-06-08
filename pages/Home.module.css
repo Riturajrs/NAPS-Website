@@ -100,7 +100,6 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   row-gap: 5vh;
-  column-gap: 4%;
 }
 
 @media (max-width: 1200px){

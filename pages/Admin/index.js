@@ -11,7 +11,7 @@ import { useEffect } from "react";
 const Admin = ({authorData, blogData})=>{
 
     // cookies object to access all cookies
-    const [cookies,setCookie] = useCookies("user");
+    const [cookies,setCookie] = useCookies();
 
     // router instance for redirects
     const router = useRouter();
@@ -21,7 +21,7 @@ const Admin = ({authorData, blogData})=>{
         if(!cookies.user){
             router.push("http://localhost:3000/login");
         }
-    },[]);
+    },[cookies,router]);
 
         
     return <div className={styles.formContainer}>      

@@ -86,6 +86,7 @@ export const getStaticProps:GetStaticProps = async(context)=>{
   const url = `${process.env.APIBASE}/blog/id/${id}`
   const res = await fetch(url)
   const data: apiResponse = await res.json()
+  // console.log(data)
   return {
     props: {blogData: data},
     revalidate: 120
@@ -95,6 +96,7 @@ export const getStaticPaths:GetStaticPaths = async ()=>{
   const res = await fetch(`${process.env.APIBASE}/blog`);
   const data = await res.json();
   var paths = [];
+  // console.log(data)
   data.forEach(item => {
     paths.push({params: {id: item._id}})
   });
