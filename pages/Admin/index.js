@@ -19,7 +19,7 @@ const Admin = ({authorData, blogData})=>{
     useEffect(()=>{
         // if user not logged in redirect to login page
         if(!cookies.user){
-            router.push("http://localhost:3000/login");
+            router.push("/login");
         }
     },[cookies,router]);
 
@@ -64,6 +64,7 @@ export const getStaticProps = async()=>{
     var authorData = await authorRes.json();
     const blogRes = await fetch(`${process.env.APIBASE}/blog`)
     var blogData = await blogRes.json();
+    blogData = blogData.reverse()
     return {
         props: {authorData, blogData},
         revalidate: 120

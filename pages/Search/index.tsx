@@ -42,7 +42,8 @@ export default function Search({blogData}:{blogData: apiData[]}){
 
 export const getStaticProps:GetStaticProps = async()=>{
   const res = await fetch(`${process.env.APIBASE}/blog`)
-  const data = await res.json();
+  var data = await res.json();
+  data = data.reverse()
   return {
     props:{blogData: data},
     revalidate: 120
