@@ -19,7 +19,7 @@ const Login = () => {
   // router instance for redirects 
   const router = useRouter();
 
-  useEffect(()=>{
+  useEffect(() => {
     // check if user already logged in
     // redirect to /admin
     if(cookies.user){
@@ -32,14 +32,17 @@ const Login = () => {
     // loader will appear until fetch request is complete
     setIsLoading(true);
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_APIBASE}/users/login`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(loginDetails),
-      });
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_APIBASE}/users/login`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(loginDetails),
+        }
+      );
       // console.log(response);
-      if(response.status === 400) setShowModal(true);
-      else{
+      if (response.status === 400) setShowModal(true);
+      else {
         const data = await response.json();
         const cookie = data.token;
         console.log(data);
@@ -90,7 +93,15 @@ const Login = () => {
   }
 
   return (
-  <>
+    <>
+      {/* if incorrect login details, modal will appear */}
+      {showModal && (
+        <MODAL
+          heading={"Login Failed"}
+          message={"Incorrect Username or Password"}
+          changeState={setShowModal}
+        />
+      )}
 
     {/* if incorrect login details, modal will appear */}
     {showModal && <MODAL heading={"Login Failed"} message={"Incorrect Username or Password"} changeState={setShowModal} />}
@@ -148,11 +159,11 @@ const Login = () => {
             {/* <a className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="#">
             Forgot Password?
         </a> */}
-          </div>
-        </form>
+            </div>
+          </form>
+        </div>
       </div>
-    </div>
-  </>
+    </>
   );
 };
 export default Login;
