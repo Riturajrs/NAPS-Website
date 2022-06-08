@@ -20,7 +20,7 @@ export default function Section({ DateAdded, body, setReload }) {
             <div className={styles1.cardText}>
               Links:
               {links.map((link) => (
-                <div className={styles1.cardText}>
+                <div key={link} className={styles1.cardText}>
                   <Link href={link}>{link}</Link>
                 </div>
               ))}
@@ -41,7 +41,7 @@ export default function Section({ DateAdded, body, setReload }) {
           }
           data-id={`${_id}`}
           onClick={(e) => {
-            const url = `http://127.0.0.1:4000/api/v1/epistle/Notice/${e.target.dataset.id}`;
+            const url = `${process.env.NEXT_PUBLIC_APIBASE}/epistle/Notice/${e.target.dataset.id}`;
             const sendDeleteRequest = async () => {
               const response = await fetchdata(url, "DELETE", cookie);
               if (response.status == "success") {

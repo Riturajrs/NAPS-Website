@@ -6,7 +6,7 @@ import { useFetch } from "./useFetch";
 export default function Main() {
   const [page, changePage] = useState(1);
   const [reload, setReload] = useState(false);
-  const url = `http://127.0.0.1:4000/api/v1/epistle/Notice?page=${page}`;
+  const url = `${process.env.NEXT_PUBLIC_APIBASE}/epistle/Notice?page=${page}`;
   const { data } = useFetch(url, "GET", reload);
   const options = { month: "long" };
   const currentMonth = new Date(Date.now()).getMonth() + 1;
@@ -55,6 +55,7 @@ export default function Main() {
         {pages.map((el, index) => {
           return (
             <div
+              key={index}
               className={
                 index + 1 == data.currentPage
                   ? `${
