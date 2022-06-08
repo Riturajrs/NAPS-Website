@@ -3,6 +3,6 @@
   transition: transform 400ms ease-in-out;
 }
 .imageContainer:hover img{
-  object-fit: contain;
+  /* object-fit: contain; */
   transform: scale(0.9);
 }

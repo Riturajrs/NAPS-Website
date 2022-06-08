@@ -1,43 +1,9 @@
-.editContainer {
-  padding: 5%;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-}
 .imageContainer {
 	position: relative;
 	height: 30vh;
 }
 .imageContainer img {
 	object-fit: contain;
-}
-.form {
-	display: flex;
-	min-width: 80%;
-	flex-direction: column;
-	gap: 2rem;
-	text-align: center;
-}
-.form label {
-	color: rgb(75, 75, 75);
-}
-.tagContainer {
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	text-overflow: ellipsis;
-	text-align: center;
-}
-.tag {
-	margin: 1ch 2ch;
-}
-.tag::after {
-	content: "X";
-	margin-left: 3ch;
-	padding-left: 1ch;
-	padding-right: 1ch;
-	border-radius: 1ch;
-	border: 1px solid rgb(60, 139, 249);
 }
 .loaderContainer {
 	transition: all 200ms ease-in-out;
@@ -47,14 +13,23 @@
 	text-align: center;
 	gap: 2ch;
 }
-.submitButton {
-	outline: rgb(60, 139, 249) solid 2px;
-	padding: 1ch 2ch;
-	width: fit-content;
-}
 
-@media (max-width: 800px) {
-	.form {
-		width: 100%;
-	}
+.tagContainer {
+	display: flex;
+	text-align: center;
+	flex-wrap: wrap;
+}
+.tag {
+  padding: 0.5ch 1ch;
+	margin: 0.5ch 1ch;
+	border-radius: 0.25rem;
+	border: 1px solid #e2e8f0;
+	background-color: rgba(247,250,252);
+}
+.tag::after {
+	content: "x";
+	margin-left: 3ch;
+	padding-left: 1ch;
+	padding-right: 1ch;
+	border-radius: 1ch;
 }

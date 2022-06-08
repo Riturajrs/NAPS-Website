@@ -1,28 +1,28 @@
 import { Editor } from "@tinymce/tinymce-react";
 import { useRouter } from "next/router";
-import { GetStaticPaths, GetStaticProps } from "next/types"
+import { GetStaticPaths, GetStaticProps } from "next/types";
 import { useEffect, useRef, useState } from "react";
 import { useCookies } from "react-cookie";
 import Loader from "../../../../components/Loader/Loader";
-import styles from "./styles.module.css"
-import Image from "next/image"
+import styles from "./styles.module.css";
+import Image from "next/image";
 import MODAL from "../../../../components/Modal/Modal";
 
 type apiResponse = {
-  _id: string,
-  title: string,
-  author: string,
-  createdAt: string,
-  tags: string[],
-  likes: number,
-  thumbnail: string,
-  content: string,
-  category: string,
-  summary: string,
-  _v: number
-  authorName: string,
-  message?:string;
-}
+	_id: string;
+	title: string;
+	author: string;
+	createdAt: string;
+	tags: string[];
+	likes: number;
+	thumbnail: string;
+	content: string;
+	category: string;
+	summary: string;
+	_v: number;
+	authorName: string;
+	message?: string;
+};
 
 const categories = ["Editorial", "Media Report"];
 const tagsoptions = [
@@ -34,15 +34,29 @@ const tagsoptions = [
 	"hgdkjhdj",
 ];
 
-export default function Edit({blogData, authorData}:{blogData: apiResponse, authorData:{_id: string, name: string,photo: string,desc: string, tags: string[],createdAt: string, rollNum: string}[]}){
-  const [cookies,setCookie] = useCookies();
-  const router = useRouter();
-  useEffect(()=>{
-    // if user not logged in redirect to login page
-    if(!cookies.user){
-      router.push("/login");
-    }
-  },[cookies,router]);
+export default function Edit({
+	blogData,
+	authorData,
+}: {
+	blogData: apiResponse;
+	authorData: {
+		_id: string;
+		name: string;
+		photo: string;
+		desc: string;
+		tags: string[];
+		createdAt: string;
+		rollNum: string;
+	}[];
+}) {
+	const [cookies, setCookie] = useCookies();
+	const router = useRouter();
+	useEffect(() => {
+		// if user not logged in redirect to login page
+		if (!cookies.user) {
+			router.push("/login");
+		}
+	}, [cookies, router]);
 
 	// state variables
 	const [isLoading, setLoading] = useState(false);
@@ -151,12 +165,15 @@ export default function Edit({blogData, authorData}:{blogData: apiResponse, auth
 		};
 		const reqheaders = new Headers();
 		reqheaders.append("Content-Type", "application/json");
-		const res = await fetch(`${process.env.NEXT_PUBLIC_APIBASE}/blog/id/${router.query.id}`, {
-			method: "PATCH",
-			body: JSON.stringify(dataToSubmit),
-			headers: reqheaders,
-			mode: "cors",
-		});
+		const res = await fetch(
+			`${process.env.NEXT_PUBLIC_APIBASE}/blog/id/${router.query.id}`,
+			{
+				method: "PATCH",
+				body: JSON.stringify(dataToSubmit),
+				headers: reqheaders,
+				mode: "cors",
+			}
+		);
 		const data = await res.json();
 		if (data._id) {
 			router.push(`/blog/${data._id}`);
@@ -190,17 +207,14 @@ export default function Edit({blogData, authorData}:{blogData: apiResponse, auth
 		}
 	}
 
-  if(blogData.message){
-    return(
-  <div className={styles.editContainer}>
-    Blog doesn{"'"}t exist
-  </div>
-    )
-  }
+	if (blogData.message) {
+		return (
+			<div className={styles.editContainer}>Blog doesn{"'"}t exist</div>
+		);
+	}
 
-  return (
-      <div className={styles.editContainer}>
-
+	return (
+		<div className="my-24 flex flex-col w-full max-w-4xl mx-auto">
 			{isModal != "false" && (
 				<MODAL
 					heading={isModal}
@@ -210,8 +224,8 @@ export default function Edit({blogData, authorData}:{blogData: apiResponse, auth
 					}}
 				/>
 			)}
-			<div className={styles.form}>
-				<label htmlFor="title">Title</label>
+			<div className="">
+				<label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="title">Title</label>
 				<input
 					required
 					type="text"
@@ -219,6 +233,7 @@ export default function Edit({blogData, authorData}:{blogData: apiResponse, auth
 					onChange={changeTitle}
 					placeholder="Title"
 					value={title}
+					className="appearance-none block w-full border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
 				/>
 				<div className={styles.imageContainer}>
 					<Image
@@ -238,16 +253,20 @@ export default function Edit({blogData, authorData}:{blogData: apiResponse, auth
 						</>
 					)}
 				</div>
-				<label htmlFor="images">Thumbnail: </label>
+				<label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="images">Thumbnail: </label>
 				<input
 					style={{ margin: "auto" }}
 					required
 					type="file"
 					name="images"
-					onChange={uploadImage}></input>
+					onChange={uploadImage}
+					className="appearance-none block w-full border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+					></input>
 				<br />
-				<label>Author</label>
-				<select required value={author} onChange={changeAuthor}>
+				<label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Author</label>
+				<select 
+				className="mb-6 block appearance-none w-full border border-gray-200 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+				required value={author} onChange={changeAuthor}>
 					<option></option>
 					{authorData &&
 						authorData.map((curauthor) => {
@@ -260,13 +279,16 @@ export default function Edit({blogData, authorData}:{blogData: apiResponse, auth
 							);
 						})}
 				</select>
-				<label>Category</label>
-				<select required value={category} onChange={changeCategory}>
+				<label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Category</label>
+				<select 
+				className="mb-6 block appearance-none w-full border border-gray-200 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+				required value={category} onChange={changeCategory}>
 					<option></option>
 					{categories.map((cat) => (
 						<option key={cat}>{cat}</option>
 					))}
 				</select>
+				<label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Tags</label>
 				<div className={styles.tagContainer}>
 					{tags.map((tag) => (
 						<div
@@ -277,8 +299,9 @@ export default function Edit({blogData, authorData}:{blogData: apiResponse, auth
 						</div>
 					))}
 				</div>
-				<label>Tags</label>
-				<select required onChange={changeTags}>
+				<select 
+				className="mb-6 block appearance-none w-full border border-gray-200 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+				required onChange={changeTags}>
 					<option></option>
 					{tagsoptions
 						.filter((tag) => !tags.includes(tag))
@@ -286,10 +309,10 @@ export default function Edit({blogData, authorData}:{blogData: apiResponse, auth
 							<option key={cat}>{cat}</option>
 						))}
 				</select>
-				<label>Content</label>
+				<label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Content</label>
 				<Editor
 					apiKey={process.env.NEXT_PUBLIC_TINYMCEKEY}
-          initialValue={blogData.content}
+					initialValue={blogData.content}
 					id="content"
 					onInit={(evt, editor) => (contentref.current = editor)}
 					init={{
@@ -316,11 +339,13 @@ export default function Edit({blogData, authorData}:{blogData: apiResponse, auth
 						images_upload_base_path: "/",
 					}}
 				/>
-				<label>Summary</label>
-				<textarea required value={summary} onChange={changeSummary} />
+				<label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Summary</label>
+				<textarea 
+				className="resize-none appearance-none h-32 block w-full border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+				required value={summary} onChange={changeSummary} />
 				<div className={styles.loaderContainer}>
 					<button
-						className={styles.submitButton}
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
 						onClick={handleSubmit}>
 						Submit
 					</button>
@@ -331,31 +356,31 @@ export default function Edit({blogData, authorData}:{blogData: apiResponse, auth
 					)}
 				</div>
 			</div>
-      </div>
-  )
+		</div>
+	);
 }
 
-export const getStaticProps:GetStaticProps = async(context)=>{
-  const id = context.params.id
-  const url = `${process.env.APIBASE}/blog/id/${id}`
-  const res = await fetch(url)
-  const data: apiResponse = await res.json()
-  const authurl = await fetch(`${process.env.APIBASE}/author`)
-  const authorData = await authurl.json()
-  return {
-    props: {blogData: data, authorData: authorData},
-    revalidate: 120
-  }
-}
-export const getStaticPaths:GetStaticPaths = async ()=>{
-  const res = await fetch(`${process.env.APIBASE}/blog`);
-  const data = await res.json();
-  var paths = [];
-  data.forEach(item => {
-    paths.push({params: {id: item._id}})
-  });
-  return {
-    paths: paths,
-    fallback: "blocking"
-  }
-}
+export const getStaticProps: GetStaticProps = async (context) => {
+	const id = context.params.id;
+	const url = `${process.env.APIBASE}/blog/id/${id}`;
+	const res = await fetch(url);
+	const data: apiResponse = await res.json();
+	const authurl = await fetch(`${process.env.APIBASE}/author`);
+	const authorData = await authurl.json();
+	return {
+		props: { blogData: data, authorData: authorData },
+		revalidate: 120,
+	};
+};
+export const getStaticPaths: GetStaticPaths = async () => {
+	const res = await fetch(`${process.env.APIBASE}/blog`);
+	const data = await res.json();
+	var paths = [];
+	data.forEach((item) => {
+		paths.push({ params: { id: item._id } });
+	});
+	return {
+		paths: paths,
+		fallback: "blocking",
+	};
+};

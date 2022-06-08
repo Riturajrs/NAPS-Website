@@ -1,5 +1,6 @@
 import styles from "./styles.module.css"
 import Image from "next/image";
+import Link from "next/link"
 type input = {
 	id: string,
 	title: string,
@@ -37,8 +38,8 @@ export default function Card({
 	const showableDate = dd + "/" + mm + "/" + yyyy;
 	return (
 		<div className="max-w-lg w-full mx-auto bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
-			<a href={`/blog/${id}`}>
-				<div className={`${styles.imageContainer} rounded-t-lg relative h-80 w-full`}>
+			<Link passHref href={`/blog/${id}`}>
+				<div className={`${styles.imageContainer} cursor-pointer rounded-t-lg relative h-80 w-full`}>
 					<Image
 						layout="fill"
 						className="rounded-t-lg"
@@ -50,24 +51,25 @@ export default function Card({
 						alt="blog image"
 					/>
 				</div>
-			</a>
-			<div className="p-5">
-				<a href={`/blog/${id}`}>
-					<h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+			</Link>
+			<div className="p-5 flex flex-col">
+				<Link passHref href={`/blog/${id}`} >
+					<h5 className="cursor-pointer mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
 						{title}
 					</h5>
-				</a>
-				<a href={`/Author/${authorId}`}>
-					<div className="mb-2 text-md font-light tracking-tight text-gray-900 dark:text-white">
+				</Link>
+				<Link passHref href={`/Author/${authorId}`}>
+					<div className="mb-2 cursor-pointer text-md font-light tracking-tight text-gray-900 dark:text-white">
 						- {author} at {showableDate}
 					</div>
-				</a>
+				</Link>
 				<p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
 					{summary}
 				</p>
-				<a
+				<Link
 					href={`/blog/${id}`}
-					className="inline-flex self-end items-center py-2 px-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+					passHref>
+					<div className="mx-auto inline-flex cursor-pointer self-end items-center py-2 px-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" >
 					Read more
 					<svg
 						className="ml-2 -mr-1 w-4 h-4"
@@ -79,7 +81,8 @@ export default function Card({
 							d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
 							clipRule="evenodd"></path>
 					</svg>
-				</a>
+					</div>
+				</Link>
 			</div>
 		</div>
 	);

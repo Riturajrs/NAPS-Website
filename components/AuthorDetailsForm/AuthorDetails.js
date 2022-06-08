@@ -118,13 +118,13 @@ const AuthorDetails = ()=>{
 
     return(
         <div className={styles.formContainer}>
-            <form onSubmit={handleSubmit} className="w-full max-w-lg">
+            <form onSubmit={handleSubmit} className="my-24 w-full max-w-4xl mx-auto">
                 <div className="flex flex-wrap -mx-3 mb-6">
                     <div className="w-full px-3">
                     <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-post-date">
                         NAME
                     </label>
-                    <input value={name} onChange={handleName} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="text" id="grid-post-date" placeholder="Full Name" />
+                    <input value={name} onChange={handleName} className="appearance-none block w-full border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="text" id="grid-post-date" placeholder="Full Name" />
                     </div>
                 </div>
 
@@ -133,7 +133,7 @@ const AuthorDetails = ()=>{
                     <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-caption">
                         DESCRIPTION
                     </label>
-                    <textarea value={description} onChange={handleDescription} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-caption" placeholder="Description" />
+                    <textarea value={description} onChange={handleDescription} className="appearance-none block w-full border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-caption" placeholder="Description" />
                     </div>
                 </div>
 
@@ -146,12 +146,12 @@ const AuthorDetails = ()=>{
                     <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-thumbnail">
                         IMAGE
                     </label>
-                    <input onChange={handleImage} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-thumbnail" type="file" placeholder="Upload Image here" />
+                    <input onChange={handleImage} className="appearance-none block w-full border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-thumbnail" type="file" placeholder="Upload Image here" />
                     </div>
                 </div>
 
                 <div className={styles.formFooter}>
-                    <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                    <button type="submit" className="mx-auto bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                         Submit
                     </button>
                     {isLoading && <Loader />}
