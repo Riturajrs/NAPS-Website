@@ -5,14 +5,14 @@ import Image from 'next/image';
 import { useRouter } from "next/router";
 import { useCookies } from "react-cookie";
 import Loader from "../Loader/Loader";
-// import authorImg from "/../public/default.png";
+import authorImg from "../../public/default.png";
 
 const AuthorDetails = ()=>{
 
     // State vars-----------------------------------
     const [name,setName] = useState("");
     const [description,setDescription] = useState("");
-    const [image,setImage] = useState(`/../public/default.png`);
+    const [image,setImage] = useState(authorImg);
     const [reload,setReload] = useState(false);
     const [isLoading,setIsLoading] = useState(false);
 

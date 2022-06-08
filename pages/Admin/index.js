@@ -21,7 +21,7 @@ const Admin = ({authorData, blogData})=>{
         if(!cookies.user){
             router.push("http://localhost:3000/login");
         }
-    },[]);
+    },[cookies.user]);
 
         
     return <div className={styles.formContainer}>      
