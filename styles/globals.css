@@ -26,3 +26,6 @@ ol{
 ul{
   list-style: disc;
 }
+.tox-tinymce{
+  margin-bottom: 1.5rem;
+}
