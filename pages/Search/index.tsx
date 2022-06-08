@@ -35,7 +35,7 @@ export default function Search({blogData}:{blogData: apiData[]}){
   return <div className={styles.search}>
     <input className = {styles.input} placeholder = "Search" onInput={handleSearch} value={search}></input>
     <div className={styles.cardGrid}>
-      {filteredData.map(blog=><Card author={blog.authorName} date={blog.createdAt} id={blog._id} summary={blog.summary} title={blog.title} image={blog.thumbnail} key={blog._id} />)}
+      {filteredData.map(blog=><Card authorId={blog.author} author={blog.authorName} date={blog.createdAt} id={blog._id} summary={blog.summary} title={blog.title} image={blog.thumbnail} key={blog._id} />)}
     </div>
   </div>
 }

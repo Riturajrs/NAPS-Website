@@ -20,7 +20,7 @@ type apiResponse = {
 export default function UpdateBlog({ data }:{ data: apiResponse[]}) {
 	return <div className={styles.updateBlog}>
   <div className={styles.cardContainer}>
-    {data.map(blog=><Card author={blog.authorName} date={blog.createdAt} id={`${blog._id}/edit`} summary={blog.summary} title={blog.title} image={blog.thumbnail} key={blog._id}/>)}
+    {data.map(blog=><Card authorId={blog.author} author={blog.authorName} date={blog.createdAt} id={`${blog._id}/edit`} summary={blog.summary} title={blog.title} image={blog.thumbnail} key={blog._id}/>)}
   </div>
   </div>;
 }
