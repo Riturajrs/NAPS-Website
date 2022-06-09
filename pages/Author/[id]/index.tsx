@@ -94,6 +94,8 @@ export default function Author({ authorData }: { authorData: apiResponse }) {
       <div className={styles.cardGrid}>
         {blogData.map((blog) => (
           <Card
+            authorId={blog.author}
+            category={blog.category}
             id={blog._id}
             title={blog.title}
             summary={blog.summary}

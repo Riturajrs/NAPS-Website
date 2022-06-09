@@ -2,8 +2,10 @@
 	position: relative;
 	height: 30vh;
 }
+
 .imageContainer img {
 	object-fit: contain;
+	object-position: 0 80%;
 }
 .loaderContainer {
 	transition: all 200ms ease-in-out;

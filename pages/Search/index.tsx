@@ -2,6 +2,7 @@ import { GetStaticProps } from "next"
 import { useState } from "react"
 import Card from "../../components/Card/Card"
 import styles from "./search.module.css"
+import Head from "next/head"
 type apiData = {
   _id: string,
   title: string,
@@ -32,12 +33,19 @@ export default function Search({blogData}:{blogData: apiData[]}){
     })
     setFilteredData(tempFilter)
   }
-  return <div className={styles.search}>
-    <input className = {styles.input} placeholder = "Search" onInput={handleSearch} value={search}></input>
+  return <>
+  <Head>
+    <title>NAPS | Search</title>
+    <script async src="https://cse.google.com/cse.js?cx=04d4bdafbd30245b7"></script>
+  </Head>
+  <div className={styles.search}>
+    {/* <input className = {styles.input} placeholder = "Search" onInput={handleSearch} value={search}></input> */}
+    <div className="gcse-search"></div>
     <div className={styles.cardGrid}>
       {filteredData.map(blog=><Card category={blog.category} authorId={blog.author} author={blog.authorName} date={blog.createdAt} id={blog._id} summary={blog.summary} title={blog.title} image={blog.thumbnail} key={blog._id} />)}
     </div>
   </div>
+  </>
 }
 
 export const getStaticProps:GetStaticProps = async()=>{

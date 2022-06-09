@@ -1,5 +1,4 @@
 .blogContainer {
-  padding: 5% 7%;
   display: flex;
   flex-direction: column;
   gap: 2ch;
@@ -15,17 +14,6 @@
 .author::before{
   content: "-";
 }
-.tags{
-  display: flex;
-  flex-direction: row;
-  gap: 1ch;
-}
-.tag{
-  background-color: rgb(132, 132, 132);
-  padding: 0.8ch 1.2ch;
-  border-radius: 2ch;
-  color: white;
-}
 .category{
   background-color: rgb(51, 51, 51);
   width: fit-content;
@@ -35,12 +23,11 @@
   color: white;
 }
 .thumbnail{
-  position: relative;
   height: 30vh;
 }
 .thumbnail img{
   object-fit: cover;
-  object-position: 0 80%;
+  /* object-position: 0 80%; */
 }
 .errorContainer{
   display: flex;
@@ -60,6 +47,5 @@
   align-items: flex-start;
 }
 .content img{
-  padding: 1rem;
-  outline: 2px rgb(213, 213, 213) solid;
+  @apply m-4 rounded-lg border border-slate-200 shadow-lg
 }
