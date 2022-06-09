@@ -59,3 +59,7 @@
   color: white;
   align-items: flex-start;
 }
+.content img{
+  padding: 1rem;
+  outline: 2px rgb(213, 213, 213) solid;
+}

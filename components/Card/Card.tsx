@@ -8,7 +8,8 @@ type input = {
 	author: string,
 	date: string,
 	image?: string,
-	authorId: string
+	authorId: string,
+	category: string
 };
 export default function Card({
 	title,
@@ -17,7 +18,8 @@ export default function Card({
 	date,
 	image,
 	id,
-	authorId
+	authorId,
+	category
 }: input) {
 	const isValidURL = (url: string) => {
 		var pattern = new RegExp(
@@ -58,6 +60,9 @@ export default function Card({
 						{title}
 					</h5>
 				</Link>
+					<h6 className="font-medium text-gray-800 dark:text-white">
+						{category}
+					</h6>
 				<Link passHref href={`/Author/${authorId}`}>
 					<div className="mb-2 cursor-pointer text-md font-light tracking-tight text-gray-900 dark:text-white">
 						- {author} at {showableDate}
