@@ -64,11 +64,11 @@ const SignUp = ()=>{
           // extract author id
           const authorId = data._id;
   
-          console.log(authorId);
+          // console.log(authorId);
           // add author id to new user details
           newUserDetails = {...newUserDetails,authorId: authorId};
   
-          console.log(cookie.user)
+          // console.log(cookie.user)
           
           // create new user 
           response = await fetch(`http://13.233.159.246:4000/api/v1/users/signUp`, {
@@ -79,7 +79,7 @@ const SignUp = ()=>{
           });
   
           data = await response.json();
-          console.log(data);
+          // console.log(data);
   
           // if error ocuured in creating new user
           if(response.status==401 || response.status==400){
@@ -97,7 +97,7 @@ const SignUp = ()=>{
         }
 
       } catch(err){
-        console.log(err);
+        // console.log(err);
       }
       setIsLoading(false);
 
@@ -118,25 +118,25 @@ const SignUp = ()=>{
             password: pwd,
             cnfrmPassword: cnfrmPwd
         };
-        console.log(newUserDetails);
+        // console.log(newUserDetails);
         SingUpReq(newUserDetails);
     }
 
     function handleFullName(e) {
         const newValue = e.target.value;
-        console.log(newValue);
+        // console.log(newValue);
         setFUllName(newValue);
     }
     
     function handleRollNum(e) {
         const newValue = e.target.value;
-        console.log(newValue);
+        // console.log(newValue);
         setRollNum(newValue);
     }
     
     function handleEmail(e) {
         const newValue = e.target.value;
-        console.log(newValue);
+        // console.log(newValue);
         setEmail(newValue);
     }
     
@@ -148,7 +148,7 @@ const SignUp = ()=>{
 
     function handleCnfrmPwd(e) {
         const newValue = e.target.value;
-        console.log(newValue);
+        // console.log(newValue);
         setCnfrmPwd(newValue);
     }
     

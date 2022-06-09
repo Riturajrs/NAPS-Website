@@ -11,7 +11,7 @@ export default function Main() {
   const options = { month: "long" };
   const currentMonth = new Date(Date.now()).getMonth() + 1;
   const pages = new Array(data.pages).fill(1);
-  console.log(page);
+  // console.log(page);
   return (
     <div className={styles1.aboutCtn}>
       <div className={styles1.activities}>
@@ -75,7 +75,7 @@ export default function Main() {
                   block: "end",
                   inline: "end",
                 });
-                console.log(top);
+                // console.log(top);
               }}
             >
               {index + 1}
