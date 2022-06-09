@@ -142,11 +142,11 @@ export default function Form () {
         <br />
         {links.length > 0 &&
           links.map(link => (
-            <div>
+            <div key={link}>
               <div>
                 Link for {link.name} added{' '}
                 <button className={styles.link}>
-                  <a href={link.URL} target='_blank'>
+                  <a href={link.URL} rel="noreferrer" target='_blank'>
                     View
                   </a>
                 </button>{' '}
