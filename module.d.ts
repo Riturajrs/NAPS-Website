@@ -4,5 +4,6 @@ declare namespace NodeJS {
     SERVERBASE: string,
     NEXT_PUBLIC_TINYMCEKEY: string,
     NEXT_PUBLIC_APIBASE: string
+    NEXT_PUBLIC_SERVERBASE: string
   }
 }
