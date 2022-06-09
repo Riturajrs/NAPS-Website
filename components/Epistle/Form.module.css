@@ -6,27 +6,24 @@
 }
 
 .main_form {
-  background-color: rgb(255, 255, 255);
+  /* background-color: rgb(255, 255, 255);
   width: 80%;
   border-radius: 1rem;
   margin-left: 10%;
   text-align: center;
-  padding: 2% 5%;
+  padding: 2% 5%; */
 }
 
 .input{
-  border-radius: 0.5rem;
+  @apply resize-none appearance-none block w-full border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500;
 }
 
 .label {
-    padding-bottom: 2%;
-    position: relative;
+  @apply block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2;
 }
 
 .submit{
-    padding: 1%;
-    background-color: #0e6eff;
-    color: #fff;
+  @apply mx-auto bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded;
 }
 
 .form {

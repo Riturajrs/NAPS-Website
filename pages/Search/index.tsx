@@ -36,10 +36,9 @@ export default function Search({blogData}:{blogData: apiData[]}){
   return <>
   <Head>
     <title>NAPS | Search</title>
-    <script async src="https://cse.google.com/cse.js?cx=04d4bdafbd30245b7"></script>
   </Head>
   <div className={styles.search}>
-    {/* <input className = {styles.input} placeholder = "Search" onInput={handleSearch} value={search}></input> */}
+    <input className = {styles.input} placeholder = "Search" onInput={handleSearch} value={search}></input>
     <div className="gcse-search"></div>
     <div className={styles.cardGrid}>
       {filteredData.map(blog=><Card category={blog.category} authorId={blog.author} author={blog.authorName} date={blog.createdAt} id={blog._id} summary={blog.summary} title={blog.title} image={blog.thumbnail} key={blog._id} />)}

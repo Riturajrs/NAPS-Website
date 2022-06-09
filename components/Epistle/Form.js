@@ -89,10 +89,8 @@ export default function Form () {
   }
   return (
     <div className={styles.main_form}>
-      <div className={styles.heading}>Add notice on Epistle</div>
-      <hr />
       <form
-        className={styles.form}
+        className={`${styles.form} my-24 flex flex-col w-full max-w-4xl mx-auto`}
         encType='multipart/form-data'
         onSubmit={submitHandler}
       >
