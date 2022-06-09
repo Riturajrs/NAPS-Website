@@ -27,7 +27,6 @@
 }
 .thumbnail img{
   object-fit: cover;
-  /* object-position: 0 80%; */
 }
 .errorContainer{
   display: flex;
@@ -47,5 +46,5 @@
   align-items: flex-start;
 }
 .content img{
-  @apply m-4 rounded-lg border border-slate-200 shadow-lg w-full;
+  @apply mx-auto rounded-lg border border-slate-200 shadow-lg w-full my-4;
 }

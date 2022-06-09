@@ -52,7 +52,7 @@ export default function Home({ data , noticeData}: { data: apiData[], noticeData
 					href="/Epistle"
 					passHref
 					>
-					<div className="flex items-center mx-auto cursor-pointer w-max text-red-500 font-bold text-center border-b-2 border-slate-800 text-2xl ">
+					<div className="flex items-center ml-2 cursor-pointer w-max text-red-500 font-bold text-center border-b-2 border-slate-800 text-2xl ">
 						Notices
 						<svg
 							className="ml-2 -mr-1 w-4 h-4"
