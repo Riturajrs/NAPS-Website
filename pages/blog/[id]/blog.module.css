@@ -47,5 +47,5 @@
   align-items: flex-start;
 }
 .content img{
-  @apply m-4 rounded-lg border border-slate-200 shadow-lg
+  @apply m-4 rounded-lg border border-slate-200 shadow-lg w-full;
 }
