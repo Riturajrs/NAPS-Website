@@ -1,39 +1,61 @@
-import Link from 'next/link'
-import styles1 from '../Epistle.module.css'
-import { useInView } from 'react-intersection-observer'
-
-export default function Section ({ DateAdded, body }) {
-  const animationOptions = {
-    threshold: 1
-  }
-  const [ref, inView] = useInView(animationOptions)
-  const { id, title, content, links } = body
-
+import Link from "next/link";
+import styles1 from "../Epistle.module.css";
+import { useInView } from "react-intersection-observer";
+import { useState, useEffect, useCallback } from "react";
+import { useCookies } from "react-cookie";
+import { fetchdata } from "./../useFetch";
+import { userInfo } from "os";
+export default function Section({ DateAdded, body, setReload }) {
+  const { _id, title, content, links } = body;
+  const [cookie, setCookie] = useCookies();
   return (
-    <div ref={ref} className={styles1.card}>
+    <div className={styles1.card}>
       <div className={styles1.cardBar}></div>
-      <div
-        className={styles1.cardContent}
-        style={inView ? { transform: 'scale(1.1)' } : { transform: 'scale(1)' }}
-      >
+      <div className={styles1.cardContent} style={{ transform: "scale(1)" }}>
         <div className={styles1.cardHeading}>{title}</div>
         <div className={styles1.cardText}>{content}</div>
         {links.length > 0 && (
           <div>
-            <br/>
+            <br />
             <div className={styles1.cardText}>
               Links:
-              {links.map(link => (
-                <div className={styles1.cardText}>
+              {links.map((link) => (
+                <div key={link} className={styles1.cardText}>
                   <Link href={link}>{link}</Link>
                 </div>
               ))}
             </div>
           </div>
         )}
-        <br/>
+        <br />
         <div className={styles1.cardText}>Date: {DateAdded}</div>
+        <div
+          className={
+            cookie.user
+              ? `${styles1.delete__button}`
+              : `${
+                  styles1.delete__button +
+                  " " +
+                  styles1.delete__button__inactive
+                }`
+          }
+          data-id={`${_id}`}
+          onClick={(e) => {
+            const url = `${process.env.NEXT_PUBLIC_APIBASE}/epistle/Notice/${e.target.dataset.id}`;
+            const sendDeleteRequest = async () => {
+              const response = await fetchdata(url, "DELETE", cookie);
+              if (response.status == "success") {
+                setReload((reload) => {
+                  return reload ? false : true;
+                });
+              }
+            };
+            sendDeleteRequest();
+          }}
+        >
+          Delete
+        </div>
       </div>
     </div>
-  )
+  );
 }
