@@ -68,7 +68,9 @@ export default function Blog({blogData}:{blogData: apiResponse}){
       </div>
       <div className="flex flex-row gap-2">
         {blogData.tags.map((tag)=><div key={tag} className="block uppercase tracking-wide text-gray-700 text-xs font-bold shadow-sm mb-2 bg-gray-200 p-4 rounded-md">
+            <Link href={`/blog/tag/${tag}`}>
             {tag}
+            </Link>
           </div>
         )}
       </div>
