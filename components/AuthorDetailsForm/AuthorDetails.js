@@ -28,7 +28,7 @@ const AuthorDetails = ()=>{
         async function prevDetails(id){
             try{
                 // fetch req to GET previous details of author
-                const response =  await fetch(`http://13.233.159.246:4000/api/v1/author/id/${id}`,{
+                const response =  await fetch(`${process.env.NEXT_PUBLIC_APIBASE}/author/id/${id}`,{
                     method: "GET",
                     headers: { "Content-Type": "application/json" },
                 });
@@ -73,7 +73,7 @@ const AuthorDetails = ()=>{
         setIsLoading(true);
         
         // upload to api
-        const res = await fetch(`http://13.233.159.246:4000/api/v1/image-upload`,{
+        const res = await fetch(`${process.env.NEXT_PUBLIC_APIBASE}/image-upload`,{
             method: "POST",
             body: fd
         })
@@ -101,7 +101,7 @@ const AuthorDetails = ()=>{
     // function ot update author details
     async function updateDetails(authorDetails){
         try{
-            const response = await fetch("http://13.233.159.246:4000/api/v1/author/id/62174ef80dd79cadf4cccec8",{
+            const response = await fetch(`${process.env.NEXT_PUBLIC_APIBASE}/author/id/62174ef80dd79cadf4cccec8`,{
                 method: "PATCH",
                 headers: {
                     "Content-type":"application/json", 

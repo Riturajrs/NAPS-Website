@@ -24,7 +24,7 @@
 }
 
 .card{
-  @apply grid grid-cols-2 h-full gap-4 border-2 border-slate-100 rounded-lg overflow-hidden hover:shadow-md transition-all;
+  @apply grid grid-cols-2 h-full gap-4 border-2 border-slate-100 rounded-lg overflow-hidden hover:shadow-md transition-all duration-200;
 }
 .card>div{
   @apply flex flex-col justify-center ;

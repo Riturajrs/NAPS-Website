@@ -66,7 +66,7 @@ export default function Blog({blogData}:{blogData: apiResponse}){
       <div className="block w-max tracking-wide text-slate-100 text-md font-bold mb-2 bg-slate-600 p-4 rounded-md shadow-md">
         {blogData.category}
       </div>
-      <div className="flex flex-row gap-2">
+      <div className="flex flex-row gap-2 flex-wrap">
         {blogData.tags.map((tag)=><div key={tag} className="block uppercase tracking-wide text-gray-700 text-xs font-bold shadow-sm mb-2 bg-gray-200 p-4 rounded-md">
             <Link href={`/blog/tag/${tag}`}>
             {tag}

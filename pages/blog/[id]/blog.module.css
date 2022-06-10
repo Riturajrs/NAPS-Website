@@ -48,3 +48,7 @@
 .content img{
   @apply mx-auto rounded-lg border border-slate-200 shadow-lg w-full my-4;
 }
+.content pre{
+  width: 100%;
+  white-space: pre-wrap;
+}

@@ -22,9 +22,11 @@ a {
 }
 ol{
   list-style: decimal;
+  margin-left: 2ch;
 }
 ul{
   list-style: disc;
+  margin-left: 2ch;
 }
 .tox-tinymce{
   margin-bottom: 1.5rem;
