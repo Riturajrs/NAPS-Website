@@ -206,10 +206,24 @@ export default function Edit({
 			failure(err);
 		}
 	}
+	const [sure,setSure] = useState(0);
+	const handleDelete = async()=>{
+		setSure(1);
+		if(sure == 1){
+			setLoading(true);
+			const res = await fetch(`${process.env.NEXT_PUBLIC_APIBASE}/blog/id/${blogData._id}`,{
+				method:"DELETE"
+			})
+			setLoading(false)
+			router.push("/Admin")
+		}else{
+			showModal("Click again to confirm", "Delete?")
+		}
+	}
 
 	if (blogData.message) {
 		return (
-			<div className={styles.editContainer}>Blog doesn{"'"}t exist</div>
+			<div className="my-24 m-8 text-red-600 text-lg font-semibold">Blog doesn{"'"}t exist</div>
 		);
 	}
 
@@ -348,6 +362,11 @@ export default function Edit({
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
 						onClick={handleSubmit}>
 						Submit
+					</button>
+					<button
+            className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+						onClick={handleDelete}>
+						Delete
 					</button>
 					{isLoading && (
 						<>

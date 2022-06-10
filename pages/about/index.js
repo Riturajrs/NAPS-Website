@@ -19,25 +19,19 @@ export default function AboutUs(){
     const [ref8, inView8] = useInView(animationOptions)
     
     return(
-        <div className={aboutStyles.aboutCtn}>
-            <div className={aboutStyles.about}>
-                <div className={aboutStyles.aboutCtn1}>
-                <div className={aboutStyles.aboutTxtCtn}>
-                    <div className={aboutStyles.aboutTxt+" "+aboutStyles.aboutTxt1}>About</div>
-                    <div className={aboutStyles.aboutTxt+" "+aboutStyles.aboutTxt2}>Us</div>
-                </div>
-                <p>
+        <div className="flex flex-col m-8 sm:mx-10 mb-16 md:mt-36 md:mx-24">
+            <div className="flex flex-col-reverse gap-4 md:flex-row mx-4 justify-around">
+                <div className="text-6xl sm:text-8xl font-bold gap-8 flex flex-col justify-center text-center">
+                    About Us
+                {/* <p className="text-lg font-normal">
                     Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                </p>
-                <button className={"text-white:font-bold bg-blue-700 text-white font-bold rounded py-2 px-4" + " " + aboutStyles.aboutBtn} >
-                    Read More
-                </button>
+                </p> */}
                 </div>
-                <div className={aboutStyles.aboutCtn2}>
-                    <Image src = {logo} alt={"Logo"} layout="intrinsic" />
+                <div className="relative h-48 w-full md:h-48 md:w-64">
+                    <Image src = {logo} alt={"Logo"} layout="fill" objectFit="contain" />
                 </div>
             </div>
-            <div className={aboutStyles.txt}>
+            <div className="m-4 my-12">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna 
             aliqua. Vulputate odio ut enim blandit volutpat maecenas volutpat blandit aliquam. Pulvinar elementum integer enim 
             neque. Diam ut venenatis tellus in metus vulputate eu scelerisque. Dis parturient montes nascetur ridiculus mus mauris 
@@ -45,16 +39,16 @@ export default function AboutUs(){
             ullamcorper a lacus vestibulum. Metus aliquam eleifend mi in nulla posuere sollicitudin. Euismod quis viverra nibh cras pulvinar mattis. Egestas diam in arcu cursus euismod quis viverra nibh cras.
             Praesent elementum facilisis leo vel fringilla est ullamcorper. Dignissim suspendisse in est ante in nibh mauris cursus. 
             </div>
-            <div className={aboutStyles.activities}>
-                <h1 className={aboutStyles.activitiesHeading}>What we do</h1>
+            <div className="mt-8">
+                <h1 className="mx-auto text-3xl font-bold text-center mb-8">What we do</h1>
                 <div ref={ref1} className={aboutStyles.card}>
                     <div className={aboutStyles.cardBar}>
                     </div>
-                    <div className={aboutStyles.cardContent} style={inView1?{transform: "scale(1.0)"}: {transform: "scale(0.9)"}}>
-                    <div className={aboutStyles.cardHeading}>
+                    <div className={`${aboutStyles.cardContent} ${inView1?"shadow-md":"shadow-sm"}`} style={inView1?{transform: "scale(1.0)"}: {transform: "scale(0.9)"}}>
+                    <div className="font-semibold text-xl">
                         Nisi officia sit eiusmod ad velit laboris ex ea pariatur irure exercitation Lorem.
                     </div>
-                    <div className={aboutStyles.cardText}>
+                    <div className="">
                         Do reprehenderit laborum cillum ad veniam do anim commodo culpa. Ullamco nisi veniam aute magna enim et. Eu dolore dolore Lorem cillum ad dolore sit officia. Laboris aliquip anim labore dolor est in ex laborum ut laborum nostrud do ut nostrud.
                     </div>
                     </div>
@@ -63,11 +57,11 @@ export default function AboutUs(){
                 <div ref={ref2} className={aboutStyles.card} >
                     <div className={aboutStyles.cardBar}>
                     </div>
-                    <div className={aboutStyles.cardContent} style={inView2?{transform: "scale(1.0)"}: {transform: "scale(0.9)"}}>
-                    <div className={aboutStyles.cardHeading}>
+                    <div className={`${aboutStyles.cardContent} ${inView2?"shadow-md":"shadow-sm"}`} style={inView2?{transform: "scale(1.0)"}: {transform: "scale(0.9)"}}>
+                    <div className="font-semibold text-xl">
                         Nisi officia sit eiusmod ad velit laboris ex ea pariatur irure exercitation Lorem.
                     </div>
-                    <div className={aboutStyles.cardText}>
+                    <div className="">
                         Do reprehenderit laborum cillum ad veniam do anim commodo culpa. Ullamco nisi veniam aute magna enim et. Eu dolore dolore Lorem cillum ad dolore sit officia. Laboris aliquip anim labore dolor est in ex laborum ut laborum nostrud do ut nostrud.
                     </div>
                     </div>
@@ -77,11 +71,11 @@ export default function AboutUs(){
                 <div ref={ref3} className={aboutStyles.card}>
                     <div className={aboutStyles.cardBar}>
                     </div>
-                    <div className={aboutStyles.cardContent} style={inView3?{transform: "scale(1.0)"}: {transform: "scale(0.9)"}}>
-                    <div className={aboutStyles.cardHeading}>
+                    <div className={`${aboutStyles.cardContent} ${inView3?"shadow-md": "shadow-sm"}`} style={inView3?{transform: "scale(1.0)"}: {transform: "scale(0.9)"}}>
+                    <div className="font-semibold text-xl">
                         Nisi officia sit eiusmod ad velit laboris ex ea pariatur irure exercitation Lorem.
                     </div>
-                    <div className={aboutStyles.cardText}>
+                    <div className="">
                         Do reprehenderit laborum cillum ad veniam do anim commodo culpa. Ullamco nisi veniam aute magna enim et. Eu dolore dolore Lorem cillum ad dolore sit officia. Laboris aliquip anim labore dolor est in ex laborum ut laborum nostrud do ut nostrud.
                     </div>
                     </div>
@@ -90,11 +84,11 @@ export default function AboutUs(){
                 <div ref={ref4} className={aboutStyles.card}>
                     <div className={aboutStyles.cardBar}>
                     </div>
-                    <div className={aboutStyles.cardContent} style={inView4?{transform: "scale(1.0)"}: {transform: "scale(0.9)"}}>
-                    <div className={aboutStyles.cardHeading}>
+                    <div className={`${aboutStyles.cardContent} ${inView4?"shadow-md": "shadow-sm"}`} style={inView4?{transform: "scale(1.0)"}: {transform: "scale(0.9)"}}>
+                    <div className="font-semibold text-xl">
                         Nisi officia sit eiusmod ad velit laboris ex ea pariatur irure exercitation Lorem.
                     </div>
-                    <div className={aboutStyles.cardText}>
+                    <div className="">
                         Do reprehenderit laborum cillum ad veniam do anim commodo culpa. Ullamco nisi veniam aute magna enim et. Eu dolore dolore Lorem cillum ad dolore sit officia. Laboris aliquip anim labore dolor est in ex laborum ut laborum nostrud do ut nostrud.
                     </div>
                     </div>
@@ -103,11 +97,11 @@ export default function AboutUs(){
                 <div ref={ref5} className={aboutStyles.card}>
                     <div className={aboutStyles.cardBar}>
                     </div>
-                    <div className={aboutStyles.cardContent} style={inView5?{transform: "scale(1.0)"}: {transform: "scale(0.9)"}}>
-                    <div className={aboutStyles.cardHeading}>
+                    <div className={`${aboutStyles.cardContent} ${inView5?"shadow-md": "shadow-sm"}`} style={inView5?{transform: "scale(1.0)"}: {transform: "scale(0.9)"}}>
+                    <div className="font-semibold text-xl">
                         Nisi officia sit eiusmod ad velit laboris ex ea pariatur irure exercitation Lorem.
                     </div>
-                    <div className={aboutStyles.cardText}>
+                    <div className="">
                         Do reprehenderit laborum cillum ad veniam do anim commodo culpa. Ullamco nisi veniam aute magna enim et. Eu dolore dolore Lorem cillum ad dolore sit officia. Laboris aliquip anim labore dolor est in ex laborum ut laborum nostrud do ut nostrud.
                     </div>
                     </div>
@@ -116,11 +110,11 @@ export default function AboutUs(){
                 <div ref={ref6} className={aboutStyles.card}>
                     <div className={aboutStyles.cardBar}>
                     </div>
-                    <div className={aboutStyles.cardContent} style={inView6?{transform: "scale(1.0)"}: {transform: "scale(0.9)"}}>
-                    <div className={aboutStyles.cardHeading}>
+                    <div className={`${aboutStyles.cardContent} ${inView6?"shadow-md": "shadow-sm"}`} style={inView6?{transform: "scale(1.0)"}: {transform: "scale(0.9)"}}>
+                    <div className="font-semibold text-xl">
                         Nisi officia sit eiusmod ad velit laboris ex ea pariatur irure exercitation Lorem.
                     </div>
-                    <div className={aboutStyles.cardText}>
+                    <div className="">
                         Do reprehenderit laborum cillum ad veniam do anim commodo culpa. Ullamco nisi veniam aute magna enim et. Eu dolore dolore Lorem cillum ad dolore sit officia. Laboris aliquip anim labore dolor est in ex laborum ut laborum nostrud do ut nostrud.
                     </div>
                     </div>
@@ -129,11 +123,11 @@ export default function AboutUs(){
                 <div ref={ref7} className={aboutStyles.card}>
                     <div className={aboutStyles.cardBar}>
                     </div>
-                    <div className={aboutStyles.cardContent} style={inView7?{transform: "scale(1.0)"}: {transform: "scale(0.9)"}}>
-                    <div className={aboutStyles.cardHeading}>
+                    <div className={`${aboutStyles.cardContent} ${inView7?"shadow-md": "shadow-sm"}`} style={inView7?{transform: "scale(1.0)"}: {transform: "scale(0.9)"}}>
+                    <div className="font-semibold text-xl">
                         Nisi officia sit eiusmod ad velit laboris ex ea pariatur irure exercitation Lorem.
                     </div>
-                    <div className={aboutStyles.cardText}>
+                    <div className="">
                         Do reprehenderit laborum cillum ad veniam do anim commodo culpa. Ullamco nisi veniam aute magna enim et. Eu dolore dolore Lorem cillum ad dolore sit officia. Laboris aliquip anim labore dolor est in ex laborum ut laborum nostrud do ut nostrud.
                     </div>
                     </div>
@@ -142,11 +136,11 @@ export default function AboutUs(){
                 <div ref={ref8} className={aboutStyles.card}>
                     <div className={aboutStyles.cardBar}>
                     </div>
-                    <div className={aboutStyles.cardContent} style={inView8?{transform: "scale(1.0)"}: {transform: "scale(0.9)"}}>
-                    <div className={aboutStyles.cardHeading}>
+                    <div className={`${aboutStyles.cardContent} ${inView8?"shadow-md": "shadow-sm"}`} style={inView8?{transform: "scale(1.0)"}: {transform: "scale(0.9)"}}>
+                    <div className="font-semibold text-xl">
                         Nisi officia sit eiusmod ad velit laboris ex ea pariatur irure exercitation Lorem.
                     </div>
-                    <div className={aboutStyles.cardText}>
+                    <div className="">
                         Do reprehenderit laborum cillum ad veniam do anim commodo culpa. Ullamco nisi veniam aute magna enim et. Eu dolore dolore Lorem cillum ad dolore sit officia. Laboris aliquip anim labore dolor est in ex laborum ut laborum nostrud do ut nostrud.
                     </div>
                     </div>

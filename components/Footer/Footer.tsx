@@ -10,7 +10,7 @@ export default function Footer(){
   return (
     <div className="lg:px-20 sm:px-12 px-10 m-2 rounded-lg shadow-[0_-1px_6px_1px_rgba(0,0,0,0.04)] border-gray-100 border p-2">
       <div className="">
-        <div className="flex flex-row justify-between">
+        <div className="flex flex-col justify-between sm:flex-row">
         <div className="flex text-sm sm:text-base flex-row justify-center w-max mx-auto sm:mx-0 sm:w-auto">
           <div className="hover:bg-slate-200 transition-all duration-200 rounded-md px-2 py-1 font-medium cursor-pointer">
             <Link  href="/">Home</Link>
@@ -28,7 +28,7 @@ export default function Footer(){
           <Link  href="/Search">Search</Link>
           </div>
         </div>
-        <div className="sm:block hidden cursor-pointer">
+        <div className="flex justify-center sm:justify-end cursor-pointer">
           <Image src={InstaLogo} alt="Instagram" className={styles.connectItem} layout="intrinsic" />
           <Image src={LinkedinLogo} alt="LinkedIn" className={styles.connectItem} layout="intrinsic" />
           <Image src={FacebookLogo} alt="Facebook" className={styles.connectItem} layout="intrinsic" />
