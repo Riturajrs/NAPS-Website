@@ -214,7 +214,7 @@ export default function Edit({
 	}
 
 	return (
-		<div className="my-24 flex flex-col w-full max-w-4xl mx-auto">
+		<div className="my-24 flex flex-col m-8 w-auto sm:mx-auto">
 			{isModal != "false" && (
 				<MODAL
 					heading={isModal}

@@ -39,7 +39,7 @@ export default function Card({
 	var yyyy = dateToFormat.getFullYear();
 	const showableDate = dd + "/" + mm + "/" + yyyy;
 	return (
-		<div className="max-w-lg w-full mx-auto hover:shadow-md transition-all bg-white rounded-lg border border-gray-100 shadow-sm dark:bg-gray-800 dark:border-gray-700">
+		<div className="max-w-lg w-full mx-auto hover:shadow-md transition-all duration-200 bg-white rounded-lg border border-gray-100 shadow-sm dark:bg-gray-800 dark:border-gray-700">
 			<Link passHref href={`/blog/${id}`}>
 				<div className={`${styles.imageContainer} cursor-pointer rounded-t-lg relative h-80 w-full`}>
 					<Image

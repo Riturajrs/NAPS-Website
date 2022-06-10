@@ -50,7 +50,7 @@
   justify-content: center;
   transition: transform 1s;
   width: 100%;
-  @apply shadow-md border-2 border-slate-100 rounded-lg;
+  @apply shadow-sm hover:shadow-md transition-all duration-200 border border-slate-100 rounded-lg;
 }
 
 .container {
@@ -112,7 +112,7 @@
   font-weight: 500;
   cursor: pointer;
   transition: all 0.2s;
-  @apply bg-amber-200 w-max px-2 py-1 my-2 rounded-md border-2 border border-amber-400 hover:bg-red-400 hover:border-red-600;
+  @apply w-max px-2 py-1 my-2 rounded-md border border-red-500 bg-red-400 hover:text-white hover:bg-red-800 hover:border-red-900;
 }
 .delete__button:active {
   transform: translateY(0.5rem);

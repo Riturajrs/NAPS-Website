@@ -46,7 +46,7 @@ const SignUp = ()=>{
           desc: "NAPS Author",
           rollNum: newUserDetails.rollNum,
         }
-        let response = await fetch(`http://13.233.159.246:4000/api/v1/author`,{
+        let response = await fetch(`${process.env.NEXT_PUBLIC_APIBASE}/author`,{
           method: "POST",
           headers: {
             "Content-Type": "application/json", "authorization": `Bearer: ${cookie.user}`
@@ -71,7 +71,7 @@ const SignUp = ()=>{
           // console.log(cookie.user)
           
           // create new user 
-          response = await fetch(`http://13.233.159.246:4000/api/v1/users/signUp`, {
+          response = await fetch(`${process.env.NEXT_PUBLIC_APIBASE}/users/signUp`, {
             credentials: "include",
             method: "POST",
             headers: { "Content-Type": "application/json","authorization": `Bearer: ${cookie.user}` },

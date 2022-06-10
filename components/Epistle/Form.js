@@ -26,7 +26,7 @@ export default function Form () {
     // console.log(content)
     try {
       const response = await fetch(
-        `http://13.233.159.246:4000/api/v1/epistle/newNotice`,
+        `${process.env.NEXT_PUBLIC_APIBASE}/epistle/newNotice`,
         {
           method: 'POST',
           body: JSON.stringify({
@@ -58,7 +58,7 @@ export default function Form () {
     // loader will appear till file not deleted
     setIsLoading(true);
     const res = await fetch(
-      `http://13.233.159.246:4000/api/v1/epistle/deleteFile/${fileDeleted.fileName}`,
+      `${process.env.NEXT_PUBLIC_APIBASE}/epistle/deleteFile/${fileDeleted.fileName}`,
       {
         method: 'DELETE',
         headers: { Authorization: 'Bearer ' + cookie.user }
@@ -76,7 +76,7 @@ export default function Form () {
     // loader will appear till file is uploaded
     setIsLoading(true);
 
-    const res = await fetch(`http://13.233.159.246:4000/api/v1/epistle/uploadFile`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_APIBASE}/epistle/uploadFile`, {
       method: 'POST',
       headers: { Authorization: 'Bearer ' + cookie.user },
       body: fd

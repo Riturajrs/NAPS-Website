@@ -18,7 +18,6 @@ type apiData = {
   authorName: string
 }
 export default function Search({blogData}:{blogData: apiData[]}){
-  const tags = ["", "tag1", "tag2", "tag3", "tag4"]
   const [filteredData, setFilteredData] = useState(blogData);
   const [search, setSearch] = useState("");
   const handleSearch = (e)=>{
@@ -29,7 +28,8 @@ export default function Search({blogData}:{blogData: apiData[]}){
       const categoryMatch = blog.category.toLowerCase().includes(term) 
       const summMatch = blog.summary.toLowerCase().includes(term)
       const titleMatch = blog.title.toLowerCase().includes(term)
-      return (tagMatch || categoryMatch || summMatch || titleMatch);
+      const authorMatch = blog.authorName.toLowerCase().includes(term)
+      return (tagMatch || categoryMatch || summMatch || titleMatch || authorMatch);
     })
     setFilteredData(tempFilter)
   }
@@ -38,7 +38,7 @@ export default function Search({blogData}:{blogData: apiData[]}){
     <title>NAPS | Search</title>
   </Head>
   <div className={styles.search}>
-    <input className = {styles.input} placeholder = "Search" onInput={handleSearch} value={search}></input>
+    <input className = "appearance-none block w-full border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" placeholder = "Search" onInput={handleSearch} value={search}></input>
     <div className="gcse-search"></div>
     <div className={styles.cardGrid}>
       {filteredData.map(blog=><Card category={blog.category} authorId={blog.author} author={blog.authorName} date={blog.createdAt} id={blog._id} summary={blog.summary} title={blog.title} image={blog.thumbnail} key={blog._id} />)}

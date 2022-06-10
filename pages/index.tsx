@@ -68,7 +68,7 @@ export default function Home({ data , noticeData}: { data: apiData[], noticeData
 					</Link>
 					{noticeData.slice(0,2).map((notice, index) => (
 						<div
-							className="border shadow-sm rounded-lg mx-auto hover:shadow-md transition-all my-4 p-4 border-slate-100"
+							className="border shadow-sm rounded-lg mx-auto hover:shadow-md transition-all duration-200 my-4 p-4 border-slate-100"
 							key={index}>
 							<div className="font-bold text-slate-800 text-lg">
 								{notice.title}
@@ -121,7 +121,7 @@ export default function Home({ data , noticeData}: { data: apiData[], noticeData
 					</div>
 				</div>
 			</div>
-			<div className="border-y-2 border-x-0 border-slate-900 font-extrabold p-4 w-full my-20 text-2xl text-center">New Posts</div>
+			<div className="shadow-sm rounded-lg border-2 border-slate-100 font-extrabold p-4 w-full my-20 text-2xl text-center">New Posts</div>
 			<div className={styles.cardGrid}>
 				{newBlogs.map((blog) => (
 					<Card
