@@ -8,7 +8,8 @@ type input = {
 	author: string,
 	date: string,
 	image?: string,
-	authorId: string
+	authorId: string,
+	category: string
 };
 export default function Card({
 	title,
@@ -17,7 +18,8 @@ export default function Card({
 	date,
 	image,
 	id,
-	authorId
+	authorId,
+	category
 }: input) {
 	const isValidURL = (url: string) => {
 		var pattern = new RegExp(
@@ -37,7 +39,7 @@ export default function Card({
 	var yyyy = dateToFormat.getFullYear();
 	const showableDate = dd + "/" + mm + "/" + yyyy;
 	return (
-		<div className="max-w-lg w-full mx-auto bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+		<div className="max-w-lg w-full mx-auto hover:shadow-md transition-all bg-white rounded-lg border border-gray-100 shadow-sm dark:bg-gray-800 dark:border-gray-700">
 			<Link passHref href={`/blog/${id}`}>
 				<div className={`${styles.imageContainer} cursor-pointer rounded-t-lg relative h-80 w-full`}>
 					<Image
@@ -58,6 +60,9 @@ export default function Card({
 						{title}
 					</h5>
 				</Link>
+					<h6 className="font-medium text-gray-800 dark:text-white">
+						{category}
+					</h6>
 				<Link passHref href={`/Author/${authorId}`}>
 					<div className="mb-2 cursor-pointer text-md font-light tracking-tight text-gray-900 dark:text-white">
 						- {author} at {showableDate}
@@ -69,7 +74,7 @@ export default function Card({
 				<Link
 					href={`/blog/${id}`}
 					passHref>
-					<div className="mx-auto inline-flex cursor-pointer self-end items-center py-2 px-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" >
+					<div className="mx-auto inline-flex cursor-pointer self-end items-center py-2 px-3 text-sm font-medium text-center text-white bg-slate-700 rounded-lg hover:bg-slate-800 focus:ring-4 focus:outline-none focus:ring-blue-300 " >
 					Read more
 					<svg
 						className="ml-2 -mr-1 w-4 h-4"

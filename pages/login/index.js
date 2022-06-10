@@ -45,8 +45,8 @@ const Login = () => {
       else {
         const data = await response.json();
         const cookie = data.token;
-        console.log(data);
-        console.log(data.data.user);
+        // console.log(data);
+        // console.log(data.data.user);
         
         // set jwt token as cookie 
         // to create session
@@ -65,7 +65,7 @@ const Login = () => {
         });
       }
     } catch (err) {
-      console.log(err);
+      // console.log(err);
     }
     setIsLoading(false);
   }
@@ -76,19 +76,19 @@ const Login = () => {
       rollNum: rollNum,
       password: pwd,
     };
-    console.log(loginDetails);
+    // console.log(loginDetails);
     loginReq(loginDetails);
   }
 
   function handleRollNum(e) {
     const newValue = e.target.value;
-    console.log(newValue);
+    // console.log(newValue);
     setRollNum(newValue);
   }
 
   function handlePwd(e) {
     const newValue = e.target.value;
-    console.log(newValue);
+    // console.log(newValue);
     setPwd(newValue);
   }
 

@@ -52,7 +52,7 @@ export default function Blog({blogData}:{blogData: apiResponse}){
       <Head>
         <title>{blogData.title} | NAPS</title>
       </Head>
-    <div className={styles.blogContainer}>
+    <div className={`${styles.blogContainer} p-5 my-5 container mx-auto`}>
       <div className={styles.title}>{blogData.title}</div>
       <div className={styles.author}>
         <Link href={`/Author/${blogData.author}`}>
@@ -60,17 +60,19 @@ export default function Blog({blogData}:{blogData: apiResponse}){
         </Link>
       {` at ${showableDate}`}
       </div>
-      <div className={styles.category}>
+      <div className={`${styles.thumbnail} relative rounded-lg border border-slate-200 shadow-sm overflow-hidden`}>
+        <Image src={isValidURL(blogData.thumbnail)?blogData.thumbnail:"https://images.unsplash.com/photo-1653031419232-c3c7c7eba0cd?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470"} alt="news-image" layout="fill"/>
+      </div>
+      <div className="block w-max tracking-wide text-slate-100 text-md font-bold mb-2 bg-slate-600 p-4 rounded-md shadow-md">
         {blogData.category}
       </div>
-      <div className={styles.tags}>
-        {blogData.tags.map((tag)=><div key={tag} className={styles.tag}>
+      <div className="flex flex-row gap-2">
+        {blogData.tags.map((tag)=><div key={tag} className="block uppercase tracking-wide text-gray-700 text-xs font-bold shadow-sm mb-2 bg-gray-200 p-4 rounded-md">
+            <Link href={`/blog/tag/${tag}`}>
             {tag}
+            </Link>
           </div>
         )}
-      </div>
-      <div className={styles.thumbnail}>
-        <Image src={isValidURL(blogData.thumbnail)?blogData.thumbnail:"https://images.unsplash.com/photo-1653031419232-c3c7c7eba0cd?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470"} alt="news-image" layout="fill"/>
       </div>
       <div className={styles.content} dangerouslySetInnerHTML={{
         __html: blogData.content.replace(/%2F/gi, "/"),

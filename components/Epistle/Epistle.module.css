@@ -19,10 +19,7 @@
 }
 
 .cardBar {
-  width: 20px;
-  background: rgb(75, 75, 165);
-  height: inherit;
-  margin-left: 0%;
+  width: 0px;
 }
 .card {
   display: flex;
@@ -38,17 +35,22 @@
 .cardText {
   font-weight: 400;
 }
+.cardText a{
+  @apply text-blue-600;
+}
+.cardText a:visited{
+  @apply text-blue-900;
+}
 .cardContent {
   display: flex;
   flex-direction: column;
-  border: 2px solid rgb(75, 75, 165);
-  box-shadow: 0 1rem 1rem rgb(32, 31, 31);
   padding: 2% 5%;
   min-height: 30vh;
   margin-bottom: 4%;
   justify-content: center;
   transition: transform 1s;
   width: 100%;
+  @apply shadow-md border-2 border-slate-100 rounded-lg;
 }
 
 .container {
@@ -58,11 +60,11 @@
   width: 100%;
 }
 .container__heading {
-  margin-left: 6.2rem;
   margin-bottom: 2rem;
   font-weight: 500;
   font-size: 200%;
   text-transform: uppercase;
+  @apply mx-auto;
 }
 .container__notices {
   width: 100%;
@@ -82,39 +84,35 @@
 .page__container__box {
   height: 2.5rem;
   width: 2.5rem;
-  border: 0.2rem solid rgb(75, 75, 165);
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 0.5rem;
   cursor: pointer;
   transition: all 0.25s;
+  @apply border-2 rounded-md bg-slate-200 border-slate-800;
 }
 
 .page__container__box:hover {
-  background-color: rgb(115, 107, 107);
   color: white;
+  @apply bg-slate-500;
 }
 .page__container__box:active {
   transform: translateY(0.5rem);
 }
 .page__container__box__active {
-  background-color: black;
   color: white;
+  @apply bg-slate-800;
 }
 .delete__button {
-  margin-top: 1rem;
-  height: 2rem;
-  width: 6rem;
-  border: 0.2rem solid;
   display: flex;
   align-items: center;
   justify-content: center;
   text-transform: uppercase;
   font-weight: 500;
   cursor: pointer;
-  background-color: rgb(249, 54, 54);
   transition: all 0.2s;
+  @apply bg-amber-200 w-max px-2 py-1 my-2 rounded-md border-2 border border-amber-400 hover:bg-red-400 hover:border-red-600;
 }
 .delete__button:active {
   transform: translateY(0.5rem);
