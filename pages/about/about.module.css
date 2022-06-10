@@ -1,68 +1,7 @@
-.aboutCtn{
-    display:grid;   
-    padding: 2% 5%;
-}
 
-.about{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    min-height: 80vh;
-}
-
-.aboutTxt{
-    font-size: 7rem;
-    font-weight: 700;
-}
-
-.aboutTxt1{
-    margin-bottom: -20px;
-}
-
-.aboutTxt2{
-    margin-top: -20px;
-}
-
-.aboutTxtCtn{
-    display: grid;
-    grid-template-rows: 1fr 1fr;
-}
-
-.aboutCtn1{
-    align-self: center;
-    display: grid;
-    row-gap: 3vh;
-    justify-self: center;
-}
-
-.aboutCtn2{
-    display: grid;
-    justify-items: center;
-    align-items: center;
-}
-
-.break{
-    width: 100%;
-    height: 10px;
-}
-
-.aboutBtn{
-    justify-self: start;
-}
-
-.activities {
-    margin-top: 5%;
-}
-.activitiesHeading {
-    font-size: 3.5rem;
-    font-weight: 600;
-    text-align: center;
-    margin-bottom: 4%;
-}
 .cardBar{
-    width: 20px;
-    background: rgb(75, 75, 165);
     height: inherit;
-    margin-left: 5%;
+    @apply bg-slate-200 w-8 md:w-4;
 }
 .card {
     display: flex;
@@ -70,21 +9,10 @@
     gap: 5%;
     justify-content: center;
 }
-.cardHeading {
-    font-size: 1.4rem;
-    font-weight: 600;
-    padding-bottom: 1%;
-}
-.cardText {
-    font-weight: 400;
-}
 .cardContent{
     display: flex;
     flex-direction: column;
-    border: 2px solid rgb(75, 75, 165);
-    padding: 2% 5%;
     min-height: 30vh;
-    margin-bottom: 4%;
     justify-content: center;
-    transition: transform 1s;
+    @apply border border-slate-100 rounded-lg my-4 transition-all duration-500 ease-in-out p-4;
 }
