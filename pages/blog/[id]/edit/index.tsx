@@ -109,7 +109,13 @@ export default function Edit({
 			}
 		);
 		const Data = await res.json();
-		setThumbnail(Data.data.URL);
+		if(Data.data && Data.data.URL){
+			setThumbnail(Data.data.URL);
+		}else{
+			showModal(Data.message)
+			setThumbnail(thumbnail)
+		}
+
 	}
 	//  Submit Handler
 	const showModal = (message, heading = "Error") => {

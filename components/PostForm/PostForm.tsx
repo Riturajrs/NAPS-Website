@@ -68,7 +68,12 @@ export default function PostForm({ data }) {
 			}
 		);
 		const Data = await res.json();
-		setThumbnail(Data.data.URL);
+		if(Data.data && Data.data.URL){
+			setThumbnail(Data.data.URL);
+		}else{
+			showModal(Data.message)
+			setThumbnail("")
+		}
 	}
 	//  Submit Handler
 	const showModal = (message, heading = "Error") => {
