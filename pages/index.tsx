@@ -66,7 +66,7 @@ export default function Home({ data , noticeData}: { data: apiData[], noticeData
 						</svg>
 					</div>
 					</Link>
-					{noticeData.slice(0,2).map((notice, index) => (
+					{noticeData.slice(0,3).map((notice, index) => (
 						<div
 							className="border shadow-sm rounded-lg mx-auto hover:shadow-md transition-all duration-200 my-4 p-4 border-slate-100"
 							key={index}>

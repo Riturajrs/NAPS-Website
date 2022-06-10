@@ -8,7 +8,7 @@ import Link from "next/link"
 
 export default function Footer(){
   return (
-    <div className="lg:mx-16 sm:mx-8 mx-6 m-2 rounded-lg shadow-md border-gray-200 p-2 px-4">
+    <div className="lg:px-20 sm:px-12 px-10 m-2 rounded-lg shadow-[0_-1px_6px_1px_rgba(0,0,0,0.04)] border-gray-100 border p-2">
       <div className="">
         <div className="flex flex-row justify-between">
         <div className="flex text-sm sm:text-base flex-row justify-center w-max mx-auto sm:mx-0 sm:w-auto">

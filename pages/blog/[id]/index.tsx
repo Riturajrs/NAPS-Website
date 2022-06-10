@@ -52,7 +52,7 @@ export default function Blog({blogData}:{blogData: apiResponse}){
       <Head>
         <title>{blogData.title} | NAPS</title>
       </Head>
-    <div className={`${styles.blogContainer} p-5 my-5 container mx-auto`}>
+    <div className={`${styles.blogContainer} p-8 sm:px-16 md:px-24 lg:px-32 xl:px-40 2xl:px-48 my-5 mx-auto`}>
       <div className={styles.title}>{blogData.title}</div>
       <div className={styles.author}>
         <Link href={`/Author/${blogData.author}`}>
