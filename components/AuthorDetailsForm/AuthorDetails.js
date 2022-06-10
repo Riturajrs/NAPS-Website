@@ -5,15 +5,25 @@ import Image from 'next/image';
 import { useRouter } from "next/router";
 import { useCookies } from "react-cookie";
 import Loader from "../Loader/Loader";
-// import authorImg from "/../public/default.png";
+import authorImg from "../../public/default.png";
+import MODAL from "../Modal/Modal";
 
 const AuthorDetails = ()=>{
 
     // State vars-----------------------------------
     const [name,setName] = useState("");
     const [description,setDescription] = useState("");
-    const [image,setImage] = useState(`/../public/default.png`);
+    const [image,setImage] = useState(authorImg);
     const [reload,setReload] = useState(false);
+
+    // modal heading
+    const[heading,setHeading] = useState("");
+    // modal message
+    const[message,setMessage] = useState("");
+    // shows modal when true 
+    const[showModal,setShowModal] = useState(false);
+
+    // checks if data is being uploaded to server
     const [isLoading,setIsLoading] = useState(false);
 
     // cookies object to access all cookies
@@ -100,65 +110,88 @@ const AuthorDetails = ()=>{
 
     // function ot update author details
     async function updateDetails(authorDetails){
+
+        // loader will appear until data is being uploaded to server
+        setIsLoading(true);
+
         try{
-            const response = await fetch(`${process.env.NEXT_PUBLIC_APIBASE}/author/id/62174ef80dd79cadf4cccec8`,{
+            const response = await fetch(`http://13.233.159.246:4000/api/v1/author/id/${cookies.authorId}`,{
                 method: "PATCH",
                 headers: {
                     "Content-type":"application/json", 
                 },
                 body: JSON.stringify(authorDetails),
             });
+
+        
             const data = await response.json();
+            
+            // modal appears to show response
+            if(response.status === 500){
+                setHeading("Failed");
+                setMessage(data.message);
+                setShowModal(true);
+            }
+            else{
+                setHeading("Success");
+                setMessage("Details succesfully updated");
+                setShowModal(true);
+            }
             // console.log(data);
             // setReload(true);
         } catch(err){
             // console.log(err);
         }
+
+        setIsLoading(false);
     }
 
     return(
-        <div className={styles.formContainer}>
-            <form onSubmit={handleSubmit} className="my-24 w-full max-w-4xl mx-auto">
-                <div className="flex flex-wrap -mx-3 mb-6">
-                    <div className="w-full px-3">
-                    <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-post-date">
-                        NAME
-                    </label>
-                    <input value={name} onChange={handleName} className="appearance-none block w-full border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="text" id="grid-post-date" placeholder="Full Name" />
+        <>
+            {showModal && <MODAL heading={heading} message={message} changeState={setShowModal}/>}
+            <div className={styles.formContainer}>
+                <form onSubmit={handleSubmit} className="my-24 w-full max-w-4xl mx-auto">
+                    <div className="flex flex-wrap -mx-3 mb-6">
+                        <div className="w-full px-3">
+                        <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-post-date">
+                            NAME
+                        </label>
+                        <input value={name} onChange={handleName} className="appearance-none block w-full border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="text" id="grid-post-date" placeholder="Full Name" />
+                        </div>
                     </div>
-                </div>
 
-                <div className="flex flex-wrap -mx-3 mb-6">
-                    <div className="w-full px-3">
-                    <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-caption">
-                        DESCRIPTION
-                    </label>
-                    <textarea value={description} onChange={handleDescription} className="appearance-none block w-full border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-caption" placeholder="Description" />
+                    <div className="flex flex-wrap -mx-3 mb-6">
+                        <div className="w-full px-3">
+                        <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-caption">
+                            DESCRIPTION
+                        </label>
+                        <textarea value={description} onChange={handleDescription} className="appearance-none block w-full border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-caption" placeholder="Description" />
+                        </div>
                     </div>
-                </div>
 
-                <div className={"flex flex-wrap justify-center" + " " + styles.imgContainer}>
-                    <Image src={image} onChange={handleImage} className="p-1 bg-white border rounded max-w-sm" alt="..." layout="fill" />
-                </div>
-
-                <div className="flex flex-wrap -mx-3 mb-6">
-                    <div className="w-full px-3">
-                    <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-thumbnail">
-                        IMAGE
-                    </label>
-                    <input onChange={handleImage} className="appearance-none block w-full border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-thumbnail" type="file" placeholder="Upload Image here" />
+                    <div className={"flex flex-wrap justify-center" + " " + styles.imgContainer}>
+                        <Image src={image} onChange={handleImage} className="p-1 bg-white border rounded max-w-sm" alt="..." layout="fill" />
                     </div>
-                </div>
 
-                <div className={styles.formFooter}>
-                    <button type="submit" className="mx-auto bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                        Submit
-                    </button>
-                    {isLoading && <Loader />}
-                </div>
+                    <div className="flex flex-wrap -mx-3 mb-6">
+                        <div className="w-full px-3">
+                        <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-thumbnail">
+                            IMAGE
+                        </label>
+                        <input onChange={handleImage} className="appearance-none block w-full border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-thumbnail" type="file" placeholder="Upload Image here" />
+                        </div>
+                    </div>
 
-            </form>
-        </div>
+                    <div className={styles.formFooter}>
+                        <button type="submit" className="mx-auto bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                            Submit
+                        </button>
+                        {isLoading && <Loader />}
+                    </div>
+
+                </form>
+            </div>
+        </>
     )
 }
 
