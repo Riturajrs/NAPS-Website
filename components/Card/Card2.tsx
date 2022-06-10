@@ -25,8 +25,9 @@ export default function Card({ _id, name, photo, desc, tags }: input) {
   }
   return (
     <div className='max-w-lg w-2/3 hover:shadow-md transition-all duration-200 mx-auto bg-white rounded-lg border border-gray-100 shadow-sm dark:bg-gray-800 dark:border-gray-700'>
+			<Link passHref href={`/Author/${_id}`}>
       <div
-        className={`${styles.imageContainer} cursor-pointer rounded-t-lg relative h-80 w-full`}
+        className={`${styles.imageContainerAuthor} cursor-pointer rounded-t-lg relative h-80 w-full`}
       >
         <Image
           layout='fill'
@@ -39,19 +40,20 @@ export default function Card({ _id, name, photo, desc, tags }: input) {
           alt='Author image'
         />
       </div>
+      </Link>
       <div className='p-5 flex flex-col '>
         <Link href={`Author/${_id}`} passHref>
           <h5 className='mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white text-center cursor-pointer'>
             {name}
           </h5>
         </Link>
-        <p className='mb-3 font-normal text-gray-700 dark:text-gray-400 text-center cursor-pointer'>
+        <p className='mb-3 font-normal text-gray-700 dark:text-gray-400 text-center'>
           {desc}
         </p>
         <div className={styles.tags}>
           {tags.length > 0 && <p className='text-extralight'>Tags: </p>}
           {tags.map((tag) => (
-            <Link href={`blog/tag/${tag}`} passHref>
+            <Link key={tag} href={`blog/tag/${tag}`} passHref>
               <button className='bg-slate-100 hover:bg-slate-300 text-white-700 transition-all duration-200 py-1 px-2 border border-slate-300 rounded-md m-1'>
                 {tag}
               </button>
