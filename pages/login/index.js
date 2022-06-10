@@ -106,7 +106,7 @@ const Login = () => {
     {/* if incorrect login details, modal will appear */}
     {showModal && <MODAL heading={"Login Failed"} message={"Incorrect Username or Password"} changeState={setShowModal} />}
     
-    <div className="w-max mx-auto mt-4">
+    <div className="w-max mx-auto my-40">
       <div className="w-full max-w-xs">
         <form
           onSubmit={handleSubmit}
