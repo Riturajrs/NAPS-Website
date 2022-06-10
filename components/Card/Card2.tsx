@@ -1,13 +1,16 @@
 import styles from './styles.module.css'
 import Image from 'next/image'
 import Link from 'next/link'
+import { GetStaticPaths, GetStaticProps } from 'next'
 type input = {
+  _id: string
   name: string
   photo: string
   desc: string
-  rollNum: string
+  tags: string[]
 }
-export default function Card({ name, photo, desc, rollNum }: input) {
+
+export default function Card({ _id, name, photo, desc, tags }: input) {
   const isValidURL = (url: string) => {
     var pattern = new RegExp(
       '^(https?:\\/\\/)?' + // protocol
@@ -21,7 +24,7 @@ export default function Card({ name, photo, desc, rollNum }: input) {
     return !!pattern.test(url)
   }
   return (
-    <div className='max-w-lg w-full mx-auto bg-white rounded-lg border border-gray-100 shadow-sm dark:bg-gray-800 dark:border-gray-700'>
+    <div className='max-w-lg w-2/3 hover:shadow-md transition-all duration-200 mx-auto bg-white rounded-lg border border-gray-100 shadow-sm dark:bg-gray-800 dark:border-gray-700'>
       <div
         className={`${styles.imageContainer} cursor-pointer rounded-t-lg relative h-80 w-full`}
       >
@@ -33,16 +36,28 @@ export default function Card({ name, photo, desc, rollNum }: input) {
               ? photo
               : 'https://images.unsplash.com/photo-1653031419232-c3c7c7eba0cd?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470'
           }
-          alt='blog image'
+          alt='Author image'
         />
       </div>
-      <div className='p-5 flex flex-col'>
-        <h5 className='cursor-pointer mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white'>
-          {name}
-        </h5>
-        <p className='mb-3 font-normal text-gray-700 dark:text-gray-400'>
+      <div className='p-5 flex flex-col '>
+        <Link href={`Author/${_id}`} passHref>
+          <h5 className='mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white text-center cursor-pointer'>
+            {name}
+          </h5>
+        </Link>
+        <p className='mb-3 font-normal text-gray-700 dark:text-gray-400 text-center cursor-pointer'>
           {desc}
         </p>
+        <div className={styles.tags}>
+          {tags.length > 0 && <p className='text-extralight'>Tags: </p>}
+          {tags.map((tag) => (
+            <Link href={`blog/tag/${tag}`} passHref>
+              <button className='bg-slate-100 hover:bg-slate-300 text-white-700 transition-all duration-200 py-1 px-2 border border-slate-300 rounded-md m-1'>
+                {tag}
+              </button>
+            </Link>
+          ))}
+        </div>
       </div>
     </div>
   )

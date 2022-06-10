@@ -34,7 +34,7 @@ export default function Author({ authorData }: { authorData: apiResponse }) {
     return (
       <div className={styles.errorContainer}>
         <Head>
-          <title>Blog Not Found | NAPS</title>
+          <title>Author Not Found | NAPS</title>
         </Head>
         <div className={styles.errorHeading}>Invalid URL</div>
         error message -
@@ -82,9 +82,12 @@ export default function Author({ authorData }: { authorData: apiResponse }) {
           <br></br>
           <p className={styles.descp}>{authorData.desc}</p>
           <br></br>
-          <div className={styles.tags}>
+          <div className={`${styles.tags} `}>
             {authorData.tags.map((tag) => (
-              <div key={tag} className={styles.tag}>
+              <div
+                key={tag}
+                className='bg-slate-100 hover:bg-slate-300 text-white-700 cursor-pointer transition-all duration-200 py-1 px-2 border border-slate-300 rounded-md m-1'
+              >
                 {tag}
               </div>
             ))}
