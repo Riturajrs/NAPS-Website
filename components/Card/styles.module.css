@@ -1,8 +1,23 @@
-.imageContainer img{
+.new {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  row-gap: 3vh;
+  column-gap: 2%;
+}
+.imageContainer img {
   object-fit: cover;
   transition: transform 400ms ease-in-out;
 }
-.imageContainer:hover img{
+.imageContainer:hover img {
   /* object-fit: contain; */
   transform: scale(0.9);
+}
+.tags {
+  display: flex;
+  flex-direction: row;
+  gap: 0.4ch;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  @apply mx-2;
 }

@@ -24,10 +24,11 @@ export default function Author({ authorData }: { authorData: apiResponse[] }) {
       <div className={styles.cardGrid}>
         {authorData.map((author) => (
           <Card2
+            _id={author._id}
             name={author.name}
             photo={author.photo}
             desc={author.desc}
-            rollNum={author.rollNum}
+            tags={author.tags}
           ></Card2>
         ))}
       </div>

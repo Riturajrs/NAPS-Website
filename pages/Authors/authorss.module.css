@@ -1,127 +1,17 @@
 .a {
   position: relative;
-  padding: 1% 3%;
-}
-
-.awrapper {
-  padding: 50px;
-  display: flex;
-}
-
-.left {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.imgbg {
-  height: 100%;
-  width: 100%;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-}
-.imgbg img {
-  object-fit: contain;
-}
-
-/* .img {
-  border-radius: 5px;
-  object-fit: cover;
-  position: absolute;
-} */
-
-.right {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: left;
-  align-items: left;
-  padding-right: 7%;
-}
-
-.name {
-  font-size: 2em;
-  color: black;
-  line-height: 1.7;
-  font-weight: bolder;
-}
-
-.descp {
-  font-size: 1.2em;
-  line-height: 1.5;
-}
-
-.head {
-  font-size: 1.5em;
-  line-height: 1.5;
-  font-weight: bolder;
-}
-
-.tags {
-  display: flex;
-  flex-direction: row;
-  gap: 1ch;
-}
-
-.tag {
-  background-color: rgb(83, 150, 226);
-  padding: 0.8% 1.2%;
-  border-radius: 2ch;
-  color: white;
-}
-
-.authorC {
-  position: relative;
-  padding: 5px 50px;
-}
-
-.tTitle {
-  font-size: 2em;
-  color: black;
-  line-height: 1.7;
-  font-weight: bolder;
-  width: 100%;
-}
-
-.blogImg {
-  justify-content: center;
-  align-items: center;
-  position: relative;
-}
-
-.tContent {
-  font-size: 1.2em;
-  color: black;
-  line-height: 1.7;
-  font-weight: normal;
-  width: 100%;
-}
-
-.errorContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 5% 7%;
-}
-
-.errorHeading {
-  font-size: 2rem;
-  font-weight: 800;
-}
-
-.errorCode {
-  width: 100%;
-  background-color: rgb(30, 41, 30);
-  color: white;
-  align-items: flex-start;
+  padding: 2% 4%;
 }
 
 .cardGrid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   row-gap: 3vh;
-  column-gap: 2%;
+}
+
+@media (max-width: 1000px) {
+  .cardGrid {
+    display: flex;
+    flex-direction: column;
+  }
 }
