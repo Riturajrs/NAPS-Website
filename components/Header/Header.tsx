@@ -5,8 +5,18 @@ import InstaLogo from '../../media/instagram.svg'
 import LinkedinLogo from '../../media/linkedin.svg'
 import FacebookLogo from '../../media/facebook.svg'
 import NapsLogo from '../../media/napslogo.png'
+import { useEffect, useState } from 'react'
+import { useCookies } from 'react-cookie'
 
 export default function Header() {
+  const [navBarActive, setNavBar] = useState(false)
+  const [loggedIn, setLoggedIn] = useState(false)
+  const [cookies,setCookie] = useCookies();
+  useEffect(()=>{
+    if(cookies.user && !loggedIn){
+      setLoggedIn(true)
+    }
+  }, [cookies, loggedIn])
   return (
     <div className='lg:px-20 sm:px-12 px-10 m-2 rounded-lg shadow-md border-gray-100 border p-2 mb-6'>
       <div className='flex flex-col sm:flex-row justify-between mb-4'>
@@ -24,27 +34,50 @@ export default function Header() {
           </div>
         </div>
       </div>
-
-      <div className='flex flex-row justify-between'>
-        <div className='flex text-sm sm:text-base flex-row justify-center w-max mx-auto sm:mx-0 sm:w-auto'>
-          <div className='hover:bg-slate-200 transition-all duration-200 rounded-md px-2 py-1 font-medium cursor-pointer'>
-            <Link href='/'>Home</Link>
+        <div className="space-y-1 sm:hidden w-6 flex flex-col mx-auto overflow-hidden cursor-pointer" onClick={()=>{setNavBar(!navBarActive)}}>
+          <span className={`block w-6 h-0.5 bg-gray-600`}></span>
+          <span className={`block h-0.5 bg-gray-600 transition-all duration-200 ${navBarActive?"w-3":"w-6"}`}></span>
+          <span className={`block h-0.5 bg-gray-600 transition-all duration-200 ${navBarActive?"w-3":"w-6"}`}></span>
+        </div>
+      <div className='flex flex-row sm:justify-between '>
+        <div className={`sm:flex text-base sm:flex-row justify-center w-full mx-auto sm:mx-0 sm:w-auto ${navBarActive?"flex":"hidden"} flex-col overflow-hidden`}>
+          <Link passHref href='/'>
+          <div className='hover:bg-slate-200 transition-all duration-200 rounded-md px-1.5 py-1 font-medium cursor-pointer'>
+            Home
           </div>
-          <div className='hover:bg-slate-200 transition-all duration-200 rounded-md px-2 py-1 font-medium cursor-pointer'>
-            <Link href='/about'>About</Link>
+          </Link>
+          <Link passHref href='/about'>
+          <div className='hover:bg-slate-200 transition-all duration-200 rounded-md px-1.5 py-1 font-medium cursor-pointer'>
+            About
           </div>
-          <div className='hover:bg-slate-200 transition-all duration-200 rounded-md px-2 py-1 font-medium cursor-pointer'>
-            <Link href='/Epistle'>Epistle</Link>
+          </Link>
+          <Link passHref href='/Epistle'>
+          <div className='hover:bg-slate-200 transition-all duration-200 rounded-md px-1.5 py-1 font-medium cursor-pointer'>
+            Epistle
           </div>
-          <div className='hover:bg-slate-200 transition-all duration-200 rounded-md px-2 py-1 font-medium cursor-pointer'>
-            <Link href='/Team'>Team</Link>
+          </Link>
+          <Link passHref href='/Team'>
+          <div className='hover:bg-slate-200 transition-all duration-200 rounded-md px-1.5 py-1 font-medium cursor-pointer'>
+            Team
           </div>
-          <div className='hover:bg-slate-200 transition-all duration-200 rounded-md px-2 py-1 font-medium cursor-pointer'>
-            <Link href='/Authors'>Authors</Link>
+          </Link>
+          <Link passHref href='/Authors'>
+          <div className='hover:bg-slate-200 transition-all duration-200 rounded-md px-1.5 py-1 font-medium cursor-pointer'>
+            Authors
           </div>
-          <div className='hover:bg-slate-200 transition-all duration-200 rounded-md px-2 py-1 font-medium cursor-pointer'>
-            <Link href='/Search'>Search</Link>
+          </Link>
+          <Link passHref href='/Search'>
+          <div className='hover:bg-slate-200 transition-all duration-200 rounded-md px-1.5 py-1 font-medium cursor-pointer'>
+            Search
           </div>
+          </Link>
+          {loggedIn && (
+          <Link passHref href='/Admin'>
+          <div className='hover:bg-slate-200 transition-all duration-200 rounded-md px-1.5 py-1 font-medium cursor-pointer'>
+            Admin
+          </div>
+          </Link>
+          )}
         </div>
         <div className='sm:block hidden cursor-pointer'>
           {/* TODO: add links */}

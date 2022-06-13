@@ -6,6 +6,16 @@ import Loader from "../Loader/Loader";
 import { useRouter } from "next/router";
 import MODAL from "../../components/Modal/Modal";
 
+type data={
+	_id: string,
+	name: string,
+	photo: string,
+	desc: string,
+	tags: string[],
+	__v: number,
+	createdAt: string,
+	rollNum: string
+}
 const categories = ["Editorial", "Media Report"];
 const tagsoptions = [
 	"sdjhks",
@@ -15,7 +25,7 @@ const tagsoptions = [
 	"jshdkjfsd dsdf",
 	"hgdkjhdj",
 ];
-export default function PostForm({ data }) {
+export default function PostForm({ data, cookie } :{data: data[], cookie: string}) {
 	// state variables
 	const [isLoading, setLoading] = useState(false);
 	const [isModal, setModal] = useState("false");
@@ -129,6 +139,7 @@ export default function PostForm({ data }) {
 		};
 		const reqheaders = new Headers();
 		reqheaders.append("Content-Type", "application/json");
+		reqheaders.append("Authorization", `Bearer ${cookie}`);
 		const res = await fetch(`${process.env.NEXT_PUBLIC_APIBASE}/blog`, {
 			method: "POST",
 			body: JSON.stringify(dataToSubmit),
@@ -138,6 +149,8 @@ export default function PostForm({ data }) {
 		const data = await res.json();
 		if (data._id) {
 			router.push(`/blog/${data._id}`);
+		}else{
+			showModal(data.message)
 		}
 		setLoading(false);
 		// console.log(data)

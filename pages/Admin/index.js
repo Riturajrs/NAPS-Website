@@ -30,14 +30,14 @@ const Admin = ({authorData, blogData})=>{
         style="underline"
         >
             <Tabs.Item title="NEW POST">
-                <PostForm data={authorData}/>
+                <PostForm data={authorData} cookie = {cookies.user}/>
             </Tabs.Item>
 
             <Tabs.Item
                 active={true}
                 title="UPDATE"
             >
-                <UpdateBlog data={blogData}/>
+                <UpdateBlog data={blogData} cookie = {cookies.user}/>
             </Tabs.Item>
 
             <Tabs.Item title="YOUR PROFILE">

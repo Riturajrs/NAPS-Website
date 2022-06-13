@@ -171,6 +171,7 @@ export default function Edit({
 		};
 		const reqheaders = new Headers();
 		reqheaders.append("Content-Type", "application/json");
+		reqheaders.append("Authorization", `Bearer ${cookies.user}`);
 		const res = await fetch(
 			`${process.env.NEXT_PUBLIC_APIBASE}/blog/id/${router.query.id}`,
 			{
@@ -183,6 +184,8 @@ export default function Edit({
 		const data = await res.json();
 		if (data._id) {
 			router.push(`/blog/${data._id}`);
+		}else{
+			showModal(data.message)
 		}
 		setLoading(false);
 		// console.log(data)
@@ -217,11 +220,19 @@ export default function Edit({
 		setSure(1);
 		if(sure == 1){
 			setLoading(true);
+			const reqheaders = new Headers();
+			reqheaders.append("Authorization", `Bearer ${cookies.user}`);
 			const res = await fetch(`${process.env.NEXT_PUBLIC_APIBASE}/blog/id/${blogData._id}`,{
-				method:"DELETE"
+				method:"DELETE",
+				headers: reqheaders
 			})
+			const data = await res.json()
+			if(!data.message){
+				router.push("/Admin")
+			}else{
+				showModal(data.message)
+			}
 			setLoading(false)
-			router.push("/Admin")
 		}else{
 			showModal("Click again to confirm", "Delete?")
 		}

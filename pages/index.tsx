@@ -79,7 +79,7 @@ export default function Home({ data , noticeData}: { data: apiData[], noticeData
 						</div>
 					))}
 				</div>
-				<div className={styles.col2}>
+				<div className="w-full">
 					<div className={styles.card}>
 						<div className={styles.topBlogImage}>
 							<Image
