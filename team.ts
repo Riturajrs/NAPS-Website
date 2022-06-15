@@ -1,10 +1,11 @@
 import { StaticImageData } from "next/image"
 
 type pastmemberInfo = {
-  name: string
-  post: string
-  year: string
-  linkedin: string
+  [key: string]: {
+    name: string,
+    post: string,
+    linkedin: string
+  }[]
 }
 
 type currentmemberInfo = {
@@ -111,29 +112,64 @@ export const currentmembers:currentmemberInfo[] = [
   },
 ]
 
-export const pastmembers:pastmemberInfo[]=[
+export const pastmembers:pastmemberInfo={
+  "2019-2020":[
   {
-    name: 'Member Name',
-    post: 'Designation',
-    year: '2020',
+    name: 'Member From 2019',
+    post: 'Designation 1',
     linkedin: 'https://linkedin.com',
   },
   {
-    name: 'Member Name',
-    post: 'Designation',
-    year: '2020',
+    name: 'Member From 2019',
+    post: 'Designation 2',
     linkedin: 'https://linkedin.com',
   },
   {
-    name: 'Member Name',
-    post: 'Designation',
-    year: '2020',
+    name: 'Member From 2019',
+    post: 'Designation 3',
     linkedin: 'https://linkedin.com',
   },
   {
-    name: 'Member Name',
-    post: 'Designation',
-    year: '2020',
+    name: 'Member From 2019',
+    post: 'Designation 4',
+    linkedin: 'https://linkedin.com',
+  },
+],
+  "2018-2019":[
+  {
+    name: 'Member From 2018',
+    post: 'Designation 1',
+    linkedin: 'https://linkedin.com',
+  },
+  {
+    name: 'Member From 2018',
+    post: 'Designation 2',
+    linkedin: 'https://linkedin.com',
+  },
+  {
+    name: 'Member From 2018',
+    post: 'Designation 3',
+    linkedin: 'https://linkedin.com',
+  },
+  {
+    name: 'Member From 2018',
+    post: 'Designation 4',
+    linkedin: 'https://linkedin.com',
+  },
+  {
+    name: 'Member From 2018',
+    post: 'Designation 5',
+    linkedin: 'https://linkedin.com',
+  },
+  {
+    name: 'Member From 2018',
+    post: 'Designation 6',
+    linkedin: 'https://linkedin.com',
+  },
+  {
+    name: 'Member From 2018',
+    post: 'Designation 7',
     linkedin: 'https://linkedin.com',
   },
 ]
+}

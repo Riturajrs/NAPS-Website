@@ -1,10 +1,8 @@
 import styles from "./Home.module.css";
 import Link from "next/link";
 import Image from "next/image";
-import NapsLogo from "../media/napslogo.png";
 import Card from "../components/Card/Card";
 import Head from "next/head";
-import { useEffect } from "react";
 import { GetStaticProps } from "next";
 type apiData = {
 	_id: string;
