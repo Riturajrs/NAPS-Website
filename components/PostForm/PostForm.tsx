@@ -287,14 +287,14 @@ export default function PostForm({ data, cookie } :{data: data[], cookie: string
 						menubar: false,
 						plugins: [
 							"advlist autolink lists link image charmap print preview anchor",
-							"searchreplace code visualblocks code",
+							"searchreplace code visualblocks",
 							"insertdatetime media table paste code help wordcount",
 						],
 						toolbar:
 							"undo redo | formatselect | " +
 							"bold italic backcolor image| alignleft aligncenter " +
 							"alignright alignjustify | bullist numlist outdent indent | " +
-							"removeformat | help",
+							"removeformat visualblocks | help",
 						content_style:
 							"body { font-family:Poppins,Helvetica,Arial,sans-serif; font-size:14px }",
 						image_advtab: true,
