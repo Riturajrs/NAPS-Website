@@ -1,9 +1,7 @@
 import Head from 'next/head'
-import styles from './authors.module.css'
+import styles from "./authors.module.css"
 import Image from 'next/image'
 import Card from '.././../../components/Card/Card'
-// import sample from '.././../../media/author.jpg'
-// import blogImg from '.././../../media/blogImg.jpg'
 import { GetStaticPaths, GetStaticProps } from 'next'
 
 type apiResponse = {

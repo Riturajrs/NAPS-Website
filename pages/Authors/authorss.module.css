@@ -7,24 +7,21 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   row-gap: 3vh;
-}
-
-.author {
-  text-align: center;
-  font-weight: bolder;
-  font-size: 4rem;
-  padding-bottom: 5rem;
+  column-gap: 4%;
 }
 
 @media (max-width: 1000px) {
-  .cardGrid {
-    display: flex;
-    flex-direction: column;
-  }
   .author {
     text-align: center;
     font-weight: bold;
     font-size: 3.5rem;
     padding-bottom: 3rem;
+  }
+}
+
+@media (max-width: 820px) {
+  .cardGrid{
+    display: flex;
+    flex-direction: column;
   }
 }

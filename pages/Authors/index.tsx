@@ -21,7 +21,7 @@ type apiResponse = {
 export default function Author({ authorData }: { authorData: apiResponse[] }) {
   return (
     <div className={styles.a}>
-      <div className={styles.author}>AUTHORS</div>
+      <div className="text-5xl font-bold mt-5 mb-8 text-center">AUTHORS</div>
       <div className={styles.cardGrid}>
         {authorData.map((author) => (
           <Card2

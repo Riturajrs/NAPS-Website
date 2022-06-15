@@ -24,7 +24,7 @@ export default function Card({ _id, name, photo, desc, tags }: input) {
     return !!pattern.test(url)
   }
   return (
-    <div className='max-w-lg w-2/3 hover:shadow-md transition-all duration-200 mx-auto bg-white rounded-lg border border-gray-100 shadow-sm dark:bg-gray-800 dark:border-gray-700'>
+    <div className="max-w-xl w-full mx-auto hover:shadow-md transition-all duration-200 bg-white rounded-lg border border-gray-100 shadow-sm dark:bg-gray-800 dark:border-gray-700">
 			<Link passHref href={`/Author/${_id}`}>
       <div
         className={`${styles.imageContainerAuthor} cursor-pointer rounded-t-lg relative h-80 w-full`}
@@ -42,7 +42,7 @@ export default function Card({ _id, name, photo, desc, tags }: input) {
       </div>
       </Link>
       <div className='p-5 flex flex-col '>
-        <Link href={`Author/${_id}`} passHref>
+        <Link href={`/Author/${_id}`} passHref>
           <h5 className='mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white text-center cursor-pointer'>
             {name}
           </h5>
@@ -50,11 +50,11 @@ export default function Card({ _id, name, photo, desc, tags }: input) {
         <p className='mb-3 font-normal text-gray-700 dark:text-gray-400 text-center'>
           {desc}
         </p>
+        {tags.length > 0 && <p className='font-light mx-auto my-2 '>Tags: </p>}
         <div className={styles.tags}>
-          {tags.length > 0 && <p className='text-extralight'>Tags: </p>}
           {tags.map((tag) => (
-            <Link key={tag} href={`blog/tag/${tag}`} passHref>
-              <button className='bg-slate-100 hover:bg-slate-300 text-white-700 transition-all duration-200 py-1 px-2 border border-slate-300 rounded-md m-1'>
+            <Link key={tag} href={`/blog/tag/${tag}`} passHref>
+              <button className='uppercase tracking-wide text-gray-700 text-xs font-bold shadow-sm mb-2 bg-gray-200 p-4 rounded-md'>
                 {tag}
               </button>
             </Link>

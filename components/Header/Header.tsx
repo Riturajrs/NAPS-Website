@@ -40,7 +40,7 @@ export default function Header() {
           <span className={`block h-0.5 bg-gray-600 transition-all duration-200 ${navBarActive?"w-3":"w-6"}`}></span>
         </div>
       <div className='flex flex-row sm:justify-between '>
-        <div className={`sm:flex text-center sm:text-sm md:text-base sm:flex-row justify-center w-full mx-auto sm:mx-0 sm:w-auto ${navBarActive?"flex":"hidden"} flex-col overflow-hidden`}>
+        <div className={`sm:flex sm:text-center sm:text-sm md:text-base sm:flex-row justify-center w-full mx-auto sm:mx-0 sm:w-auto ${navBarActive?"flex":"hidden"} flex-col overflow-hidden`}>
           <Link passHref href='/'>
           <div className='hover:bg-slate-200 transition-all duration-200 rounded-md md:mx-2 px-2 py-1 font-medium cursor-pointer'>
             Home
@@ -81,30 +81,30 @@ export default function Header() {
         </div>
         <div className='sm:block hidden cursor-pointer'>
           {/* TODO: add links */}
-          <Link href='https://instagram.com' passHref>
+          <a href='https://instagram.com'>
             <Image
               src={InstaLogo}
               alt='Instagram'
               className={styles.connectItem}
               layout='intrinsic'
             />
-          </Link>
-          <Link href='https://linkedin.com' passHref>
+          </a>
+          <a href='https://linkedin.com'>
             <Image
               src={LinkedinLogo}
               alt='LinkedIn'
               className={styles.connectItem}
               layout='intrinsic'
             />
-          </Link>
-          <Link href='https://facebook.com' passHref>
+          </a>
+          <a href='https://facebook.com'>
             <Image
               src={FacebookLogo}
               alt='Facebook'
               className={styles.connectItem}
               layout='intrinsic'
             />
-          </Link>
+          </a>
         </div>
       </div>
     </div>
