@@ -25,6 +25,7 @@ export default function Author({ authorData }: { authorData: apiResponse[] }) {
       <div className={styles.cardGrid}>
         {authorData.map((author) => (
           <Card2
+            key={author._id}
             _id={author._id}
             name={author.name}
             photo={author.photo}
