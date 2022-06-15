@@ -1,36 +1,19 @@
-.name {
-  font-weight: 500;
-  font-size: 1.8rem;
-}
-.memberCard {
-  padding: 5%;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-}
-.connectBar {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 .memberImage{
   height: 30vw;
   position: relative;
-  width: 30vw;
+  width: 100%;
 }
 .memberImage img{
-  object-fit: contain;
+  object-fit: cover;
 }
 
 @media (max-width: 1000px){
   .memberImage{
     height: 40vw;
-    width: 40vw;
   }
 }
 @media (max-width: 720px){
   .memberImage{
     height: 60vw;
-    width: 60vw;
   }
 }

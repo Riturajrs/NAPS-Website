@@ -26,7 +26,7 @@ export default function Tag({data}:{data: apiResponse[]}){
     <div className={styles.cardGrid}>
     {data.map(blog=><Card author={blog.authorName} authorId={blog.author} category={blog.category} date={blog.createdAt} id={blog._id} summary={blog.summary} title={blog.title} image={blog.thumbnail} key={blog._id}/>)}
     </div>
-    {data.length == 0 &&(<div className="text-xl w-full text-center text-green-700 font-bold"> Are You Sure this tag exists?</div>)}
+    {data.length == 0 &&(<div className="text-xl w-full text-center text-green-700 font-bold"> No Blogs Exist for this tag </div>)}
     </div>
   )
 }

@@ -165,7 +165,7 @@ const AuthorDetails = ()=>{
                         <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-caption">
                             DESCRIPTION
                         </label>
-                        <textarea value={description} onChange={handleDescription} className="appearance-none block w-full border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-caption" placeholder="Description" />
+                        <textarea value={description} onChange={handleDescription} className="appearance-none block w-full border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 min-h-max resize-none" id="grid-caption" placeholder="Description" />
                         </div>
                     </div>
 

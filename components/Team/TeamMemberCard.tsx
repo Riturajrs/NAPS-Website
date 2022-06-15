@@ -16,35 +16,37 @@ type memberinfo = {
 
 export default function MemberCard({image, name, facebook, insta, linkedin, post, year}:memberinfo){
 return(
-  <div className={styles.memberCard}>
+  <div className="flex flex-col rounded-lg shadow-sm hover:shadow-md justify-center items-center m-8 border border-slate-200 transition-all duration-200 overflow-hidden">
     <div className={styles.memberImage}>
-    <Image placeholder="blur" src={image} alt="member-photo" layout="fill"/>
+    <Image src={image} alt={`${name}'s photo`} layout="fill"/>
     </div>
-    <div className={styles.name}>
+    <div className="py-4 border-t border-slate-200 w-full text-center bg-slate-100 text-slate-800">
+    <div className="font-semibold text-2xl">
     {name}
     </div>
-    <div className={styles.post}>
+    <div className="text-lg">
     {post}
     </div>
-    <div className={styles.year}>
+    <div className="text-lg">
       {year}
     </div>
-    <div className={styles.connectBar}>
+    <div className="flex flex-row h-8 justify-center gap-3"> 
       {insta&&(
       <Link href={insta} passHref>
-      <Image src={InstaLogo} alt="Instagram" className={styles.connectItem} />
+      <Image src={InstaLogo} alt="Instagram" className={`cursor-pointer`} />
       </Link>
       )}
       {linkedin&&(
       <Link href={linkedin} passHref>
-      <Image src={LinkedinLogo} alt="LinkedIn" className={styles.connectItem} />
+      <Image src={LinkedinLogo} alt="LinkedIn" className="cursor-pointer"/>
       </Link>
       )}
       {facebook&&(
       <Link href={facebook} passHref>
-      <Image src={FacebookLogo} alt="Facebook" className={styles.connectItem} />
+      <Image src={FacebookLogo} alt="Facebook" className={`cursor-pointer`} />
       </Link>
       )}
+    </div>
     </div>
   </div>
 )

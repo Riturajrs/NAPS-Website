@@ -1,111 +1,10 @@
 import styles from './teams.module.css'
-import sample from '../../media/sample.jpg'
 import MemberCard from './TeamMemberCard'
 import { StaticImageData } from 'next/image'
+import Link from 'next/link'
+import { currentmembers } from '../../team'
 
-type memberInfo = {
-  name: string
-  post: string
-  year: string
-  image: string | StaticImageData
-  facebook?: string
-  insta?: string
-  linkedin?: string
-}
-// UPDATE MEMBER INFO HERE
-const members: memberInfo[] = [
-  {
-    name: 'Member Name',
-    facebook: 'https://facebook.com',
-    image: sample,
-    post: 'Designation',
-    year: '2020',
-    linkedin: 'https://linkedin.com',
-    insta: 'https://instagram.com',
-  },
-  {
-    name: 'Member Name',
-    facebook: 'https://facebook.com',
-    image: sample,
-    post: 'Designation',
-    year: '2020',
-    linkedin: 'https://linkedin.com',
-    insta: 'https://instagram.com',
-  },
-  {
-    name: 'Member Name',
-    facebook: 'https://facebook.com',
-    image: sample,
-    post: 'Designation',
-    year: '2020',
-    linkedin: 'https://linkedin.com',
-    insta: 'https://instagram.com',
-  },
-  {
-    name: 'Member Name',
-    facebook: 'https://facebook.com',
-    image: sample,
-    post: 'Designation',
-    year: '2020',
-    linkedin: 'https://linkedin.com',
-    insta: 'https://instagram.com',
-  },
-  {
-    name: 'Member Name',
-    facebook: 'https://facebook.com',
-    image: sample,
-    post: 'Designation',
-    year: '2020',
-    linkedin: 'https://linkedin.com',
-    insta: 'https://instagram.com',
-  },
-  {
-    name: 'Member Name',
-    facebook: 'https://facebook.com',
-    image: sample,
-    post: 'Designation',
-    year: '2020',
-    linkedin: 'https://linkedin.com',
-    insta: 'https://instagram.com',
-  },
-  {
-    name: 'Member Name',
-    facebook: 'https://facebook.com',
-    image: sample,
-    post: 'Designation',
-    year: '2020',
-    linkedin: 'https://linkedin.com',
-    insta: 'https://instagram.com',
-  },
-  {
-    name: 'Member Name',
-    facebook: 'https://facebook.com',
-    image: sample,
-    post: 'Designation',
-    year: '2020',
-    linkedin: 'https://linkedin.com',
-    insta: 'https://instagram.com',
-  },
-  {
-    name: 'Member Name',
-    facebook: 'https://facebook.com',
-    image: sample,
-    post: 'Designation',
-    year: '2020',
-    linkedin: 'https://linkedin.com',
-    insta: 'https://instagram.com',
-  },
-  {
-    name: 'Member Name',
-    facebook: 'https://facebook.com',
-    image: sample,
-    post: 'Designation',
-    year: '2020',
-    linkedin: 'https://linkedin.com',
-    insta: 'https://instagram.com',
-  },
-]
-
+const members = currentmembers
 export default function Team() {
   return (
     <div className={styles.team}>
@@ -126,6 +25,9 @@ export default function Team() {
           )
         })}
       </div>
+        <div className="text-center cursor-pointer text-lg font-light text-slate-500">
+          <Link href="/Team/Past"> Past Team Members</Link>
+        </div>
     </div>
   )
 }
