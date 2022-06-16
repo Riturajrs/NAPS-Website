@@ -16,14 +16,20 @@ type apiData = {
 	summary: string;
 };
 type notice = {
-	_id: string,
-	title: string,
-	content: string,
-	links: string[],
-	DateAdded: string
-}
+	_id: string;
+	title: string;
+	content: string;
+	links: string[];
+	DateAdded: string;
+};
 
-export default function Home({ data , noticeData}: { data: apiData[], noticeData: notice[] }) {
+export default function Home({
+	data,
+	noticeData,
+}: {
+	data: apiData[];
+	noticeData: notice[];
+}) {
 	const newBlogs = data.slice(1);
 	const topBlog = data[0];
 	const showableDate = (date) => {
@@ -46,34 +52,29 @@ export default function Home({ data , noticeData}: { data: apiData[], noticeData
 			</div>
 			<div className={styles.row1}>
 				<div className={styles.col1}>
-					<Link
-					href="/Epistle"
-					passHref
-					>
-					<div className="flex items-center ml-2 cursor-pointer w-max text-red-500 font-bold text-center border-b-2 border-slate-800 text-2xl ">
-						Notices
-						<svg
-							className="ml-2 -mr-1 w-4 h-4"
-							fill="currentColor"
-							viewBox="0 0 20 20"
-							xmlns="http://www.w3.org/2000/svg">
-							<path
-								fillRule="evenodd"
-								d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-								clipRule="evenodd"></path>
-						</svg>
-					</div>
+					<Link href="/Epistle" passHref>
+						<div className="flex items-center ml-2 cursor-pointer w-max text-red-500 font-bold text-center border-b-2 border-slate-800 text-2xl ">
+							Notices
+							<svg
+								className="ml-2 -mr-1 w-4 h-4"
+								fill="currentColor"
+								viewBox="0 0 20 20"
+								xmlns="http://www.w3.org/2000/svg">
+								<path
+									fillRule="evenodd"
+									d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+									clipRule="evenodd"></path>
+							</svg>
+						</div>
 					</Link>
-					{noticeData.slice(0,3).map((notice, index) => (
+					{noticeData.slice(0, 3).map((notice, index) => (
 						<div
 							className="border shadow-sm rounded-lg mx-auto hover:shadow-md transition-all duration-200 my-4 p-4 border-slate-100"
 							key={index}>
 							<div className="font-bold text-slate-800 text-lg">
 								{notice.title}
 							</div>
-							<div className="font-light">
-								{notice.content}
-							</div>
+							<div className="font-light">{notice.content}</div>
 						</div>
 					))}
 				</div>
@@ -119,7 +120,9 @@ export default function Home({ data , noticeData}: { data: apiData[], noticeData
 					</div>
 				</div>
 			</div>
-			<div className="shadow-sm rounded-lg border-2 border-slate-100 font-extrabold p-4 w-full my-20 text-2xl text-center">New Posts</div>
+			<div className="shadow-sm rounded-lg border-2 border-slate-100 font-extrabold p-4 w-full my-20 text-2xl text-center">
+				New Posts
+			</div>
 			<div className={styles.cardGrid}>
 				{newBlogs.map((blog) => (
 					<Card
@@ -146,12 +149,12 @@ export const getStaticProps: GetStaticProps = async () => {
 		},
 	});
 	var data = await res.json();
-  const url = `${process.env.NEXT_PUBLIC_APIBASE}/epistle/Notice?page=1`;
+	const url = `${process.env.NEXT_PUBLIC_APIBASE}/epistle/Notice?page=1`;
 	const res2 = await fetch(url);
-	var noticeData = await res2.json()
-	noticeData=noticeData?.data[0]?.notices
+	var noticeData = await res2.json();
+	noticeData = noticeData?.data[0]?.notices;
 	return {
-		props: { data ,noticeData},
+		props: { data, noticeData },
 		revalidate: 120,
 	};
 };

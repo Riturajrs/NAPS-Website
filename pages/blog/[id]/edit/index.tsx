@@ -109,13 +109,12 @@ export default function Edit({
 			}
 		);
 		const Data = await res.json();
-		if(Data.data && Data.data.URL){
+		if (Data.data && Data.data.URL) {
 			setThumbnail(Data.data.URL);
-		}else{
-			showModal(Data.message)
-			setThumbnail(thumbnail)
+		} else {
+			showModal(Data.message);
+			setThumbnail(thumbnail);
 		}
-
 	}
 	//  Submit Handler
 	const showModal = (message, heading = "Error") => {
@@ -184,8 +183,8 @@ export default function Edit({
 		const data = await res.json();
 		if (data._id) {
 			router.push(`/blog/${data._id}`);
-		}else{
-			showModal(data.message)
+		} else {
+			showModal(data.message);
 		}
 		setLoading(false);
 		// console.log(data)
@@ -215,32 +214,37 @@ export default function Edit({
 			failure(err);
 		}
 	}
-	const [sure,setSure] = useState(0);
-	const handleDelete = async()=>{
+	const [sure, setSure] = useState(0);
+	const handleDelete = async () => {
 		setSure(1);
-		if(sure == 1){
+		if (sure == 1) {
 			setLoading(true);
 			const reqheaders = new Headers();
 			reqheaders.append("Authorization", `Bearer ${cookies.user}`);
-			const res = await fetch(`${process.env.NEXT_PUBLIC_APIBASE}/blog/id/${blogData._id}`,{
-				method:"DELETE",
-				headers: reqheaders
-			})
-			const data = await res.json()
-			if(!data.message){
-				router.push("/Admin")
-			}else{
-				showModal(data.message)
+			const res = await fetch(
+				`${process.env.NEXT_PUBLIC_APIBASE}/blog/id/${blogData._id}`,
+				{
+					method: "DELETE",
+					headers: reqheaders,
+				}
+			);
+			const data = await res.json();
+			if (!data.message) {
+				router.push("/Admin");
+			} else {
+				showModal(data.message);
 			}
-			setLoading(false)
-		}else{
-			showModal("Click again to confirm", "Delete?")
+			setLoading(false);
+		} else {
+			showModal("Click again to confirm", "Delete?");
 		}
-	}
+	};
 
 	if (blogData.message) {
 		return (
-			<div className="my-24 m-8 text-red-600 text-lg font-semibold">Blog doesn{"'"}t exist</div>
+			<div className="my-24 m-8 text-red-600 text-lg font-semibold">
+				Blog doesn{"'"}t exist
+			</div>
 		);
 	}
 
@@ -256,7 +260,11 @@ export default function Edit({
 				/>
 			)}
 			<div className="">
-				<label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="title">Title</label>
+				<label
+					className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+					htmlFor="title">
+					Title
+				</label>
 				<input
 					required
 					type="text"
@@ -284,20 +292,27 @@ export default function Edit({
 						</>
 					)}
 				</div>
-				<label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="images">Thumbnail: </label>
+				<label
+					className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+					htmlFor="images">
+					Thumbnail:{" "}
+				</label>
 				<input
 					style={{ margin: "auto" }}
 					required
 					type="file"
 					name="images"
 					onChange={uploadImage}
-					className="appearance-none block w-full border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-					></input>
+					className="appearance-none block w-full border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"></input>
 				<br />
-				<label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Author</label>
-				<select 
-				className="mb-6 block appearance-none w-full border border-gray-200 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-				required value={author} onChange={changeAuthor}>
+				<label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+					Author
+				</label>
+				<select
+					className="mb-6 block appearance-none w-full border border-gray-200 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+					required
+					value={author}
+					onChange={changeAuthor}>
 					<option></option>
 					{authorData &&
 						authorData.map((curauthor) => {
@@ -310,16 +325,22 @@ export default function Edit({
 							);
 						})}
 				</select>
-				<label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Category</label>
-				<select 
-				className="mb-6 block appearance-none w-full border border-gray-200 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-				required value={category} onChange={changeCategory}>
+				<label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+					Category
+				</label>
+				<select
+					className="mb-6 block appearance-none w-full border border-gray-200 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+					required
+					value={category}
+					onChange={changeCategory}>
 					<option></option>
 					{categories.map((cat) => (
 						<option key={cat}>{cat}</option>
 					))}
 				</select>
-				<label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Tags</label>
+				<label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+					Tags
+				</label>
 				<div className={styles.tagContainer}>
 					{tags.map((tag) => (
 						<div
@@ -330,9 +351,10 @@ export default function Edit({
 						</div>
 					))}
 				</div>
-				<select 
-				className="mb-6 block appearance-none w-full border border-gray-200 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-				required onChange={changeTags}>
+				<select
+					className="mb-6 block appearance-none w-full border border-gray-200 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+					required
+					onChange={changeTags}>
 					<option></option>
 					{tagsoptions
 						.filter((tag) => !tags.includes(tag))
@@ -340,7 +362,9 @@ export default function Edit({
 							<option key={cat}>{cat}</option>
 						))}
 				</select>
-				<label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Content</label>
+				<label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+					Content
+				</label>
 				<Editor
 					apiKey={process.env.NEXT_PUBLIC_TINYMCEKEY}
 					initialValue={blogData.content}
@@ -370,18 +394,23 @@ export default function Edit({
 						images_upload_base_path: "/",
 					}}
 				/>
-				<label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Summary</label>
-				<textarea 
-				className="resize-none appearance-none h-32 block w-full border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-				required value={summary} onChange={changeSummary} />
+				<label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+					Summary
+				</label>
+				<textarea
+					className="resize-none appearance-none h-32 block w-full border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+					required
+					value={summary}
+					onChange={changeSummary}
+				/>
 				<div className={styles.loaderContainer}>
 					<button
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+						className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
 						onClick={handleSubmit}>
 						Submit
 					</button>
 					<button
-            className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+						className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
 						onClick={handleDelete}>
 						Delete
 					</button>

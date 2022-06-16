@@ -6,16 +6,16 @@ import Loader from "../Loader/Loader";
 import { useRouter } from "next/router";
 import MODAL from "../../components/Modal/Modal";
 
-type data={
-	_id: string,
-	name: string,
-	photo: string,
-	desc: string,
-	tags: string[],
-	__v: number,
-	createdAt: string,
-	rollNum: string
-}
+type data = {
+	_id: string;
+	name: string;
+	photo: string;
+	desc: string;
+	tags: string[];
+	__v: number;
+	createdAt: string;
+	rollNum: string;
+};
 const categories = ["Editorial", "Media Report"];
 const tagsoptions = [
 	"sdjhks",
@@ -25,7 +25,13 @@ const tagsoptions = [
 	"jshdkjfsd dsdf",
 	"hgdkjhdj",
 ];
-export default function PostForm({ data, cookie } :{data: data[], cookie: string}) {
+export default function PostForm({
+	data,
+	cookie,
+}: {
+	data: data[];
+	cookie: string;
+}) {
 	// state variables
 	const [isLoading, setLoading] = useState(false);
 	const [isModal, setModal] = useState("false");
@@ -78,11 +84,11 @@ export default function PostForm({ data, cookie } :{data: data[], cookie: string
 			}
 		);
 		const Data = await res.json();
-		if(Data.data && Data.data.URL){
+		if (Data.data && Data.data.URL) {
 			setThumbnail(Data.data.URL);
-		}else{
-			showModal(Data.message)
-			setThumbnail("")
+		} else {
+			showModal(Data.message);
+			setThumbnail("");
 		}
 	}
 	//  Submit Handler
@@ -149,8 +155,8 @@ export default function PostForm({ data, cookie } :{data: data[], cookie: string
 		const data = await res.json();
 		if (data._id) {
 			router.push(`/blog/${data._id}`);
-		}else{
-			showModal(data.message)
+		} else {
+			showModal(data.message);
 		}
 		setLoading(false);
 		// console.log(data)
@@ -192,7 +198,11 @@ export default function PostForm({ data, cookie } :{data: data[], cookie: string
 				/>
 			)}
 			<div className="">
-				<label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="title">Title</label>
+				<label
+					className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+					htmlFor="title">
+					Title
+				</label>
 				<input
 					required
 					type="text"
@@ -220,7 +230,11 @@ export default function PostForm({ data, cookie } :{data: data[], cookie: string
 						</>
 					)}
 				</div>
-				<label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="images">Thumbnail: </label>
+				<label
+					className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+					htmlFor="images">
+					Thumbnail:{" "}
+				</label>
 				<input
 					style={{ margin: "auto" }}
 					className="appearance-none block w-full border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
@@ -229,10 +243,13 @@ export default function PostForm({ data, cookie } :{data: data[], cookie: string
 					name="images"
 					onChange={uploadImage}></input>
 				<br />
-				<label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Author</label>
-				<select 
-				className="mb-6 block appearance-none w-full border border-gray-200 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-				value={author} onChange={changeAuthor}>
+				<label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+					Author
+				</label>
+				<select
+					className="mb-6 block appearance-none w-full border border-gray-200 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+					value={author}
+					onChange={changeAuthor}>
 					<option></option>
 					{data &&
 						data.map((curauthor) => {
@@ -245,16 +262,22 @@ export default function PostForm({ data, cookie } :{data: data[], cookie: string
 							);
 						})}
 				</select>
-				<label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Category</label>
+				<label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+					Category
+				</label>
 				<select
-				className="mb-6 block appearance-none w-full border border-gray-200 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-				required value={category} onChange={changeCategory}>
+					className="mb-6 block appearance-none w-full border border-gray-200 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+					required
+					value={category}
+					onChange={changeCategory}>
 					<option></option>
 					{categories.map((cat) => (
 						<option key={cat}>{cat}</option>
 					))}
 				</select>
-				<label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Tags</label>
+				<label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+					Tags
+				</label>
 				<div className={styles.tagContainer}>
 					{tags.map((tag) => (
 						<div
@@ -265,9 +288,10 @@ export default function PostForm({ data, cookie } :{data: data[], cookie: string
 						</div>
 					))}
 				</div>
-				<select 
-				className="mb-6 block appearance-none w-full border border-gray-200 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-				required onChange={changeTags}>
+				<select
+					className="mb-6 block appearance-none w-full border border-gray-200 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+					required
+					onChange={changeTags}>
 					<option></option>
 					{tagsoptions
 						.filter((tag) => !tags.includes(tag))
@@ -275,7 +299,9 @@ export default function PostForm({ data, cookie } :{data: data[], cookie: string
 							<option key={cat}>{cat}</option>
 						))}
 				</select>
-				<label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Content</label>
+				<label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+					Content
+				</label>
 				<Editor
 					apiKey={process.env.NEXT_PUBLIC_TINYMCEKEY}
 					id="content"
@@ -304,11 +330,15 @@ export default function PostForm({ data, cookie } :{data: data[], cookie: string
 						images_upload_base_path: "/",
 					}}
 				/>
-				<label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Summary</label>
+				<label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+					Summary
+				</label>
 				<textarea
 					className="resize-none appearance-none h-32 block w-full border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
 					required
-					value={summary} onChange={changeSummary} />
+					value={summary}
+					onChange={changeSummary}
+				/>
 				<div className={styles.loaderContainer}>
 					<button
 						className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"

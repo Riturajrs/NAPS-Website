@@ -1,7 +1,6 @@
 import styles from './styles.module.css'
 import Image from 'next/image'
 import Link from 'next/link'
-import { GetStaticPaths, GetStaticProps } from 'next'
 type input = {
   _id: string
   name: string

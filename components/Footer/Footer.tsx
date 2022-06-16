@@ -29,30 +29,30 @@ export default function Footer() {
 						</div>
 					</div>
 					<div className="flex justify-center sm:justify-end cursor-pointer">
-          <a href='https://instagram.com'>
-						<Image
-							src={InstaLogo}
-							alt="Instagram"
-							className={styles.connectItem}
-							layout="intrinsic"
-						/>
-          </a>
+						<a href="https://instagram.com">
+							<Image
+								src={InstaLogo}
+								alt="Instagram"
+								className={styles.connectItem}
+								layout="intrinsic"
+							/>
+						</a>
 						<a href="https://linkedin.com">
-              <Image
-                src={LinkedinLogo}
-                alt="LinkedIn"
-                className={styles.connectItem}
-                layout="intrinsic"
-              />
-            </a>
+							<Image
+								src={LinkedinLogo}
+								alt="LinkedIn"
+								className={styles.connectItem}
+								layout="intrinsic"
+							/>
+						</a>
 						<a href="https://facebook.com">
-              <Image
-                src={FacebookLogo}
-                alt="Facebook"
-                className={styles.connectItem}
-                layout="intrinsic"
-              />
-            </a>
+							<Image
+								src={FacebookLogo}
+								alt="Facebook"
+								className={styles.connectItem}
+								layout="intrinsic"
+							/>
+						</a>
 					</div>
 				</div>
 				<div className="mt-2 font-light text-sm text-center w-full">
