@@ -7,7 +7,7 @@ type input = {
 	summary: string;
 	author: string;
 	date: string;
-	image?: string;
+	image: string;
 	authorId: string;
 	category: string;
 };
