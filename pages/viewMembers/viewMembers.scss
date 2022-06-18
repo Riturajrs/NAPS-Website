@@ -1,0 +1,66 @@
+$color-primary: #55c57a;
+$color-primary-light: #7ed56f;
+$color-primary-dark: #28b485;
+.container {
+  color: aquamarine;
+  margin: 2rem 5rem;
+  display: grid;
+  grid-template-columns:
+    [container-start] repeat(3, [card-start] minmax(20rem, auto) [card-end])
+    [container-end];
+  grid-column-gap: 4.5rem;
+  grid-row-gap: 2rem;
+}
+.card {
+  width: 100%;
+  height: 33rem;
+  position: relative;
+  perspective: 150rem;
+
+  &__side {
+    background-color: rgb(0, 0, 0);
+    width: 100%;
+    height: 33rem;
+    backface-visibility: hidden;
+    box-shadow: 0 1.5rem 4rem rgba(black, 0.15);
+    transition: all 1s;
+  }
+  &__front {
+    position: absolute;
+    background-color: blue;
+  }
+
+  &__back {
+    position: absolute;
+    transform: rotateY(180deg);
+    background-image: linear-gradient(
+      to right bottom,
+      $color-primary-light,
+      $color-primary-dark
+    );
+  }
+  &:hover &__front {
+    transform: rotateY(-180deg);
+  }
+  &:hover &__back {
+    transform: rotate(0);
+  }
+}
+.heading__1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  grid-column: container-start/container-end;
+  height: 3rem;
+
+  &__text {
+    text-transform: uppercase;
+    display: inline-block;
+    letter-spacing: 0.2rem;
+    font-size: 2.5rem;
+    font-weight: 700;
+    background-image: linear-gradient(to right, black, rgb(69, 49, 49));
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+}
