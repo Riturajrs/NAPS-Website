@@ -39,7 +39,7 @@ export default function Main () {
     let Data
     try {
       const Datajson = await fetch(
-        `http://localhost:4000/api/v1/epistle/Notice/filter/${newDate}`
+        `${process.env.NEXT_PUBLIC_APIBASE}/epistle/Notice/filter/${newDate}`
       )
       Data = await Datajson.json()
     } catch (err) {
