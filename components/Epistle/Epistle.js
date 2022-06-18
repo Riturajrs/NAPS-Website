@@ -12,36 +12,40 @@ export default function Main () {
   const [showModal, setShowModal] = useState(false)
   const [modalHeading, setModalHeading] = useState('')
   const [modalMessage, setModalMessage] = useState('')
+  const [filterDispDate, setFilterDispDate] = useState('')
   const [filterDate, setFilterDate] = useState('')
   const [filteredData, setFilteredData] = useState()
   const currentMonth = new Date(Date.now()).getMonth() + 1
   const pages = new Array(data.pages).fill(1)
+  const monthNames = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December'
+  ]
   const dateHandler = async e => {
-    const monthNames = [
-      'January',
-      'February',
-      'March',
-      'April',
-      'May',
-      'June',
-      'July',
-      'August',
-      'September',
-      'October',
-      'November',
-      'December'
-    ]
     const newDate =
       monthNames[parseInt(e.target.value.substring(5, 7)) - 1] +
       '-' +
       e.target.value.substring(0, 4)
     setFilterDate(newDate)
+  }
+  const dateSubmitHandler = async e => {
+    e.preventDefault()
     let Data
     try {
       const Datajson = await fetch(
-        `${process.env.NEXT_PUBLIC_APIBASE}/epistle/Notice/filter/${newDate}`
-      )
-      Data = await Datajson.json()
+        `${process.env.NEXT_PUBLIC_APIBASE}/epistle/Notice/filter/${filterDate}`
+        )
+        Data = await Datajson.json()
     } catch (err) {
       setModalHeading('An error occurred!')
       setModalMessage(err)
@@ -49,14 +53,11 @@ export default function Main () {
     }
     if (Data.result === 0) {
       setModalHeading('No notices!')
-      setModalMessage(
-        `No notices for the month of ${
-          monthNames[parseInt(e.target.value.substring(5, 7)) - 1]
-        } were found`
-      )
+      setModalMessage(`No notices for the month were found`)
       setShowModal(true)
     }
     setFilteredData(Data)
+    setFilterDispDate(filterDate)
   }
   return (
     <div className={styles1.aboutCtn}>
@@ -72,10 +73,12 @@ export default function Main () {
         <div className={styles1.container}>
           {(filteredData && filteredData.result > 0 && (
             <>
-              {filterDate}
-              <input type='month' onChange={dateHandler} />
+              <form>
+                <input type='date' onClick={() => setFilterDate()} onChange={dateHandler} />
+                <button className={styles1.link} onClick={dateSubmitHandler}>Submit</button>
+              </form>
               <h2 className={styles1.container__heading}>
-                {`in the month of ${filterDate}`}
+                {`In the month of ${filterDispDate}`}
               </h2>
               <div className={styles1.container__notices}>
                 {filteredData.data.map(el => {
@@ -101,8 +104,10 @@ export default function Main () {
               data.data.map((groups, index) => {
                 return (
                   <>
-                    {filterDate}
-                    <input type='month' onChange={dateHandler} />
+                    <form>
+                      <input type='date' onChange={dateHandler} />
+                      <button className={styles1.link} onClick={dateSubmitHandler}>Submit</button>
+                    </form>
                     <h2 className={styles1.container__heading} key={groups._id}>
                       {groups._id == currentMonth
                         ? ' This month'
