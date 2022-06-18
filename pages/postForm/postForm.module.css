@@ -1,0 +1,34 @@
+.formContainer{
+    margin-left: 30%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.selectedTags{
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+.tag{
+    background-color: rgb(0, 140, 255);
+    color: white;
+    border-radius: 8px;
+    display: inline;
+    margin: 2%;
+    padding: 2%;
+}
+
+.removeTag{
+    /* background-color: rgb(192, 202, 199); */
+    /* border-radius: 50px; */
+    /* color: black; */
+    font-size: 1rem;
+    position: relative;
+    left: 1%;
+    bottom: 3%;
+    /* margin-left: 1%; */
+    /* margin-bottom: 1%; */
+    /* margin-right: 0.25%; */
+    /* font-size: 2rem; */
+    /* color: black !important; */
+}
