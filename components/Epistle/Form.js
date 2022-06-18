@@ -23,7 +23,6 @@ export default function Form () {
   const submitHandler = async e => {
     e.preventDefault()
     const filenames = links.map(link => link.fileName)
-    // console.log(content)
     try {
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_APIBASE}/epistle/newNotice`,
