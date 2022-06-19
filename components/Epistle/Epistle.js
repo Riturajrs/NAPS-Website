@@ -73,9 +73,9 @@ export default function Main () {
         <div className={styles1.container}>
           {(filteredData && filteredData.result > 0 && (
             <>
-              <form>
-                <input type='date' onClick={() => setFilterDate()} onChange={dateHandler} />
-                <button className={styles1.link} onClick={dateSubmitHandler}>Submit</button>
+              <form className='flex mb-6 flex-wrap items-center justify-center'>
+                <input className="mr-6 appearance-none w-max border border-gray-200 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type='date' onClick={() => setFilterDate()} onChange={dateHandler} />
+                <button className="bg-slate-500 hover:bg-slate-700 text-white font-bold py-2 px-4 rounded" onClick={dateSubmitHandler}>Submit</button>
               </form>
               <h2 className={styles1.container__heading}>
                 {`In the month of ${filterDispDate}`}
@@ -104,9 +104,9 @@ export default function Main () {
               data.data.map((groups, index) => {
                 return (
                   <>
-                    <form>
-                      <input type='date' onChange={dateHandler} />
-                      <button className={styles1.link} onClick={dateSubmitHandler}>Submit</button>
+                    <form className='flex mb-6 flex-wrap items-center justify-center'>
+                      <input className="mr-6 appearance-none w-max border border-gray-200 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type='date' onChange={dateHandler} />
+                      <button className="bg-slate-500 hover:bg-slate-700 text-white font-bold py-2 px-4 rounded" onClick={dateSubmitHandler}>Submit</button>
                     </form>
                     <h2 className={styles1.container__heading} key={groups._id}>
                       {groups._id == currentMonth

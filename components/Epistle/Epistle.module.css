@@ -121,13 +121,3 @@
 .delete__button__inactive {
   display: none;
 }
-
-.link {
-  padding: 2px;
-  margin-left: 10px;
-  border-color: black;
-  border-radius: 3px;
-  background: #374151;
-  color: white;
-  border-width: 1px;
-}
