@@ -51,7 +51,7 @@ export default function PostForm({
 	};
 	const changeDate = (e) => {
 		setDate(e.target.value);
-		console.log(e.target.value);
+		// console.log(e.target.value);
 	};
 	const changeAuthor = (e) => {
 		setAuthor(e.target.value);
