@@ -229,11 +229,10 @@ export default function Edit({
 				}
 			);
 			const data = await res.json();
-			if (!data.message) {
+			showModal("Should be updated in 2 mins");
+			setTimeout(()=>{
 				router.push("/Admin");
-			} else {
-				showModal(data.message);
-			}
+			},1000)
 			setLoading(false);
 		} else {
 			showModal("Click again to confirm", "Delete?");
