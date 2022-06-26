@@ -49,6 +49,9 @@ export default function PostForm({
 	const changeTitle = (e) => {
 		setTitle(e.target.value);
 	};
+	const changeDate = (e) => {
+		setDate(e.target.value);
+	};
 	const changeAuthor = (e) => {
 		setAuthor(e.target.value);
 		// console.log(e.target.value)
@@ -143,6 +146,7 @@ export default function PostForm({
 			content: contentref.current.getContent(),
 			category: category,
 			summary: summary,
+			date: date
 		};
 		const reqheaders = new Headers();
 		reqheaders.append("Content-Type", "application/json");
@@ -340,6 +344,17 @@ export default function PostForm({
 					value={summary}
 					onChange={changeSummary}
 				/>
+				<label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+					Date
+				</label>
+				<input
+					style={{ margin: "auto" }}
+					className="appearance-none block w-full border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+					required
+					type="date"
+					name="images"
+					value={date}
+					onChange={changeDate}>{date}</input>
 				<div className={styles.loaderContainer}>
 					<button
 						className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
