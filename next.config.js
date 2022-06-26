@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ["images.unsplash.com","13.233.159.246","localhost","mdbootstrap.com"]
+    domains: ["images.unsplash.com","13.233.159.246","localhost","mdbootstrap.com","nabs-backend.herokuapp.com"],
   }
 }
 

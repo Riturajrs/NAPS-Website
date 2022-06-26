@@ -44,6 +44,7 @@ export default function PostForm({
 	const contentref = useRef(null);
 	const [category, setCategory] = useState("");
 	const [summary, setSummary] = useState("");
+	const [date, setDate] = useState(Date.now());
 	//  Change functions
 	const changeTitle = (e) => {
 		setTitle(e.target.value);
@@ -223,7 +224,7 @@ export default function PostForm({
 						alt="Thumbnail"
 					/>
 				</div>
-				<div className={styles.loadingContainer}>
+				<div className={`${styles.loadingContainer} mx-auto`}>
 					{thumbnail == "Loading" && (
 						<>
 							<Loader /> Please Wait
