@@ -147,7 +147,7 @@ export default function PostForm({
 			content: contentref.current.getContent(),
 			category: category,
 			summary: summary,
-			date: date
+			createdAt: date
 		};
 		const reqheaders = new Headers();
 		reqheaders.append("Content-Type", "application/json");
