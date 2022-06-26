@@ -51,6 +51,7 @@ export default function PostForm({
 	};
 	const changeDate = (e) => {
 		setDate(e.target.value);
+		console.log(e.target.value);
 	};
 	const changeAuthor = (e) => {
 		setAuthor(e.target.value);
@@ -146,7 +147,7 @@ export default function PostForm({
 			content: contentref.current.getContent(),
 			category: category,
 			summary: summary,
-			date: date
+			createdAt: date
 		};
 		const reqheaders = new Headers();
 		reqheaders.append("Content-Type", "application/json");
