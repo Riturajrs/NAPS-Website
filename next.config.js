@@ -7,7 +7,7 @@ const nextConfig = {
       "13.233.159.246",
       "localhost",
       "mdbootstrap.com",
-      "bitmesra.ac.in/napsapi",
+      "bitmesra.ac.in",
     ],
   },
 };
