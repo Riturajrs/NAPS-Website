@@ -84,7 +84,7 @@ export default function Form() {
     );
     const Data = await res.json();
     Data.data.name = file.name;
-    Data.data.url = Data.data.url.replace(
+    Data.data.URL = Data.data.URL.replace(
       "http://localhost:4000",
       "https://bitmesra.ac.in/napsapi"
     );
