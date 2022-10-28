@@ -1,5 +1,7 @@
 # Naps Website
 
+> Current Deployement (temporary) - https://naps-website.vercel.app
+
 The official website for the News and Publication Society, BIT Mesra.
 
 ## Features
