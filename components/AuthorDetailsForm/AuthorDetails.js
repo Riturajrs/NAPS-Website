@@ -91,7 +91,7 @@ const AuthorDetails = ()=>{
         // console.log(Data.data.URL);
         setIsLoading(false);
 
-        setImage(Data.data.URL);
+        setImage(Data.data.URL.replace("http://localhost:4000","https://bitmesra.ac.in/napsapi"));
     }
 
     // function to handle form submit
