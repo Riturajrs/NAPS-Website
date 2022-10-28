@@ -120,7 +120,7 @@ const AuthorDetails = () => {
 
     try {
       const response = await fetch(
-        `${process.env.APIBASE}/author/id/${cookies.authorId}`,
+        `${process.env.NEXT_PUBLIC_APIBASE}/author/id/${cookies.authorId}`,
         {
           method: "PATCH",
           headers: {
