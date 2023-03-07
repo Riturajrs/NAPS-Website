@@ -83,6 +83,12 @@ export default function Header() {
 							Search
 						</div>
 					</Link>
+					<Link passHref href="/Voxpopuli">
+						<div className="hover:bg-slate-200 transition-all duration-200 rounded-md md:mx-2 px-2 py-1 font-medium cursor-pointer">
+							Vox Populi
+						</div>
+					</Link>
+
 					{loggedIn && (
 						<Link passHref href="/Admin">
 							<div className="hover:bg-slate-200 transition-all duration-200 rounded-md md:mx-2 px-2 py-1 font-medium cursor-pointer">
