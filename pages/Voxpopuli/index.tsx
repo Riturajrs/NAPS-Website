@@ -42,74 +42,65 @@ export default function Voxpopuli() {
           Your Entries :-
           <div></div>
         </div>
-        <div className="card">
+    
           <div className="flex flex-col justify-center w-50">
           <Image src={a} alt={"Logo"} />
           </div>
           <br></br>
-          <div className="content">
+    
             <br></br>
             <div className="text-4xl sm:text-4xl gap-5 flex felx-col justify-center text-center font-serif border width 50  border-groove ">
               Ayushi Sha <br></br>
               BIT Mesra
             </div>
-          </div>
+          
           <br></br>
-          <div className="card">
+        
           <div className="flex flex-col justify-center w-50">
             <Image src={b} alt={"Logo"} />
             </div>
             <br></br>
-            <div className="content">
+            
               <br></br>
               <div className="text-4xl sm:text-4xl gap-5 flex felx-col justify-center text-center font-serif border width 50  border-groove  ">
                 Shaswat Jha<br></br>
                 BIT Mesra
               </div>
-            </div>
-          </div>
+        
           <br></br>
 
-          <div className="card">
+        
           <div className="flex flex-col justify-center w-50">
           <Image src={c} alt={"Logo"} />
 
             
             </div>
             <br></br>
-            <div className="content">
+        
               <br></br>
               <div className="text-4xl sm:text-4xl gap-5 flex felx-col justify-center text-center font-serif border width 50  border-groove ">
               Chhavi Rani 
                  <br></br>
                 BIT Mesra
               </div>
-            </div>
-          </div>
+        
+        
           <br></br>
 
 
-          <div className="card">
+        
           <div className="flex flex-col justify-center w-50">
               <img src="https://images.pexels.com/photos/1815257/pexels-photo-1815257.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" />
             </div>
             <br></br>
-            <div className="content">
+            
               <br></br>
               <div className="text-4xl sm:text-4xl gap-5 flex felx-col justify-center text-center  font-serif border width 50  border-groove ">
                 Keep Smiling <br></br>
                 college name
               </div>
-            </div>
-          </div>
-        
-
-
-
-
-
-
-
+            
+    
 
 
 
@@ -126,7 +117,7 @@ export default function Voxpopuli() {
 
           
         </div>
-      </div>
+      
     </>
   );
 }
