@@ -97,8 +97,8 @@ export default function Voxpopuli() {
             <div className="content">
               <br></br>
               <div className="text-4xl sm:text-4xl gap-5 flex felx-col justify-center text-center  font-serif border width 50  border-groove ">
-                keep Smiling <br></br>
-                collage name
+                Keep Smiling <br></br>
+                college name
               </div>
             </div>
           </div>
