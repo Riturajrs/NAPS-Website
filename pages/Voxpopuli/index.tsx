@@ -29,10 +29,11 @@ export default function Voxpopuli() {
           through a realm of expressive verbiage and captivating witticisms!
           With the proliferation of urban jungles, it behooves us to shed light
           on the subtle, yet pressing issues that are lurking in plain sight.
-          And who better than YOU to do so? Join 'Vox Populi' - an online
+          And who better than YOU to do so? Join Vox Populi - an online
           writing contest by BIT Mesra's News and Publication Society. Share
           your uncensored thoughts and ideas about your city and win prizes!
         </div>
+        <div className={styles.voxpopuli}></div>
 
         <Head>
           <title>NAPS | Vox Populi</title>
