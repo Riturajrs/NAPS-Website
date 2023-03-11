@@ -26,6 +26,7 @@ https://user-images.githubusercontent.com/44966242/198545002-d2b773ce-ebd7-4c2a-
 - [Pawan Kumar](https://www.linkedin.com/in/pawan-kumar-2122bb214/)
 - [Rituraj Seal](https://www.linkedin.com/in/rituraj-seal-48a8031bb/)
 - [Ankur Pandey](https://www.linkedin.com/in/ankur-pandey07/)
+- [Ujjawal Kumar](https://www.linkedin.com/in/ujjawal-kumar-7a6ba2226)
 
 ## Our mentors
 
