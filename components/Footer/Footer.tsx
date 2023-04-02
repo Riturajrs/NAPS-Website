@@ -29,7 +29,7 @@ export default function Footer() {
 						</div>
 					</div>
 					<div className="flex justify-center sm:justify-end cursor-pointer">
-						<a href="https://instagram.com">
+						<a href= "https://www.instagram.com/naps_bitmesra/" target="_blank">
 							<Image
 								src={InstaLogo}
 								alt="Instagram"
@@ -37,7 +37,7 @@ export default function Footer() {
 								layout="intrinsic"
 							/>
 						</a>
-						<a href="https://linkedin.com">
+						<a href= "https://www.linkedin.com/company/naps-bit/mycompany/" target="_blank">
 							<Image
 								src={LinkedinLogo}
 								alt="LinkedIn"
@@ -45,7 +45,7 @@ export default function Footer() {
 								layout="intrinsic"
 							/>
 						</a>
-						<a href="https://facebook.com">
+						<a href="https://www.facebook.com/naps.bit" target="_blank">
 							<Image
 								src={FacebookLogo}
 								alt="Facebook"
