@@ -99,15 +99,15 @@ export default function Header() {
 				</div>
 				<div className="sm:block hidden cursor-pointer">
 					{/* TODO: add links */}
-					<a href="https://www.instagram.com/naps_bitmesra/" target="_blank">
+					<Link href="https://www.instagram.com/naps_bitmesra/">
 						<Image
 							src={InstaLogo}
 							alt="Instagram"
 							className={styles.connectItem}
 							layout="intrinsic"
 						/>
-					</a>
-					<a href="https://www.linkedin.com/company/naps-bit/mycompany/" target="_blank">
+					</Link>
+					<Link href="https://www.linkedin.com/company/naps-bit/mycompany/" >
 						<Image
 							src={LinkedinLogo}
 							alt="LinkedIn"
@@ -115,15 +115,15 @@ export default function Header() {
 							layout="intrinsic"
 							
 						/>
-					</a>
-					<a href="https://www.facebook.com/naps.bit" target="_blank">
+					</Link>
+					<Link href="https://www.facebook.com/naps.bit">
 						<Image
 							src={FacebookLogo}
 							alt="Facebook"
 							className={styles.connectItem}
 							layout="intrinsic"
 						/>
-					</a>
+					</Link>
 				</div>
 			</div>
 		</div>

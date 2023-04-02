@@ -149,7 +149,7 @@ export default function Form() {
               <div>
                 Link for {link.name} added{" "}
                 <button className={styles.link}>
-                  <a href={link.URL} rel="noreferrer" target="_blank">
+                  <a href={link.URL} rel="noreferrer">
                     View
                   </a>
                 </button>{" "}
