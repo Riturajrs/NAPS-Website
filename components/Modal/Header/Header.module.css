@@ -1,0 +1,6 @@
+.logoContainer{
+  min-height: 10vh;
+}
+.logoContainer img{
+  object-fit: contain;
+}
