@@ -30,7 +30,7 @@ export default function Voxpopuli() {
           With the proliferation of urban jungles, it behooves us to shed light
           on the subtle, yet pressing issues that are lurking in plain sight.
           And who better than YOU to do so? Join Vox Populi - an online
-          writing contest by BIT Mesra's News and Publication Society. Share
+          writing contest by BIT Mesra{"'"}s News and Publication Society. Share
           your uncensored thoughts and ideas about your city and win prizes!
         </div>
         <div className={styles.voxpopuli}></div>
@@ -43,82 +43,65 @@ export default function Voxpopuli() {
           Your Entries :-
           <div></div>
         </div>
-    
-          <div className="flex flex-col justify-center w-50">
-          <Image src={a} alt={"Logo"} />
-          </div>
-          <br></br>
-    
-            <br></br>
-            <div className="text-4xl sm:text-4xl gap-5 flex felx-col justify-center text-center font-serif border width 50  border-groove ">
-              Ayushi Sha <br></br>
-              BIT Mesra
-            </div>
-          
-          <br></br>
-        
-          <div className="flex flex-col justify-center w-50">
-            <Image src={b} alt={"Logo"} />
-            </div>
-            <br></br>
-            
-              <br></br>
-              <div className="text-4xl sm:text-4xl gap-5 flex felx-col justify-center text-center font-serif border width 50  border-groove  ">
-                Shaswat Jha<br></br>
-                BIT Mesra
-              </div>
-        
-          <br></br>
 
-        
-          <div className="flex flex-col justify-center w-50">
+        <div className="flex flex-col justify-center w-50">
+          <Image src={a} alt={"Logo"} />
+        </div>
+        <br></br>
+
+        <br></br>
+        <div className="text-4xl sm:text-4xl gap-5 flex felx-col justify-center text-center font-serif border width 50  border-groove ">
+          Ayushi Sha <br></br>
+          BIT Mesra
+        </div>
+
+        <br></br>
+
+        <div className="flex flex-col justify-center w-50">
+          <Image src={b} alt={"Logo"} />
+        </div>
+        <br></br>
+
+        <br></br>
+        <div className="text-4xl sm:text-4xl gap-5 flex felx-col justify-center text-center font-serif border width 50  border-groove  ">
+          Shaswat Jha<br></br>
+          BIT Mesra
+        </div>
+
+        <br></br>
+
+
+        <div className="flex flex-col justify-center w-50">
           <Image src={c} alt={"Logo"} />
 
-            
-            </div>
-            <br></br>
-        
-              <br></br>
-              <div className="text-4xl sm:text-4xl gap-5 flex felx-col justify-center text-center font-serif border width 50  border-groove ">
-              Chhavi Rani 
-                 <br></br>
-                BIT Mesra
-              </div>
-        
-        
-          <br></br>
 
-
-        
-          <div className="flex flex-col justify-center w-50">
-              <img src="https://images.pexels.com/photos/1815257/pexels-photo-1815257.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" />
-            </div>
-            <br></br>
-            
-              <br></br>
-              <div className="text-4xl sm:text-4xl gap-5 flex felx-col justify-center text-center  font-serif border width 50  border-groove ">
-                Keep Smiling <br></br>
-                college name
-              </div>
-            
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-          
         </div>
-      
+        <br></br>
+
+        <br></br>
+        <div className="text-4xl sm:text-4xl gap-5 flex felx-col justify-center text-center font-serif border width 50  border-groove ">
+          Chhavi Rani
+          <br></br>
+          BIT Mesra
+        </div>
+
+
+        <br></br>
+
+
+
+        <div className="flex flex-col justify-center w-50">
+          <img src="https://images.pexels.com/photos/1815257/pexels-photo-1815257.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" />
+        </div>
+        <br></br>
+
+        <br></br>
+        <div className="text-4xl sm:text-4xl gap-5 flex felx-col justify-center text-center  font-serif border width 50  border-groove ">
+          Keep Smiling <br></br>
+          college name
+        </div>
+      </div>
+
     </>
   );
 }
