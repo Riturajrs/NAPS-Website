@@ -24,11 +24,15 @@ type currentmemberInfo = {
 
 const sample1: StaticImageData = require('./public/images/1.jpg')
 const sample2: StaticImageData = require('./public/images/2.png')
+const sample2a: StaticImageData = require('./public/images/2a.jpeg')
 const sample3: StaticImageData = require('./public/images/3.jpg')
 const sample4: StaticImageData = require('./public/images/4.jpg')
 const sample5: StaticImageData = require('./public/images/5.jpg')
 const sample6: StaticImageData = require('./public/images/6.jpg')
 const sample7: StaticImageData = require('./public/images/7.jpg')
+const sample7a: StaticImageData = require('./public/images/7a.jpeg')
+const sample7b: StaticImageData = require('./public/images/7b.JPG')
+
 const sample8: StaticImageData = require('./public/images/8.png')
 const sample9: StaticImageData = require('./public/images/9.jpeg')
 const sample10: StaticImageData = require('./public/images/10.jpg')
@@ -59,6 +63,15 @@ export const currentmembers:currentmemberInfo[] = [
     year: '2020',
     linkedin: 'https://www.linkedin.com/in/devang-vatsa-503015201',
     insta: 'https://instagram.com/devang02_12?igshid=YmMyMTA2M2Y=',
+  },
+  {
+    name: 'Ritika',
+    facebook: 'https://facebook.com',
+    image: sample2a,
+    post: 'Joint Secretary ',
+    year: '2020',
+    linkedin: 'http://www.linkedin.com/in/itsritika11',
+    insta: 'https://instagram.com/ritika.1211?igshid=YmMyMTA2M2Y=',
   },
   {
     name: 'Diya Mondal',
@@ -96,6 +109,7 @@ export const currentmembers:currentmemberInfo[] = [
     linkedin: 'https://linkedin.com',
     insta: 'https://instagram.com/akashrupam_6102?igshid=ZDdkNTZiNTM=',
   },
+  
   {
     name: 'Rituraj Seal',
     facebook: 'https://facebook.com',
@@ -104,6 +118,24 @@ export const currentmembers:currentmemberInfo[] = [
     year: '2020',
     linkedin: 'https://www.linkedin.com/in/rituraj-seal-48a8031bb/',
     insta: 'https://www.instagram.com/rituraj_rs/',
+  },
+  {
+    name: 'Lohitaksha Malhotra',
+    facebook: 'https://facebook.com',
+    image: sample7a,
+    post: 'Web Developer',
+    year: '2020',
+    linkedin: 'https://www.linkedin.com/in/lohitaksha-malhotra-b84392201',
+    insta: 'https://instagram.com/lohitakshamalhotra?igshid=YmMyMTA2M2Y=',
+  },
+  {
+    name: 'Ishan Pandey ',
+    facebook: 'https://facebook.com',
+    image: sample7b,
+    post: 'Web Developer',
+    year: '2020',
+    linkedin: 'https://www.linkedin.com/in/ishan-pandey-15527717b',
+    insta: 'https://instagram.com/ishan__pandey_?igshid=ZGUzMzM3NWJiOQ==',
   },
   {
     name: 'Ujjawal Kumar',
@@ -118,7 +150,7 @@ export const currentmembers:currentmemberInfo[] = [
     name: 'Shashwat Jha',
     facebook: 'https://www.facebook.com/shashwat.jha.169',
     image: sample9,
-    post: 'Writer',
+    post: 'Editor',
     year: '2021',
     linkedin: 'https://www.linkedin.com/in/shashwatjha951',
     insta: 'https://www.instagram.com/saucewhat_/',
@@ -127,7 +159,7 @@ export const currentmembers:currentmemberInfo[] = [
     name: 'Kingshuk Banerjee',
     facebook: 'https://facebook.com',
     image: sample10,
-    post: 'Writer',
+    post: 'Editor',
     year: '2021',
     linkedin: 'https://www.linkedin.com/in/kingshuk-banerjee-',
     insta: 'https://instagram.com/the_thinking_banerjee?igshid=ZDdkNTZiNTM=',
@@ -136,7 +168,7 @@ export const currentmembers:currentmemberInfo[] = [
     name: 'Khushi',
     facebook: 'https://facebook.com',
     image: sample11,
-    post: 'Writer',
+    post: 'Editor',
     year: '2021',
     linkedin: 'https://www.linkedin.com/',
     insta: 'https://www.instagram.com/_khushix_12/',
@@ -145,7 +177,7 @@ export const currentmembers:currentmemberInfo[] = [
     name: 'Nikhil Anand',
     facebook: 'https://facebook.com',
     image: sample12,
-    post: 'Writer',
+    post: 'Editor',
     year: '2021',
     linkedin: 'https://www.linkedin.com/',
     insta: 'https://www.instagram.com/nikhil_anand02/',
@@ -154,7 +186,7 @@ export const currentmembers:currentmemberInfo[] = [
     name: 'Priyanka Sinha',
     facebook: 'https://facebook.com',
     image: sample13,
-    post: 'Writer',
+    post: 'Editor',
     year: '2021',
     linkedin: 'https://www.linkedin.com/',
     insta: 'https://instagram.com/notwhenitsyou?igshid=ZDdkNTZiNTM=',
@@ -163,7 +195,7 @@ export const currentmembers:currentmemberInfo[] = [
     name: 'Sumeet Kumar ',
     facebook: 'https://facebook.com',
     image: sample14,
-    post: 'Writer',
+    post: 'Editor',
     year: '2021',
     linkedin: 'https://www.linkedin.com/in/sumeet-kumar-84b9b0230/',
     insta: 'https://www.instagram.com/su.meet_ks/',
