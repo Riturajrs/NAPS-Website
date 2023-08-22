@@ -21,7 +21,7 @@ export default function AboutUs() {
       <div className="m-4 my-12">
         We, here at News and Publication Society, believe in unbiased and
         transparent coverage of all college-related events. It is always our
-        endeavor to bring to our readers' news fresh and complete in detail.
+        endeavor to bring to our readers&apos; news fresh and complete in detail.
         Whether it be a jazzy cultural extravaganza or a technical session of
         scientific importance, we make sure that we keep you updated on the
         goings-on in the various spheres that our institution is involved in.
@@ -43,7 +43,7 @@ export default function AboutUs() {
         has to offer you while also helping you make informed decisions
         through the experiences of people who have been successful in some of
         the other walks of life. This is the fourth pillar of BIT Mesra which
-        highlights the technical activities of student's club/ student bodies
+        highlights the technical activities of student&apos;s club/ student bodies
         and departments at local, national, and international levels with the
         support of online social media and media houses.
       </div>
