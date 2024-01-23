@@ -19,7 +19,7 @@ https://user-images.githubusercontent.com/44966242/198545002-d2b773ce-ebd7-4c2a-
 ## Web Team
 <sup>(in no particular order)</sup>
 
-- [Lohitaksha Malhotra](https://lohitaksha.com)
+- Me :)
 - [Ishan Pandey](https://ishanpandey703.netlify.app)
 - [Pawan Kumar](https://www.linkedin.com/in/pawan-kumar-2122bb214/)
 - [Rituraj Seal](https://www.linkedin.com/in/rituraj-seal-48a8031bb/)
