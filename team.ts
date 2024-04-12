@@ -43,6 +43,7 @@ const sample14: StaticImageData = require('./public/images/14.jpg')
 const sample15: StaticImageData = require('./public/images/15.jpg')
 const sample16: StaticImageData = require('./public/images/16.jpg')
 const sample17: StaticImageData = require('./public/images/17.jpeg')
+const sample18: StaticImageData = require('./public/image/18.jpg')
 
 
 export const currentmembers:currentmemberInfo[] = [
@@ -232,6 +233,16 @@ export const currentmembers:currentmemberInfo[] = [
     linkedin: 'https://www.linkedin.com/in/aditya-dubey-832391232/',
     insta: 'https://www.instagram.com/flu0.resent/',
   },
+
+  {
+    name: 'Ambuj Mishra',
+    facebook: 'https://facebook.com',
+    image: sample18,
+    post: 'Reporter',
+    year: '2021',
+    linkedin: 'https://www.linkedin.com/in/ambuj-mishra-903a06265',
+    insta: 'https://www.instagram.com/',
+  }
   
 
   
