@@ -238,7 +238,7 @@ export const currentmembers:currentmemberInfo[] = [
     name: 'Ambuj Mishra',
     facebook: 'https://facebook.com',
     image: sample18,
-    post: 'Reporter',
+    post: 'Editor',
     year: '2021',
     linkedin: 'https://www.linkedin.com/in/ambuj-mishra-903a06265',
     insta: 'https://www.instagram.com/',
