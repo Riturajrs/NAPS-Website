@@ -43,7 +43,7 @@ const sample14: StaticImageData = require('./public/images/14.jpg')
 const sample15: StaticImageData = require('./public/images/15.jpg')
 const sample16: StaticImageData = require('./public/images/16.jpg')
 const sample17: StaticImageData = require('./public/images/17.jpeg')
-const sample18: StaticImageData = require('./public/image/18.jpg')
+const sample18: StaticImageData = require('./public/images/18.jpg')
 
 
 export const currentmembers:currentmemberInfo[] = [
