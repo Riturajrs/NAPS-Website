@@ -21,7 +21,7 @@ export default function Section({ DateAdded, body, setReload }) {
               Links:
               {links.map((link) => (
                 <div key={link} className={styles1.cardText}>
-                  <a target="_blank" rel="noreferrer" href={`${process.env.NEXT_PUBLIC_SERVERBASE}/notices/${link}`}>{link}</a>
+                  <Link  rel="noreferrer" href={`${process.env.NEXT_PUBLIC_SERVERBASE}/notices/${link}`}>{link}</Link>
                 </div>
               ))}
             </div>

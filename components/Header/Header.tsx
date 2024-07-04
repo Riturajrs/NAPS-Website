@@ -83,11 +83,11 @@ export default function Header() {
 							Search
 						</div>
 					</Link>
-					<Link passHref href="/Voxpopuli">
+					{/* <Link passHref href="/Voxpopuli">
 						<div className="hover:bg-slate-200 transition-all duration-200 rounded-md md:mx-2 px-2 py-1 font-medium cursor-pointer">
 							Vox Populi
 						</div>
-					</Link>
+					</Link> */}
 
 					{loggedIn && (
 						<Link passHref href="/Admin">
@@ -99,30 +99,31 @@ export default function Header() {
 				</div>
 				<div className="sm:block hidden cursor-pointer">
 					{/* TODO: add links */}
-					<a href="https://instagram.com">
+					<Link href="https://www.instagram.com/naps_bitmesra/">
 						<Image
 							src={InstaLogo}
 							alt="Instagram"
 							className={styles.connectItem}
 							layout="intrinsic"
 						/>
-					</a>
-					<a href="https://linkedin.com">
+					</Link>
+					<Link href="https://www.linkedin.com/company/naps-bit/mycompany/" >
 						<Image
 							src={LinkedinLogo}
 							alt="LinkedIn"
 							className={styles.connectItem}
 							layout="intrinsic"
+							
 						/>
-					</a>
-					<a href="https://facebook.com">
+					</Link>
+					<Link href="https://www.facebook.com/naps.bit">
 						<Image
 							src={FacebookLogo}
 							alt="Facebook"
 							className={styles.connectItem}
 							layout="intrinsic"
 						/>
-					</a>
+					</Link>
 				</div>
 			</div>
 		</div>
